@@ -14,6 +14,31 @@
 		BFD96F902BC45914003163E5 /* OptimiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F8F2BC45914003163E5 /* OptimiTests.swift */; };
 		BFD96F9A2BC45914003163E5 /* OptimiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F992BC45914003163E5 /* OptimiUITests.swift */; };
 		BFD96F9C2BC45914003163E5 /* OptimiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */; };
+		E9B3AFA12BC45BCB0055C6D5 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFA02BC45BCB0055C6D5 /* ProjectModel.swift */; };
+		E9B3AFA42BC45BEF0055C6D5 /* DesignerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFA32BC45BEE0055C6D5 /* DesignerModel.swift */; };
+		E9B3AFA62BC45BFB0055C6D5 /* DeveloperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFA52BC45BFB0055C6D5 /* DeveloperModel.swift */; };
+		E9B3AFA82BC45C160055C6D5 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFA72BC45C160055C6D5 /* TaskModel.swift */; };
+		E9B3AFAA2BC45C290055C6D5 /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFA92BC45C290055C6D5 /* DeliveryModel.swift */; };
+		E9B3AFAC2BC45C3F0055C6D5 /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFAB2BC45C3F0055C6D5 /* FeedbackModel.swift */; };
+		E9B3AFAE2BC45C4C0055C6D5 /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFAD2BC45C4C0055C6D5 /* TagModel.swift */; };
+		E9B3AFB02BC45C5C0055C6D5 /* ProjectTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFAF2BC45C5C0055C6D5 /* ProjectTaskModel.swift */; };
+		E9B3AFB42BC45C7B0055C6D5 /* TaskDeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFB32BC45C7B0055C6D5 /* TaskDeliveryModel.swift */; };
+		E9B3AFB62BC45C8C0055C6D5 /* DeliveryFeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFB52BC45C8C0055C6D5 /* DeliveryFeedbackModel.swift */; };
+		E9B3AFB82BC45CA50055C6D5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFB72BC45CA50055C6D5 /* OnboardingView.swift */; };
+		E9B3AFBB2BC45CDD0055C6D5 /* GeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFBA2BC45CDD0055C6D5 /* GeneralController.swift */; };
+		E9B3AFBE2BC45D200055C6D5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFBD2BC45D200055C6D5 /* HomeView.swift */; };
+		E9B3AFC02BC45DE60055C6D5 /* InitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFBF2BC45DE60055C6D5 /* InitView.swift */; };
+		E9B3AFC22BC45E000055C6D5 /* CreateProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFC12BC45E000055C6D5 /* CreateProjectView.swift */; };
+		E9B3AFC42BC45E240055C6D5 /* ProjectNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFC32BC45E240055C6D5 /* ProjectNotFoundView.swift */; };
+		E9B3AFC62BC45E360055C6D5 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFC52BC45E360055C6D5 /* ProjectView.swift */; };
+		E9B3AFC82BC45E4C0055C6D5 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFC72BC45E4C0055C6D5 /* TaskView.swift */; };
+		E9B3AFCA2BC45E8D0055C6D5 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFC92BC45E8D0055C6D5 /* TaskCard.swift */; };
+		E9B3AFCD2BC45EAC0055C6D5 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFCC2BC45EAC0055C6D5 /* StatusPill.swift */; };
+		E9B3AFCF2BC45EC20055C6D5 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFCE2BC45EC20055C6D5 /* CreateTaskView.swift */; };
+		E9B3AFD12BC45EDC0055C6D5 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFD02BC45EDC0055C6D5 /* DeliveryView.swift */; };
+		E9B3AFD32BC45EF20055C6D5 /* DeliveryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFD22BC45EF20055C6D5 /* DeliveryCard.swift */; };
+		E9B3AFD52BC45F0C0055C6D5 /* CreateDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFD42BC45F0C0055C6D5 /* CreateDeliveryView.swift */; };
+		E9B3AFD72BC45F210055C6D5 /* CreateFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3AFD62BC45F210055C6D5 /* CreateFeedbackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +70,31 @@
 		BFD96F952BC45914003163E5 /* OptimiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptimiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD96F992BC45914003163E5 /* OptimiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiUITests.swift; sourceTree = "<group>"; };
 		BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E9B3AFA02BC45BCB0055C6D5 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		E9B3AFA32BC45BEE0055C6D5 /* DesignerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerModel.swift; sourceTree = "<group>"; };
+		E9B3AFA52BC45BFB0055C6D5 /* DeveloperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperModel.swift; sourceTree = "<group>"; };
+		E9B3AFA72BC45C160055C6D5 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		E9B3AFA92BC45C290055C6D5 /* DeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
+		E9B3AFAB2BC45C3F0055C6D5 /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
+		E9B3AFAD2BC45C4C0055C6D5 /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
+		E9B3AFAF2BC45C5C0055C6D5 /* ProjectTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTaskModel.swift; sourceTree = "<group>"; };
+		E9B3AFB32BC45C7B0055C6D5 /* TaskDeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDeliveryModel.swift; sourceTree = "<group>"; };
+		E9B3AFB52BC45C8C0055C6D5 /* DeliveryFeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFeedbackModel.swift; sourceTree = "<group>"; };
+		E9B3AFB72BC45CA50055C6D5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		E9B3AFBA2BC45CDD0055C6D5 /* GeneralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralController.swift; sourceTree = "<group>"; };
+		E9B3AFBD2BC45D200055C6D5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E9B3AFBF2BC45DE60055C6D5 /* InitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitView.swift; sourceTree = "<group>"; };
+		E9B3AFC12BC45E000055C6D5 /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
+		E9B3AFC32BC45E240055C6D5 /* ProjectNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNotFoundView.swift; sourceTree = "<group>"; };
+		E9B3AFC52BC45E360055C6D5 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		E9B3AFC72BC45E4C0055C6D5 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		E9B3AFC92BC45E8D0055C6D5 /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
+		E9B3AFCC2BC45EAC0055C6D5 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
+		E9B3AFCE2BC45EC20055C6D5 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTaskView.swift; path = Optimi/Views/CreateTaskView.swift; sourceTree = SOURCE_ROOT; };
+		E9B3AFD02BC45EDC0055C6D5 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
+		E9B3AFD22BC45EF20055C6D5 /* DeliveryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCard.swift; sourceTree = "<group>"; };
+		E9B3AFD42BC45F0C0055C6D5 /* CreateDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryView.swift; sourceTree = "<group>"; };
+		E9B3AFD62BC45F210055C6D5 /* CreateFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +147,9 @@
 			children = (
 				BFD96F7D2BC45913003163E5 /* OptimiApp.swift */,
 				BFD96F7F2BC45913003163E5 /* ContentView.swift */,
+				E9B3AFA22BC45BDF0055C6D5 /* Models */,
+				E9B3AFB92BC45CAA0055C6D5 /* Views */,
+				E9B3AFBC2BC45CE20055C6D5 /* Controllers */,
 				BFD96F812BC45914003163E5 /* Assets.xcassets */,
 				BFD96F832BC45914003163E5 /* Optimi.entitlements */,
 				BFD96F842BC45914003163E5 /* Preview Content */,
@@ -127,6 +180,60 @@
 				BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */,
 			);
 			path = OptimiUITests;
+			sourceTree = "<group>";
+		};
+		E9B3AFA22BC45BDF0055C6D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9B3AFA02BC45BCB0055C6D5 /* ProjectModel.swift */,
+				E9B3AFA32BC45BEE0055C6D5 /* DesignerModel.swift */,
+				E9B3AFA72BC45C160055C6D5 /* TaskModel.swift */,
+				E9B3AFA92BC45C290055C6D5 /* DeliveryModel.swift */,
+				E9B3AFAB2BC45C3F0055C6D5 /* FeedbackModel.swift */,
+				E9B3AFAD2BC45C4C0055C6D5 /* TagModel.swift */,
+				E9B3AFAF2BC45C5C0055C6D5 /* ProjectTaskModel.swift */,
+				E9B3AFB32BC45C7B0055C6D5 /* TaskDeliveryModel.swift */,
+				E9B3AFB52BC45C8C0055C6D5 /* DeliveryFeedbackModel.swift */,
+				E9B3AFA52BC45BFB0055C6D5 /* DeveloperModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9B3AFB92BC45CAA0055C6D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9B3AFBF2BC45DE60055C6D5 /* InitView.swift */,
+				E9B3AFB72BC45CA50055C6D5 /* OnboardingView.swift */,
+				E9B3AFBD2BC45D200055C6D5 /* HomeView.swift */,
+				E9B3AFC12BC45E000055C6D5 /* CreateProjectView.swift */,
+				E9B3AFC32BC45E240055C6D5 /* ProjectNotFoundView.swift */,
+				E9B3AFC52BC45E360055C6D5 /* ProjectView.swift */,
+				E9B3AFC72BC45E4C0055C6D5 /* TaskView.swift */,
+				E9B3AFCE2BC45EC20055C6D5 /* CreateTaskView.swift */,
+				E9B3AFD02BC45EDC0055C6D5 /* DeliveryView.swift */,
+				E9B3AFD42BC45F0C0055C6D5 /* CreateDeliveryView.swift */,
+				E9B3AFD62BC45F210055C6D5 /* CreateFeedbackView.swift */,
+				E9B3AFCB2BC45E9C0055C6D5 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E9B3AFBC2BC45CE20055C6D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9B3AFBA2BC45CDD0055C6D5 /* GeneralController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E9B3AFCB2BC45E9C0055C6D5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E9B3AFC92BC45E8D0055C6D5 /* TaskCard.swift */,
+				E9B3AFCC2BC45EAC0055C6D5 /* StatusPill.swift */,
+				E9B3AFD22BC45EF20055C6D5 /* DeliveryCard.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +366,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9B3AFCA2BC45E8D0055C6D5 /* TaskCard.swift in Sources */,
+				E9B3AFBB2BC45CDD0055C6D5 /* GeneralController.swift in Sources */,
+				E9B3AFAE2BC45C4C0055C6D5 /* TagModel.swift in Sources */,
+				E9B3AFCF2BC45EC20055C6D5 /* CreateTaskView.swift in Sources */,
+				E9B3AFD12BC45EDC0055C6D5 /* DeliveryView.swift in Sources */,
+				E9B3AFB42BC45C7B0055C6D5 /* TaskDeliveryModel.swift in Sources */,
+				E9B3AFC82BC45E4C0055C6D5 /* TaskView.swift in Sources */,
+				E9B3AFC42BC45E240055C6D5 /* ProjectNotFoundView.swift in Sources */,
+				E9B3AFBE2BC45D200055C6D5 /* HomeView.swift in Sources */,
+				E9B3AFA82BC45C160055C6D5 /* TaskModel.swift in Sources */,
+				E9B3AFCD2BC45EAC0055C6D5 /* StatusPill.swift in Sources */,
+				E9B3AFC62BC45E360055C6D5 /* ProjectView.swift in Sources */,
+				E9B3AFA42BC45BEF0055C6D5 /* DesignerModel.swift in Sources */,
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
+				E9B3AFD32BC45EF20055C6D5 /* DeliveryCard.swift in Sources */,
+				E9B3AFB02BC45C5C0055C6D5 /* ProjectTaskModel.swift in Sources */,
+				E9B3AFC02BC45DE60055C6D5 /* InitView.swift in Sources */,
+				E9B3AFD72BC45F210055C6D5 /* CreateFeedbackView.swift in Sources */,
+				E9B3AFC22BC45E000055C6D5 /* CreateProjectView.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
+				E9B3AFAC2BC45C3F0055C6D5 /* FeedbackModel.swift in Sources */,
+				E9B3AFB62BC45C8C0055C6D5 /* DeliveryFeedbackModel.swift in Sources */,
+				E9B3AFA62BC45BFB0055C6D5 /* DeveloperModel.swift in Sources */,
+				E9B3AFA12BC45BCB0055C6D5 /* ProjectModel.swift in Sources */,
+				E9B3AFB82BC45CA50055C6D5 /* OnboardingView.swift in Sources */,
+				E9B3AFD52BC45F0C0055C6D5 /* CreateDeliveryView.swift in Sources */,
+				E9B3AFAA2BC45C290055C6D5 /* DeliveryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

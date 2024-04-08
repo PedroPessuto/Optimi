@@ -11,7 +11,7 @@ import SwiftUI
 struct OptimiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InitView()
         }
     }
 }
