@@ -14,6 +14,12 @@
 		BFD96F902BC45914003163E5 /* OptimiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F8F2BC45914003163E5 /* OptimiTests.swift */; };
 		BFD96F9A2BC45914003163E5 /* OptimiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F992BC45914003163E5 /* OptimiUITests.swift */; };
 		BFD96F9C2BC45914003163E5 /* OptimiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */; };
+		BFFE88152BC4824B00D69EEC /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE88142BC4824B00D69EEC /* ProjectModel.swift */; };
+		BFFE88172BC4837900D69EEC /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE88162BC4837900D69EEC /* TaskModel.swift */; };
+		BFFE88192BC484C000D69EEC /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE88182BC484C000D69EEC /* PersonModel.swift */; };
+		BFFE881B2BC4855700D69EEC /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE881A2BC4855700D69EEC /* DeliveryModel.swift */; };
+		BFFE881D2BC486EF00D69EEC /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE881C2BC486EF00D69EEC /* FeedbackModel.swift */; };
+		BFFE88202BC48B3800D69EEC /* GeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE881F2BC48B3800D69EEC /* GeneralController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,13 @@
 		BFD96F952BC45914003163E5 /* OptimiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptimiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD96F992BC45914003163E5 /* OptimiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiUITests.swift; sourceTree = "<group>"; };
 		BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFFE88142BC4824B00D69EEC /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		BFFE88162BC4837900D69EEC /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		BFFE88182BC484C000D69EEC /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		BFFE881A2BC4855700D69EEC /* DeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
+		BFFE881C2BC486EF00D69EEC /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
+		BFFE881F2BC48B3800D69EEC /* GeneralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralController.swift; sourceTree = "<group>"; };
+		BFFE88212BC490EC00D69EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +108,9 @@
 		BFD96F7C2BC45913003163E5 /* Optimi */ = {
 			isa = PBXGroup;
 			children = (
+				BFFE88212BC490EC00D69EEC /* Info.plist */,
+				BFFE881E2BC48B2B00D69EEC /* Controllers */,
+				BFFE88132BC4821100D69EEC /* Models */,
 				BFD96F7D2BC45913003163E5 /* OptimiApp.swift */,
 				BFD96F7F2BC45913003163E5 /* ContentView.swift */,
 				BFD96F812BC45914003163E5 /* Assets.xcassets */,
@@ -127,6 +143,26 @@
 				BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */,
 			);
 			path = OptimiUITests;
+			sourceTree = "<group>";
+		};
+		BFFE88132BC4821100D69EEC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFFE88142BC4824B00D69EEC /* ProjectModel.swift */,
+				BFFE88162BC4837900D69EEC /* TaskModel.swift */,
+				BFFE881A2BC4855700D69EEC /* DeliveryModel.swift */,
+				BFFE881C2BC486EF00D69EEC /* FeedbackModel.swift */,
+				BFFE88182BC484C000D69EEC /* PersonModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFFE881E2BC48B2B00D69EEC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BFFE881F2BC48B3800D69EEC /* GeneralController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +297,12 @@
 			files = (
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
+				BFFE881D2BC486EF00D69EEC /* FeedbackModel.swift in Sources */,
+				BFFE88192BC484C000D69EEC /* PersonModel.swift in Sources */,
+				BFFE88202BC48B3800D69EEC /* GeneralController.swift in Sources */,
+				BFFE88172BC4837900D69EEC /* TaskModel.swift in Sources */,
+				BFFE88152BC4824B00D69EEC /* ProjectModel.swift in Sources */,
+				BFFE881B2BC4855700D69EEC /* DeliveryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +466,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Optimi/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -462,6 +505,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Optimi/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
