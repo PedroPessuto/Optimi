@@ -19,6 +19,10 @@
 		BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */; };
 		BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29982BC5DEE000543D27 /* RecordNames.swift */; };
 		BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA299A2BC5E24900543D27 /* GeneralController.swift */; };
+		BFEA299D2BC5EEB100543D27 /* ProjectFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA299C2BC5EEB100543D27 /* ProjectFields.swift */; };
+		BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA299E2BC5EF7000543D27 /* PersonFields.swift */; };
+		BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29A02BC5F0B200543D27 /* TaskModel.swift */; };
+		BFEA29A32BC5F32400543D27 /* TaskFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29A22BC5F32400543D27 /* TaskFields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		BFEA29982BC5DEE000543D27 /* RecordNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordNames.swift; sourceTree = "<group>"; };
 		BFEA299A2BC5E24900543D27 /* GeneralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralController.swift; sourceTree = "<group>"; };
+		BFEA299C2BC5EEB100543D27 /* ProjectFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFields.swift; sourceTree = "<group>"; };
+		BFEA299E2BC5EF7000543D27 /* PersonFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonFields.swift; sourceTree = "<group>"; };
+		BFEA29A02BC5F0B200543D27 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		BFEA29A22BC5F32400543D27 /* TaskFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFields.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +155,9 @@
 		BFEA298F2BC5CD0000543D27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
 				BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */,
+				BFEA29A02BC5F0B200543D27 /* TaskModel.swift */,
+				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +175,9 @@
 			isa = PBXGroup;
 			children = (
 				BFEA29982BC5DEE000543D27 /* RecordNames.swift */,
+				BFEA299C2BC5EEB100543D27 /* ProjectFields.swift */,
+				BFEA299E2BC5EF7000543D27 /* PersonFields.swift */,
+				BFEA29A22BC5F32400543D27 /* TaskFields.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -302,9 +314,13 @@
 			files = (
 				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
+				BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */,
 				BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */,
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
+				BFEA29A32BC5F32400543D27 /* TaskFields.swift in Sources */,
+				BFEA299D2BC5EEB100543D27 /* ProjectFields.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
+				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
 				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
 				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
 			);

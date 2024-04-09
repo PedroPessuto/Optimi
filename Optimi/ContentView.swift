@@ -24,6 +24,15 @@ struct ContentView: View {
             }) {
                 Text("Criar Projeto")
             }
+            
+            Button(action: {
+                Task {
+                    await generalController.getProject("159824D2-5656-4907-AB2F-3974A5B1688B")
+                    print(generalController.project?.projectName)
+                }
+            }) {
+                Text("Printar projeto")
+            }
         }
         .padding()
     }

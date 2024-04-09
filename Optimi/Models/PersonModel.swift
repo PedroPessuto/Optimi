@@ -9,21 +9,23 @@ import Foundation
 import CloudKit
 
 class PersonModel {
-    public var personId: CKRecord.ID
-    public var personName: String
-    public var record: CKRecord
+    public var personId: String
+    public var personName: String?
+    public var personRecord: CKRecord
 
     init?(_ record: CKRecord) {
-        guard let personName = record["personName"] as? String else {return nil}
-        self.personId = record.recordID
+        guard let personName = record[PersonFields.personName.rawValue] as? String else {return nil}
+        self.personId = record.recordID.recordName
         self.personName = personName
-        self.record = record
+        self.personRecord = record
     }
     
     init(personName: String) {
         let personRecord = CKRecord(recordType: RecordNames.Person.rawValue)
-        self.personId = personRecord.recordID
+        self.personId = personRecord.recordID.recordName
         self.personName = personName
-        self.record = personRecord
+        personRecord.setValue(self.personName, forKey: PersonFields.personName.rawValue)
+        personRecord.setValue(self.personId, forKey: PersonFields.personId.rawValue)
+        self.personRecord = personRecord
     }
 }

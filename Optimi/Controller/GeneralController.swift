@@ -20,7 +20,8 @@ import Foundation
     }
     
     public func getProject(_ projetKey: String) async {
-        
+        let project = await self.cloudController.getProject(projetKey)
+        self.project = project
     }
     
 }
