@@ -14,6 +14,11 @@
 		BFD96F902BC45914003163E5 /* OptimiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F8F2BC45914003163E5 /* OptimiTests.swift */; };
 		BFD96F9A2BC45914003163E5 /* OptimiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F992BC45914003163E5 /* OptimiUITests.swift */; };
 		BFD96F9C2BC45914003163E5 /* OptimiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */; };
+		BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29902BC5CD1400543D27 /* PersonModel.swift */; };
+		BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29932BC5CFBA00543D27 /* CloudController.swift */; };
+		BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */; };
+		BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29982BC5DEE000543D27 /* RecordNames.swift */; };
+		BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA299A2BC5E24900543D27 /* GeneralController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,12 @@
 		BFD96F952BC45914003163E5 /* OptimiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptimiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD96F992BC45914003163E5 /* OptimiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiUITests.swift; sourceTree = "<group>"; };
 		BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFEA298E2BC5CCA700543D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BFEA29902BC5CD1400543D27 /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		BFEA29932BC5CFBA00543D27 /* CloudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudController.swift; sourceTree = "<group>"; };
+		BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		BFEA29982BC5DEE000543D27 /* RecordNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordNames.swift; sourceTree = "<group>"; };
+		BFEA299A2BC5E24900543D27 /* GeneralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +106,10 @@
 		BFD96F7C2BC45913003163E5 /* Optimi */ = {
 			isa = PBXGroup;
 			children = (
+				BFEA29972BC5DE9E00543D27 /* Enums */,
+				BFEA29922BC5CFAF00543D27 /* Controller */,
+				BFEA298F2BC5CD0000543D27 /* Models */,
+				BFEA298E2BC5CCA700543D27 /* Info.plist */,
 				BFD96F7D2BC45913003163E5 /* OptimiApp.swift */,
 				BFD96F7F2BC45913003163E5 /* ContentView.swift */,
 				BFD96F812BC45914003163E5 /* Assets.xcassets */,
@@ -127,6 +142,32 @@
 				BFD96F9B2BC45914003163E5 /* OptimiUITestsLaunchTests.swift */,
 			);
 			path = OptimiUITests;
+			sourceTree = "<group>";
+		};
+		BFEA298F2BC5CD0000543D27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
+				BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFEA29922BC5CFAF00543D27 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29932BC5CFBA00543D27 /* CloudController.swift */,
+				BFEA299A2BC5E24900543D27 /* GeneralController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BFEA29972BC5DE9E00543D27 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29982BC5DEE000543D27 /* RecordNames.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +300,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
+				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
+				BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */,
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
+				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
+				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,10 +466,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Optimi/Preview Content\"";
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = 6KVP348U3Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Optimi/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -439,13 +486,14 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pedropessuto.Optimi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.optimi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -458,10 +506,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Optimi/Preview Content\"";
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = 6KVP348U3Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Optimi/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -477,13 +526,14 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pedropessuto.Optimi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.optimi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

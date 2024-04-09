@@ -10,8 +10,12 @@ import SwiftUI
 @main
 struct OptimiApp: App {
     var body: some Scene {
+        
+        @State var generalController: GeneralController = GeneralController()
+        
         WindowGroup {
             ContentView()
+                .environment(generalController)
         }
     }
 }
