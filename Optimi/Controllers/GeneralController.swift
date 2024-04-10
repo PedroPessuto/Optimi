@@ -47,4 +47,11 @@ import Foundation
         }
         
     }
+	
+	public func getTasksFromProject() async {
+		if let projectID = self.project?.projectId {
+				self.project?.projectTasks = await self.cloudController.getTasksFromProject(projectID)
+			}
+		}
+
 }

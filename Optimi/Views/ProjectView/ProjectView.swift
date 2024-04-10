@@ -20,6 +20,12 @@ struct ProjectView: View {
                 await generalController.createTask(taskName:"Teste")
             }
         }
+		 
+		 oButton(text: "Get Tasks") {
+			 Task {
+				 await generalController.getTasksFromProject()
+			 }
+		 }
     }
 }
 

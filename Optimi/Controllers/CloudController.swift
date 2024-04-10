@@ -66,6 +66,24 @@ import CloudKit
         }
     }
     
+
+	public func getTasksFromProject(_ projectID: CKRecord.ID) async -> [TaskModel] {
+		let recordToMatch = CKRecord.Reference(recordID: projectID, action: .deleteSelf)
+		
+		let predicate = NSPredicate(format: "\(TaskFields.taskProjectReference.rawValue) == %@", recordToMatch)
+		
+		let query = CKQuery(recordType: RecordNames.Task.rawValue, predicate: predicate)
+		
+		do {
+			let result = try await CKContainer.default().publicCloudDatabase.records(matching: query)
+			let records = result.matchResults.compactMap { try? $0.1.get() }
+			print(records)
+			return records.compactMap(TaskModel.init)
+		} catch {
+			print("Error fetching tasks from project: \(error)")
+		}
+		return []
+	}
     // Cria um predicado que compara o ID do registro com o projectKey fornecido
     //            let predicate = NSPredicate(format: "recordID == %@", CKRecord.ID(recordName: projectKey))
     //            let query = CKQuery(recordType: RecordNames.Project.rawValue, predicate: predicate)
