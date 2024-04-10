@@ -18,7 +18,6 @@ final class CloudKitController {
 //	}
 	
 	func fetchDeveloperRecords() async throws -> [Developer] {
-		let name = "Pessuto"
 		
 		let query = CKQuery(
 			recordType: "Developer",
@@ -49,6 +48,48 @@ final class CloudKitController {
 //			}
 		}
 		
+	}
+	
+	func updateDev(_ dev: Developer) async {
+		let recordID = dev.record.recordID
+		
+		let query = CKQuery(
+			recordType: "Developer",
+			predicate: NSPredicate(format: "recordID == %@", recordID)
+		)
+		
+		do {
+			let result = try await CKContainer.default().publicCloudDatabase.records(matching: query)
+			let records = result.matchResults.compactMap { try? $0.1.get() }
+			let devs = records.compactMap(Developer.init)
+			print(devs)
+			var dev = devs.first!
+			dev.record.setObject(String("Paulo") as __CKRecordObjCValue, forKey: "name")
+			try await CKContainer.default().publicCloudDatabase.save(dev.record)
+		} catch {
+			print("Error fetching dev to update: \(error)")
+		}
+	}
+	
+	func gobackDev(_ dev: Developer) async {
+		let recordID = dev.record.recordID
+		
+		let query = CKQuery(
+			recordType: "Developer",
+			predicate: NSPredicate(format: "recordID == %@", recordID)
+		)
+		
+		do {
+			let result = try await CKContainer.default().publicCloudDatabase.records(matching: query)
+			let records = result.matchResults.compactMap { try? $0.1.get() }
+			let devs = records.compactMap(Developer.init)
+			print(devs)
+			var dev = devs.first!
+			dev.record.setObject(String("pessuto") as __CKRecordObjCValue, forKey: "name")
+			try await CKContainer.default().publicCloudDatabase.save(dev.record)
+		} catch {
+			print("Error fetching dev to update: \(error)")
+		}
 	}
 }
 
@@ -204,6 +245,20 @@ struct FastingHistoryView: View {
 	var body: some View {
 		Text("FastingHistoryView!")
 		
+		Button("Update") {
+			Task {
+				await cloudKitService.updateDev(viewModel.developers.first!)
+				await viewModel.fetch()
+			}
+		}
+		
+		Button("Update Back") {
+			Task {
+				await cloudKitService.gobackDev(viewModel.developers.first!)
+				await viewModel.fetch()
+			}
+		}
+		
 		Button("Delete") {
 			Task {
 				cloudKitService.delete(viewModel.developers.first!, vm: viewModel)
@@ -253,7 +308,7 @@ struct FastingHistoryView: View {
 }
 
 struct Developer: Hashable {
-	let name: String
+	var name: String
 	let record: CKRecord
 	
 	init(name: String, record: CKRecord) {
