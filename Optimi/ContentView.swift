@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         if (controller.screen == .ProjectView) {
-          Text("ProjectView")
+            ProjectView()
         }
         else {
             HomeView()

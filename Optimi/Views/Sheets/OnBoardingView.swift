@@ -35,13 +35,14 @@ struct OnboardingView: View {
                         Text("Seu Nome")
                             .bold()
                         
-                        TextField("Nome", text: $yourName)
-                            .textFieldStyle(.roundedBorder)
+                        oInput(text: "Nome", binding: $yourName)
+                        
                     }
                     
                     VStack(alignment: .leading) {
                         Text("Cargo")
                             .bold()
+                        
                         Picker("", selection: $cargoSelection) {
                             ForEach(Roles.allCases) { role in
                                 Text(String(describing: role))

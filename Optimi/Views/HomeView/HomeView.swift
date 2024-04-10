@@ -30,7 +30,6 @@ struct HomeView: View {
         }
     }
     
-    
     var body: some View {
         
         NavigationStack {
@@ -43,11 +42,9 @@ struct HomeView: View {
                         
                         // Dados da conta
                         if(controller.account != nil) {
-                            
                             AccountHomeDisplay {
                                 onboardingViewIsPresented.toggle()
                             }
-                            
                         }
                         
                         Spacer()
@@ -64,23 +61,28 @@ struct HomeView: View {
                         .buttonStyle(.plain)
                         
                     }
-                    
                 }
                 
                 // ========== BODY ==========
                 
                 VStack (spacing: 20) {
-                    HStack{
+                    
+                    HStack {
+#if os(macOS)
                         Text("Token do Projeto")
                             .font(.headline)
+                            .multilineTextAlignment(.leading)
+#endif
                         
-//                        Text("Token Do Projeto")
-//                            .font(.system(size: 20))
-//                            .fontWeight(.semibold)
-//                            .multilineTextAlignment(.leading)
+#if os(iOS)
+                        Text("Token Do Projeto")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.leading)
+#endif
                         Spacer()
                     }
-                    
+
                     oInput(text: "Insira o token aqui", binding: $projectKey)
                         .onChange(of: projectKey) { _, newValue in
                             if (newValue.count == 36) {
@@ -92,15 +94,14 @@ struct HomeView: View {
                         }
                         .disabled(isLoading)
                     
-                    HStack {
-                        oButton(text: "Entrar no Projeto") {
-                            getProject()
-                        }
-                        .isDisabled(isLoading)
-                        .variant(.fill)
-                        .keyboardShortcut(.defaultAction)
+                    
+                    oButton(text: "Entrar no Projeto") {
+                        getProject()
                     }
-
+                    .isDisabled(isLoading)
+                    .variant(.fill)
+                    .keyboardShortcut(.defaultAction)
+                
                 }
                 .frame(width: 300)
                 .frame(maxHeight: .infinity)
@@ -119,7 +120,6 @@ struct HomeView: View {
         .sheet(isPresented: $onboardingViewIsPresented) {
             OnboardingView()
         }
-        // Função para ativar ou desativar sheet de não achar projeto
         .onChange(of: controller.screen) { oldValue, newValue in
             if newValue == .ProjectNotFoundView {
                 projectNotFoundSheetIsPresented = true
@@ -127,7 +127,6 @@ struct HomeView: View {
                 controller.screen = .HomeView
             }
         }
-        
         
     }
 }

@@ -11,4 +11,5 @@ enum ProjectFields: String {
     case projectId
     case projectName
     case projectCreatedAt
+    case projectTasks
 }

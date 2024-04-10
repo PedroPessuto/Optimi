@@ -17,6 +17,9 @@ struct oInput: View {
         
         TextField(text, text: $binding)
             .disabled(config.isDisabled)
+#if os(macOS)
+            .textFieldStyle(.roundedBorder)
+#endif
 #if os(iOS)
             .foregroundColor(Color(UIColor(red: 60/256, green: 60/256, blue: 67/256, alpha: 0.3)))
             .padding()

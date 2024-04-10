@@ -33,6 +33,7 @@
 		BFEA29B72BC6164D00543D27 /* oButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29B62BC6164D00543D27 /* oButton.swift */; };
 		BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */; };
 		BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BD2BC6FDA000543D27 /* oInput.swift */; };
+		BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29C02BC7133400543D27 /* ProjectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		BFEA29B62BC6164D00543D27 /* oButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oButton.swift; sourceTree = "<group>"; };
 		BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHomeDisplay.swift; sourceTree = "<group>"; };
 		BFEA29BD2BC6FDA000543D27 /* oInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oInput.swift; sourceTree = "<group>"; };
+		BFEA29C02BC7133400543D27 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +181,6 @@
 				BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */,
 				BFEA29A02BC5F0B200543D27 /* TaskModel.swift */,
 				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
-				BFEA29B32BC6132000543D27 /* AccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,6 +199,7 @@
 			children = (
 				BFEA299C2BC5EEB100543D27 /* ProjectFields.swift */,
 				BFEA299E2BC5EF7000543D27 /* PersonFields.swift */,
+				BFEA29B32BC6132000543D27 /* AccountModel.swift */,
 				BFEA29A22BC5F32400543D27 /* TaskFields.swift */,
 				BFEA29982BC5DEE000543D27 /* RecordNames.swift */,
 				BFEA29AB2BC601AA00543D27 /* Roles.swift */,
@@ -211,6 +213,7 @@
 			children = (
 				BFEA29B52BC6161C00543D27 /* Components */,
 				BFEA29A82BC6013B00543D27 /* Sheets */,
+				BFEA29BF2BC7131F00543D27 /* ProjectView */,
 				BFEA29BA2BC6D97100543D27 /* HomeView */,
 			);
 			path = Views;
@@ -242,6 +245,14 @@
 				BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		BFEA29BF2BC7131F00543D27 /* ProjectView */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29C02BC7133400543D27 /* ProjectView.swift */,
+			);
+			path = ProjectView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +397,7 @@
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
 				BFEA29AE2BC6028C00543D27 /* CreateProjectView.swift in Sources */,
 				BFEA29B22BC603D300543D27 /* ScreenNames.swift in Sources */,
+				BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */,
 				BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */,
 				BFEA29A32BC5F32400543D27 /* TaskFields.swift in Sources */,
 				BFEA299D2BC5EEB100543D27 /* ProjectFields.swift in Sources */,

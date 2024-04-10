@@ -23,7 +23,8 @@ import CloudKit
     public func createProject(_ projectName: String) async -> ProjectModel? {
         do {
             let project = ProjectModel(projectName: projectName)
-            let record = try await databasePublic.save(project.projectRecord)
+            let projectRecord = project.getRecord()
+            let record = try await databasePublic.save(projectRecord)
             let newProject = ProjectModel(record)
             return newProject
         }
@@ -46,6 +47,24 @@ import CloudKit
     
     // ========== TASKS FUNCTIONS ==========
     
+    public func createTask(_ taskModel: TaskModel) async -> TaskModel? {
+        
+        if (taskModel.taskProjectReference == nil) {
+            return nil
+        }
+        
+        do {
+            let taskRecord = taskModel.getRecord()
+            let reference = CKRecord.Reference(recordID: taskModel.taskProjectReference!, action: .deleteSelf)
+            taskRecord.setValue(reference, forKey: TaskFields.taskProjectReference.rawValue)
+            let record = try await databasePublic.save(taskRecord)
+            let newTask = TaskModel(record)
+            return newTask
+        }
+        catch {
+            return nil
+        }
+    }
     
     // Cria um predicado que compara o ID do registro com o projectKey fornecido
     //            let predicate = NSPredicate(format: "recordID == %@", CKRecord.ID(recordName: projectKey))
