@@ -23,6 +23,14 @@
 		BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA299E2BC5EF7000543D27 /* PersonFields.swift */; };
 		BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29A02BC5F0B200543D27 /* TaskModel.swift */; };
 		BFEA29A32BC5F32400543D27 /* TaskFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29A22BC5F32400543D27 /* TaskFields.swift */; };
+		BFEA29A72BC5FF9100543D27 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29A62BC5FF9100543D27 /* HomeView.swift */; };
+		BFEA29AA2BC6015100543D27 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29A92BC6015100543D27 /* OnBoardingView.swift */; };
+		BFEA29AC2BC601AA00543D27 /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29AB2BC601AA00543D27 /* Roles.swift */; };
+		BFEA29AE2BC6028C00543D27 /* CreateProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */; };
+		BFEA29B02BC602C500543D27 /* ProjectNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */; };
+		BFEA29B22BC603D300543D27 /* ScreenNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29B12BC603D300543D27 /* ScreenNames.swift */; };
+		BFEA29B42BC6132000543D27 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29B32BC6132000543D27 /* AccountModel.swift */; };
+		BFEA29B72BC6164D00543D27 /* oButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29B62BC6164D00543D27 /* oButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +72,14 @@
 		BFEA299E2BC5EF7000543D27 /* PersonFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonFields.swift; sourceTree = "<group>"; };
 		BFEA29A02BC5F0B200543D27 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		BFEA29A22BC5F32400543D27 /* TaskFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFields.swift; sourceTree = "<group>"; };
+		BFEA29A62BC5FF9100543D27 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BFEA29A92BC6015100543D27 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		BFEA29AB2BC601AA00543D27 /* Roles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
+		BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
+		BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNotFoundView.swift; sourceTree = "<group>"; };
+		BFEA29B12BC603D300543D27 /* ScreenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenNames.swift; sourceTree = "<group>"; };
+		BFEA29B32BC6132000543D27 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		BFEA29B62BC6164D00543D27 /* oButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +130,9 @@
 		BFD96F7C2BC45913003163E5 /* Optimi */ = {
 			isa = PBXGroup;
 			children = (
+				BFEA29A42BC5FF5D00543D27 /* Views */,
 				BFEA29972BC5DE9E00543D27 /* Enums */,
-				BFEA29922BC5CFAF00543D27 /* Controller */,
+				BFEA29922BC5CFAF00543D27 /* Controllers */,
 				BFEA298F2BC5CD0000543D27 /* Models */,
 				BFEA298E2BC5CCA700543D27 /* Info.plist */,
 				BFD96F7D2BC45913003163E5 /* OptimiApp.swift */,
@@ -158,17 +175,18 @@
 				BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */,
 				BFEA29A02BC5F0B200543D27 /* TaskModel.swift */,
 				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
+				BFEA29B32BC6132000543D27 /* AccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BFEA29922BC5CFAF00543D27 /* Controller */ = {
+		BFEA29922BC5CFAF00543D27 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BFEA29932BC5CFBA00543D27 /* CloudController.swift */,
 				BFEA299A2BC5E24900543D27 /* GeneralController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		BFEA29972BC5DE9E00543D27 /* Enums */ = {
@@ -178,8 +196,38 @@
 				BFEA299C2BC5EEB100543D27 /* ProjectFields.swift */,
 				BFEA299E2BC5EF7000543D27 /* PersonFields.swift */,
 				BFEA29A22BC5F32400543D27 /* TaskFields.swift */,
+				BFEA29AB2BC601AA00543D27 /* Roles.swift */,
+				BFEA29B12BC603D300543D27 /* ScreenNames.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		BFEA29A42BC5FF5D00543D27 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29B52BC6161C00543D27 /* Components */,
+				BFEA29A82BC6013B00543D27 /* Sheets */,
+				BFEA29A62BC5FF9100543D27 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFEA29A82BC6013B00543D27 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29A92BC6015100543D27 /* OnBoardingView.swift */,
+				BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */,
+				BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		BFEA29B52BC6161C00543D27 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA29B62BC6164D00543D27 /* oButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,12 +363,20 @@
 				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
 				BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */,
+				BFEA29B02BC602C500543D27 /* ProjectNotFoundView.swift in Sources */,
 				BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */,
+				BFEA29B72BC6164D00543D27 /* oButton.swift in Sources */,
+				BFEA29B42BC6132000543D27 /* AccountModel.swift in Sources */,
+				BFEA29A72BC5FF9100543D27 /* HomeView.swift in Sources */,
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
+				BFEA29AE2BC6028C00543D27 /* CreateProjectView.swift in Sources */,
+				BFEA29B22BC603D300543D27 /* ScreenNames.swift in Sources */,
 				BFEA29A32BC5F32400543D27 /* TaskFields.swift in Sources */,
 				BFEA299D2BC5EEB100543D27 /* ProjectFields.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
+				BFEA29AA2BC6015100543D27 /* OnBoardingView.swift in Sources */,
 				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
+				BFEA29AC2BC601AA00543D27 /* Roles.swift in Sources */,
 				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
 				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
 			);

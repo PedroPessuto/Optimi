@@ -10,6 +10,8 @@ import Foundation
 @Observable class GeneralController {
     private var cloudController: CloudController = CloudController()
     
+    public var screen: ScreenNames = .HomeView
+    public var account: AccountModel? = nil
     public var project: ProjectModel?
     
     // ========== PROJECT FUNCTIONS ==========
@@ -17,11 +19,19 @@ import Foundation
     public func createProject(_ projectName: String) async {
         let project = await self.cloudController.createProject(projectName)
         self.project = project
+        self.screen = .ProjectView
     }
     
     public func getProject(_ projetKey: String) async {
+        
         let project = await self.cloudController.getProject(projetKey)
         self.project = project
+        if (project != nil) {
+            screen = ScreenNames.ProjectView
+        }
+        else {
+            screen = ScreenNames.ProjectNotFoundView
+        }
     }
     
 }

@@ -8,11 +8,11 @@
 import Foundation
 
 enum TaskFields: String {
-    case taskId = "taskId"
-    case taskName = "taskName"
-    case taskDescription = "taskDescription"
-    case taskCreatedAt = "taskCreatedAt"
-    case taskLink = "taskLink"
-    case taskPrototypeLink = "taskPrototypeLink"
-    case taskProjectReference = "taskProjectReference"
+    case taskId
+    case taskName
+    case taskDescription
+    case taskCreatedAt
+    case taskLink
+    case taskPrototypeLink
+    case taskProjectReference
 }

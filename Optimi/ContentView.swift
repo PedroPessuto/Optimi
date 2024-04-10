@@ -8,33 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @Environment(GeneralController.self) private var generalController
+        
+    @Environment(GeneralController.self) private var controller
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Button(action: {
-                Task {
-                    await generalController.createProject("Teste")
-                }
-            }) {
-                Text("Criar Projeto")
-            }
-            
-            Button(action: {
-                Task {
-                    await generalController.getProject("159824D2-5656-4907-AB2F-3974A5B1688B")
-                    print(generalController.project?.projectName)
-                }
-            }) {
-                Text("Printar projeto")
-            }
+        if (controller.screen == .ProjectView) {
+          Text("ProjectView")
         }
-        .padding()
+        else {
+            HomeView()
+        }
+        
     }
 }
 
