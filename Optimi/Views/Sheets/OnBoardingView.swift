@@ -57,13 +57,19 @@ struct OnboardingView: View {
                     Spacer()
                     
                     HStack {
-                        Button {
+                        
+                        oButton(text: "Sair") {
+                            dismiss()
+                        }
+                        .isDisabled(generalController.account == nil)
+                        .variant(.outline)
+                        
+                        oButton(text: "Salvar Perfil") {
                             generalController.account = AccountModel(accountName: yourName, accountRole: cargoSelection)
                             dismiss()
-                        } label: {
-                            Text("Salvar Perfil")
                         }
-                        .disabled(yourName == "")
+                        .isDisabled(yourName == "")
+                        .variant(.fill)
                         .keyboardShortcut(.defaultAction)
                     }
                 }
@@ -88,9 +94,14 @@ struct OnboardingView: View {
             
             VStack(alignment: .leading){
                 
-                title
+                Text("Olá! Este é o Optimi!")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.bottom, 5)
                 
-                description
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia sagittis leo, eget malesuada magna varius eget.")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 25)
                 
                 Form{
                     Section{
@@ -109,8 +120,9 @@ struct OnboardingView: View {
                         }
                         .pickerStyle(.segmented)
                     }
-                }.toolbar{
-                    ToolbarItem(placement: .confirmationAction){
+                }
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
                         
                         Button {
                             generalController.account = AccountModel(accountName: yourName, accountRole: cargoSelection)
@@ -122,7 +134,8 @@ struct OnboardingView: View {
                         .disabled(yourName == "")
                     }
                 }
-            }.padding()
+            }
+            .padding()
         }
 #endif
     }

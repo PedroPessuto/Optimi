@@ -16,14 +16,15 @@ import Foundation
     
     // ========== PROJECT FUNCTIONS ==========
     
+    // Cria um projeto
     public func createProject(_ projectName: String) async {
         let project = await self.cloudController.createProject(projectName)
         self.project = project
         self.screen = .ProjectView
     }
     
+    // Acessa um projeto
     public func getProject(_ projetKey: String) async {
-        
         let project = await self.cloudController.getProject(projetKey)
         self.project = project
         if (project != nil) {
@@ -33,5 +34,7 @@ import Foundation
             screen = ScreenNames.ProjectNotFoundView
         }
     }
+    
+    // ========== TASKS FUNCTIONS ==========
     
 }

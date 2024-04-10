@@ -19,6 +19,7 @@ import CloudKit
     
     // ========== PROJECT FUNCTIONS ==========
     
+    // Cria um projeto
     public func createProject(_ projectName: String) async -> ProjectModel? {
         do {
             let project = ProjectModel(projectName: projectName)
@@ -27,23 +28,21 @@ import CloudKit
             return newProject
         }
         catch {
-            print("Erro ao criar projeto")
             return nil
         }
     }
     
+    // Acessa um projeto
     public func getProject(_ projectKey: String) async -> ProjectModel? {
         let recordId = CKRecord.ID(recordName: projectKey)
         do {
             let record = try await self.databasePublic.record(for: recordId)
             return ProjectModel(record)
-        } catch {
-            print("Erro ao buscar o projeto: \(error.localizedDescription)")
+        }
+        catch {
             return nil
         }
     }
-
-
     
     // ========== TASKS FUNCTIONS ==========
     

@@ -12,7 +12,17 @@ struct CreateProjectView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(GeneralController.self) var controller
     
+    @State private var isLoading: Bool = false
     @State public var projectName: String = ""
+    
+    func createProject() async -> Void {
+        if (projectName == "") {
+            return
+        }
+        isLoading = true
+        await controller.createProject(projectName)
+        isLoading = false
+    }
     
     var body: some View {
         NavigationStack{
@@ -26,6 +36,12 @@ struct CreateProjectView: View {
                 
                 TextField("Projeto", text: $projectName)
                     .padding(.bottom)
+                    .onSubmit {
+                        Task {
+                            await createProject()
+                        }
+                    }
+                    .disabled(isLoading)
                 
                 HStack{
                     Spacer()
@@ -40,7 +56,7 @@ struct CreateProjectView: View {
                     
                     Button {
                         Task {
-                            await controller.createProject(projectName)
+                            await createProject()
                         }
                         
                         dismiss()
@@ -48,12 +64,14 @@ struct CreateProjectView: View {
                         ZStack{
                             Text("Criar Projeto")
                         }
-                    }.disabled(projectName == "" ? true : false)
+                    }
+                    .disabled(isLoading || projectName == "")
                     
                 }
             }
             .padding()
-        }.frame(minWidth: 289, maxWidth: 350, minHeight: 138, maxHeight: 250)
+        }
+        .frame(minWidth: 289, maxWidth: 350, minHeight: 138, maxHeight: 250)
     }
 }
 
