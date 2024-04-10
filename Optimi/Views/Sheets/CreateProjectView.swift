@@ -42,7 +42,9 @@ struct CreateProjectView: View {
                         }
                     }
                     .disabled(isLoading)
-                
+#if os(iOS)
+						  .textFieldStyle(.roundedBorder)
+#endif
                 HStack{
                     Spacer()
                     
@@ -71,7 +73,9 @@ struct CreateProjectView: View {
             }
             .padding()
         }
-        .frame(minWidth: 289, maxWidth: 350, minHeight: 138, maxHeight: 250)
+#if os(macOS)
+		  .frame(minWidth: 289, maxWidth: 350, minHeight: 138, maxHeight: 250)
+#endif
     }
 }
 

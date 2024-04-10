@@ -34,6 +34,8 @@
 		BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */; };
 		BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BD2BC6FDA000543D27 /* oInput.swift */; };
 		BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29C02BC7133400543D27 /* ProjectView.swift */; };
+		E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B703F2BC736A60067D0F2 /* TaskCard.swift */; };
+		E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B70422BC736F00067D0F2 /* StatusPill.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHomeDisplay.swift; sourceTree = "<group>"; };
 		BFEA29BD2BC6FDA000543D27 /* oInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oInput.swift; sourceTree = "<group>"; };
 		BFEA29C02BC7133400543D27 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		E94B703F2BC736A60067D0F2 /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
+		E94B70422BC736F00067D0F2 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 		BFEA29A42BC5FF5D00543D27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E94B70412BC736AC0067D0F2 /* TaskView */,
 				BFEA29B52BC6161C00543D27 /* Components */,
 				BFEA29A82BC6013B00543D27 /* Sheets */,
 				BFEA29BF2BC7131F00543D27 /* ProjectView */,
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				BFEA29B62BC6164D00543D27 /* oButton.swift */,
+				E94B70422BC736F00067D0F2 /* StatusPill.swift */,
 				BFEA29BD2BC6FDA000543D27 /* oInput.swift */,
 			);
 			path = Components;
@@ -253,6 +259,14 @@
 				BFEA29C02BC7133400543D27 /* ProjectView.swift */,
 			);
 			path = ProjectView;
+			sourceTree = "<group>";
+		};
+		E94B70412BC736AC0067D0F2 /* TaskView */ = {
+			isa = PBXGroup;
+			children = (
+				E94B703F2BC736A60067D0F2 /* TaskCard.swift */,
+			);
+			path = TaskView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */,
 				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
 				BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */,
@@ -406,6 +421,7 @@
 				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
 				BFEA29AC2BC601AA00543D27 /* Roles.swift in Sources */,
 				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
+				E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */,
 				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
