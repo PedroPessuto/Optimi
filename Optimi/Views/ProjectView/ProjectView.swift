@@ -94,7 +94,7 @@ struct ProjectView: View {
 						  }
 						  else {
 								List {
-									 ForEach(tasks.reversed(), id:\.self) { task in
+									 ForEach(tasks.reversed(), id:\.taskId) { task in
 										  NavigationLink {
 												//Aqui tem que levar para a TaskView de cada Task
 												//  TaskView(task: task)

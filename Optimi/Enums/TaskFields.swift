@@ -15,4 +15,7 @@ enum TaskFields: String {
     case taskLink
     case taskPrototypeLink
     case taskProjectReference
+	case taskStatus
+	case taskDesigners
+	case taskDevelopers
 }

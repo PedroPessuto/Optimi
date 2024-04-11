@@ -26,7 +26,7 @@ struct TaskCard: View {
 				
 				HStack {
 					 Image(systemName: "person.fill")
-					 Text(task.designers)
+					 Text(task.taskDesigners ?? "")
 						  .foregroundStyle(.secondary)
 					 
 					 Spacer()
@@ -44,9 +44,9 @@ struct TaskCard: View {
 	 }
 }
 
-#Preview {
-	 TaskCard(task: TaskModel(id: 1, createdAt: "10/05/2024", description: "Essa task precisa ser feita para ontem!", prototypeLink: "link do protótipo", taskLink: "link da task", status: "Ready for Dev", taskName: "Task 1", designers: "André Miguel, Dani Brazolin Flauto"))
-}
+//#Preview {
+//	 TaskCard(task: TaskModel(id: 1, createdAt: "10/05/2024", description: "Essa task precisa ser feita para ontem!", prototypeLink: "link do protótipo", taskLink: "link da task", status: "Ready for Dev", taskName: "Task 1", designers: "André Miguel, Dani Brazolin Flauto"))
+//}
 
 extension TaskCard {
 	 func statusColor(for string: String) -> Color {

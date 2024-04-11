@@ -53,8 +53,8 @@ struct oButton: View {
             Text(config.text)
         }
         .disabled(config.isDisabled)
-        .background(config.variant == .outline ? .white : .clear)
-        .foregroundStyle(config.variant == .outline ? .white : .clear)
+		  //.background(config.variant == .outline ? Color.secondary : Color.clear)
+        .foregroundStyle(config.variant == .outline ? Color.primary : Color.clear)
 #endif
         
     }

@@ -13,21 +13,21 @@ struct StatusPill: View {
 	 
 	 var body: some View {
 			HStack(spacing: 4) {
-				 Text(task.status)
-					  .foregroundStyle(statusTextColor(for: task.status))
-				 Image(systemName: statusImage(for: task.status))
-					  .foregroundStyle(statusTextColor(for: task.status))
+				 Text(task.taskStatus!)
+					  .foregroundStyle(statusTextColor(for: task.taskStatus!))
+				 Image(systemName: statusImage(for: task.taskStatus!))
+					  .foregroundStyle(statusTextColor(for: task.taskStatus!))
 			}
 			.padding(.horizontal, 9)
 			.padding(.vertical, 3)
-			.background(statusColor(for: task.status))
+			.background(statusColor(for: task.taskStatus!))
 			.clipShape(RoundedRectangle(cornerRadius: 360))
 	 }
 }
 
-#Preview {
-	 StatusPill(task: TaskModel(id: 1, createdAt: "10/05/2024", description: "Essa task precisa ser feita para ontem!", prototypeLink: "link do protótipo", taskLink: "link da task", status: "Status", taskName: "Task 1", designers: "André Miguel, Dani Brazolin Flauto"))
-}
+//#Preview {
+//	 StatusPill(task: TaskModel(id: 1, createdAt: "10/05/2024", description: "Essa task precisa ser feita para ontem!", prototypeLink: "link do protótipo", taskLink: "link da task", status: "Status", taskName: "Task 1", designers: "André Miguel, Dani Brazolin Flauto"))
+//}
 
 extension StatusPill {
 	 func statusColor(for string: String) -> Color {
