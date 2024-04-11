@@ -36,6 +36,7 @@
 		BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29C02BC7133400543D27 /* ProjectView.swift */; };
 		E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B703F2BC736A60067D0F2 /* TaskCard.swift */; };
 		E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B70422BC736F00067D0F2 /* StatusPill.swift */; };
+		E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		BFEA29C02BC7133400543D27 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		E94B703F2BC736A60067D0F2 /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
 		E94B70422BC736F00067D0F2 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
+		E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				BFEA29A92BC6015100543D27 /* OnBoardingView.swift */,
+				E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */,
 				BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */,
 				BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */,
 			);
@@ -405,6 +408,7 @@
 				BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */,
 				BFEA29B02BC602C500543D27 /* ProjectNotFoundView.swift in Sources */,
 				BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */,
+				E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */,
 				BFEA29B72BC6164D00543D27 /* oButton.swift in Sources */,
 				BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */,
 				BFEA29B42BC6132000543D27 /* AccountModel.swift in Sources */,
@@ -660,7 +664,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = 6KVP348U3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
@@ -683,7 +687,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = 6KVP348U3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.3;

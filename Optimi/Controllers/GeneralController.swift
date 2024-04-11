@@ -36,13 +36,15 @@ import Foundation
     
     // ========== TASKS FUNCTIONS ==========
     
-    public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskProtorypeLink: String = "") async {
+	public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "") async {
         
         if let project = self.project {
-            let taskModel = TaskModel(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: taskProtorypeLink, taskProjectReference: project.projectId!)
+			  let taskModel = TaskModel(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: taskPrototypeLink, taskProjectReference: project.projectId!, taskDesigners: taskDesigners)
+			  print(taskModel)
             let task = await self.cloudController.createTask(taskModel)
             if let t = task {
                 self.project?.projectTasks.append(t)
+					print(t)
             }
         }
         
@@ -50,7 +52,9 @@ import Foundation
 	
 	public func getTasksFromProject() async {
 		if let projectID = self.project?.projectId {
-				self.project?.projectTasks = await self.cloudController.getTasksFromProject(projectID)
+				let response = await self.cloudController.getTasksFromProject(projectID)
+				print("Resposta: ", response)
+				self.project?.projectTasks = response
 			}
 		}
 

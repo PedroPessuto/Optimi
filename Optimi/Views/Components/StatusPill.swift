@@ -13,14 +13,14 @@ struct StatusPill: View {
 	 
 	 var body: some View {
 			HStack(spacing: 4) {
-				 Text(task.taskStatus!)
-					  .foregroundStyle(statusTextColor(for: task.taskStatus!))
-				 Image(systemName: statusImage(for: task.taskStatus!))
-					  .foregroundStyle(statusTextColor(for: task.taskStatus!))
+				Text(task.taskStatus ?? "nil")
+					.foregroundStyle(statusTextColor(for: task.taskStatus ?? "nil"))
+				Image(systemName: statusImage(for: task.taskStatus ?? "nil"))
+					  .foregroundStyle(statusTextColor(for: task.taskStatus ?? "nil"))
 			}
 			.padding(.horizontal, 9)
 			.padding(.vertical, 3)
-			.background(statusColor(for: task.taskStatus!))
+			.background(statusColor(for: task.taskStatus ?? "nil"))
 			.clipShape(RoundedRectangle(cornerRadius: 360))
 	 }
 }
