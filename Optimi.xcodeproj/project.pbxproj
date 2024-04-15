@@ -36,6 +36,16 @@
 		BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29C02BC7133400543D27 /* ProjectView.swift */; };
 		E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B703F2BC736A60067D0F2 /* TaskCard.swift */; };
 		E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B70422BC736F00067D0F2 /* StatusPill.swift */; };
+		E97621842BC99F1C005FDAEC /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621832BC99F1C005FDAEC /* FeedbackModel.swift */; };
+		E97621862BC9A0A6005FDAEC /* FeedbackFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621852BC9A0A6005FDAEC /* FeedbackFields.swift */; };
+		E97621882BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621872BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift */; };
+		E976218C2BC9CB56005FDAEC /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976218B2BC9CB56005FDAEC /* TaskView.swift */; };
+		E976218F2BC9CCCB005FDAEC /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976218E2BC9CCCB005FDAEC /* DeliveryView.swift */; };
+		E97621922BC9CD17005FDAEC /* DeliveryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621912BC9CD17005FDAEC /* DeliveryCard.swift */; };
+		E97621942BC9CD7A005FDAEC /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621932BC9CD7A005FDAEC /* DeliveryModel.swift */; };
+		E97621962BC9CDBB005FDAEC /* DeliveryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */; };
+		E97621982BC9CDC2005FDAEC /* DeliveryFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */; };
+		E976219A2BC9CFE0005FDAEC /* CreateDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */; };
 		E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +101,16 @@
 		BFEA29C02BC7133400543D27 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		E94B703F2BC736A60067D0F2 /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
 		E94B70422BC736F00067D0F2 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
+		E97621832BC99F1C005FDAEC /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
+		E97621852BC9A0A6005FDAEC /* FeedbackFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackFields.swift; sourceTree = "<group>"; };
+		E97621872BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGivingSheetView.swift; sourceTree = "<group>"; };
+		E976218B2BC9CB56005FDAEC /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		E976218E2BC9CCCB005FDAEC /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
+		E97621912BC9CD17005FDAEC /* DeliveryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCard.swift; sourceTree = "<group>"; };
+		E97621932BC9CD7A005FDAEC /* DeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
+		E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryStatus.swift; sourceTree = "<group>"; };
+		E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFields.swift; sourceTree = "<group>"; };
+		E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryView.swift; sourceTree = "<group>"; };
 		E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,9 +204,12 @@
 		BFEA298F2BC5CD0000543D27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E97621932BC9CD7A005FDAEC /* DeliveryModel.swift */,
 				BFEA29952BC5DB6E00543D27 /* ProjectModel.swift */,
 				BFEA29A02BC5F0B200543D27 /* TaskModel.swift */,
 				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
+				E97621832BC99F1C005FDAEC /* FeedbackModel.swift */,
+				E97621852BC9A0A6005FDAEC /* FeedbackFields.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +230,8 @@
 				BFEA299E2BC5EF7000543D27 /* PersonFields.swift */,
 				BFEA29B32BC6132000543D27 /* AccountModel.swift */,
 				BFEA29A22BC5F32400543D27 /* TaskFields.swift */,
+				E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */,
+				E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */,
 				BFEA29982BC5DEE000543D27 /* RecordNames.swift */,
 				BFEA29AB2BC601AA00543D27 /* Roles.swift */,
 				BFEA29B12BC603D300543D27 /* ScreenNames.swift */,
@@ -217,6 +242,8 @@
 		BFEA29A42BC5FF5D00543D27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E97621872BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift */,
+				E97621902BC9CCD0005FDAEC /* DeliveryView */,
 				E94B70412BC736AC0067D0F2 /* TaskView */,
 				BFEA29B52BC6161C00543D27 /* Components */,
 				BFEA29A82BC6013B00543D27 /* Sheets */,
@@ -231,6 +258,7 @@
 			children = (
 				BFEA29A92BC6015100543D27 /* OnBoardingView.swift */,
 				E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */,
+				E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */,
 				BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */,
 				BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */,
 			);
@@ -267,9 +295,19 @@
 		E94B70412BC736AC0067D0F2 /* TaskView */ = {
 			isa = PBXGroup;
 			children = (
+				E976218B2BC9CB56005FDAEC /* TaskView.swift */,
 				E94B703F2BC736A60067D0F2 /* TaskCard.swift */,
 			);
 			path = TaskView;
+			sourceTree = "<group>";
+		};
+		E97621902BC9CCD0005FDAEC /* DeliveryView */ = {
+			isa = PBXGroup;
+			children = (
+				E976218E2BC9CCCB005FDAEC /* DeliveryView.swift */,
+				E97621912BC9CD17005FDAEC /* DeliveryCard.swift */,
+			);
+			path = DeliveryView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,28 +442,38 @@
 			files = (
 				E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */,
 				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
+				E97621962BC9CDBB005FDAEC /* DeliveryStatus.swift in Sources */,
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
+				E97621942BC9CD7A005FDAEC /* DeliveryModel.swift in Sources */,
 				BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */,
 				BFEA29B02BC602C500543D27 /* ProjectNotFoundView.swift in Sources */,
+				E97621882BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift in Sources */,
 				BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */,
 				E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */,
 				BFEA29B72BC6164D00543D27 /* oButton.swift in Sources */,
 				BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */,
 				BFEA29B42BC6132000543D27 /* AccountModel.swift in Sources */,
+				E97621842BC99F1C005FDAEC /* FeedbackModel.swift in Sources */,
+				E976219A2BC9CFE0005FDAEC /* CreateDeliveryView.swift in Sources */,
+				E97621982BC9CDC2005FDAEC /* DeliveryFields.swift in Sources */,
 				BFEA29A72BC5FF9100543D27 /* HomeView.swift in Sources */,
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
 				BFEA29AE2BC6028C00543D27 /* CreateProjectView.swift in Sources */,
+				E97621862BC9A0A6005FDAEC /* FeedbackFields.swift in Sources */,
 				BFEA29B22BC603D300543D27 /* ScreenNames.swift in Sources */,
 				BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */,
 				BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */,
 				BFEA29A32BC5F32400543D27 /* TaskFields.swift in Sources */,
 				BFEA299D2BC5EEB100543D27 /* ProjectFields.swift in Sources */,
+				E976218C2BC9CB56005FDAEC /* TaskView.swift in Sources */,
+				E97621922BC9CD17005FDAEC /* DeliveryCard.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
 				BFEA29AA2BC6015100543D27 /* OnBoardingView.swift in Sources */,
 				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
 				BFEA29AC2BC601AA00543D27 /* Roles.swift in Sources */,
 				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
 				E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */,
+				E976218F2BC9CCCB005FDAEC /* DeliveryView.swift in Sources */,
 				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,12 +757,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = 6KVP348U3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pedropessuto.OptimiUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.optimi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -731,12 +779,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = 6KVP348U3Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pedropessuto.OptimiUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.optimi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

@@ -1,13 +1,11 @@
 //
-//  TaskModel.swift
-//  Optimi
+// TaskModel.swift
+// Optimi
 //
-//  Created by Pedro Pessuto on 09/04/24.
+// Created by Pedro Pessuto on 09/04/24.
 //
-
 import Foundation
 import CloudKit
-
 @Observable class TaskModel {
 	var taskId: String?
 	var taskName: String
@@ -19,10 +17,13 @@ import CloudKit
 	var taskStatus: String? = "Ready for Dev"
 	var taskDesigners: String?
 	var taskDevelopers: String?
+	var taskDeliveries: [DeliveryModel] = []
 	
 	func getRecord() -> CKRecord {
-		let taskRecord = CKRecord(recordType: RecordNames.Task.rawValue)
-		
+		var taskRecord = CKRecord(recordType: RecordNames.Task.rawValue)
+		if let id = taskId {
+			taskRecord = CKRecord(recordType: RecordNames.Task.rawValue, recordID: CKRecord.ID(recordName: taskId!))
+		}
 		taskRecord.setValue(self.taskId, forKey: TaskFields.taskId.rawValue)
 		taskRecord.setValue(self.taskName, forKey: TaskFields.taskName.rawValue)
 		taskRecord.setValue(self.taskDescription, forKey: TaskFields.taskDescription.rawValue)

@@ -11,4 +11,6 @@ enum RecordNames: String {
     case Project
     case Task
     case Person
+	case Feedback
+	case Delivery
 }

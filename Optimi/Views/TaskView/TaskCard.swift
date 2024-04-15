@@ -20,7 +20,7 @@ struct TaskCard: View {
 					 
 					 Spacer()
 					 
-					 StatusPill(task: task)
+					StatusPill(status: task.taskStatus!)
 				}
 				.padding(.bottom)
 				

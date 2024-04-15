@@ -2,32 +2,32 @@
 //  Status Pill.swift
 //  Optimi
 //
-//  Created by Marina Martin & Paulo Sonzzini on 10/04/24.
+//  Created by Marina Martin on 10/04/24.
 //
 
 import SwiftUI
 
 struct StatusPill: View {
 	 
-	 var task: TaskModel
+	 var status: String
 	 
 	 var body: some View {
 			HStack(spacing: 4) {
-				Text(task.taskStatus ?? "nil")
-					.foregroundStyle(statusTextColor(for: task.taskStatus ?? "nil"))
-				Image(systemName: statusImage(for: task.taskStatus ?? "nil"))
-					  .foregroundStyle(statusTextColor(for: task.taskStatus ?? "nil"))
+				 Text(status)
+					  .foregroundStyle(statusTextColor(for: status))
+				 Image(systemName: statusImage(for: status))
+					  .foregroundStyle(statusTextColor(for: status))
 			}
 			.padding(.horizontal, 9)
 			.padding(.vertical, 3)
-			.background(statusColor(for: task.taskStatus ?? "nil"))
+			.background(statusColor(for: status))
 			.clipShape(RoundedRectangle(cornerRadius: 360))
 	 }
 }
 
-//#Preview {
-//	 StatusPill(task: TaskModel(id: 1, createdAt: "10/05/2024", description: "Essa task precisa ser feita para ontem!", prototypeLink: "link do protótipo", taskLink: "link da task", status: "Status", taskName: "Task 1", designers: "André Miguel, Dani Brazolin Flauto"))
-//}
+#Preview {
+	 StatusPill(status: "Ready for Dev")
+}
 
 extension StatusPill {
 	 func statusColor(for string: String) -> Color {

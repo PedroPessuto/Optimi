@@ -34,7 +34,7 @@ struct ProjectView: View {
 						let pasteboard = NSPasteboard.general
 						pasteboard.clearContents()
 						//Aqui tem que estar a Key do projeto
-						pasteboard.writeObjects(["\(String(describing: controller.project?.projectId?.recordName))" as NSString])
+						pasteboard.writeObjects(["\(controller.project?.projectId?.recordName ?? "")" as NSString])
 #endif
 						withAnimation(.easeInOut(duration: 0.5)) {
 							tokenWasCopied.toggle()
@@ -84,21 +84,35 @@ struct ProjectView: View {
 						
 						if (controller.project?.projectTasks.count == 0) {
 							Text("Nenhuma Task Encontrada...")
+							Spacer()
 						}
 						else {
 							List {
 								ForEach((controller.project?.projectTasks.reversed())!, id:\.taskId) { task in
 									NavigationLink {
-										//Aqui tem que levar para a TaskView de cada Task
-										//  TaskView(task: task)
-										//  .onAppear {
-										//                                                self.taskSelected = task
-										//                                                controller.viewController.task = task
-										//                                            }
+
+										if(controller.screen == .DeliveryView) {
+											DeliveryView(task: task)
+										}else{
+											
+											//Aq tem que arrumar a lógica de pai/filho
+											TaskView(task: task)
+												
+										}
 									} label: {
+										//Criar TaskCard
 										TaskCard(task: task)
+											
 									}
-									
+									.simultaneousGesture(
+										TapGesture()
+											.onEnded {
+												_ in
+												print("dwdwd")
+													controller.screen = .TaskView
+													
+											}
+									)
 								}
 							}
 						}
@@ -119,7 +133,7 @@ struct ProjectView: View {
 			}
 			.navigationBarBackButtonHidden()
 			.toolbar {
-				ToolbarItem(placement: .cancellationAction) {
+				ToolbarItem() {
 					Button {
 						controller.screen = .HomeView
 					} label: {

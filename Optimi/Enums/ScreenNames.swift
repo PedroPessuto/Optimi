@@ -11,4 +11,6 @@ enum ScreenNames: String {
     case HomeView
     case ProjectView
     case ProjectNotFoundView
+	case DeliveryView
+	case TaskView
 }
