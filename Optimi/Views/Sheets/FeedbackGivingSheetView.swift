@@ -93,6 +93,8 @@ struct FeedbackGivingSheetView: View {
 			.scrollContentBackground(.hidden)
 			.frame(height: rowHeight*CGFloat(tagSelections.count)+100)
 			
+			Spacer()
+			
 			HStack {
 				Spacer()
 				
@@ -117,6 +119,7 @@ struct FeedbackGivingSheetView: View {
 			
 		}
 		.padding()
+		.frame(minWidth: 450, maxWidth: 500, minHeight: 380, maxHeight: 400)
 	}
 }
 

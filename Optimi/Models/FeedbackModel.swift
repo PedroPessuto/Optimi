@@ -19,14 +19,13 @@ import CloudKit
 		guard
 			let feedbackStatus = record[FeedbackFields.feedbackStatus.rawValue] as? String,
 			let feedbackTags = record[FeedbackFields.feedbackTags.rawValue] as? [String],
-			let feedbackDescription = record[FeedbackFields.feedbackDescription.rawValue] as? [String],
-			let feedbackDeliveryReference = record[FeedbackFields.feedbackDeliveryReference.rawValue] as? String
+			let feedbackDescription = record[FeedbackFields.feedbackDescription.rawValue] as? [String]
 		else { return nil }
 		self.feedbackId = record.recordID.recordName
 		self.feedbackStatus = feedbackStatus
 		self.feedbackTags = feedbackTags
 		self.feedbackDescription = feedbackDescription
-		self.feedbackDeliveryReference = feedbackDeliveryReference
+		self.feedbackDeliveryReference = record.parent?.recordID.recordName
 	}
 	
 	init(feedbackStatus: String, feedbackTags: [String], feedbackDescription: [String]) {
@@ -34,5 +33,6 @@ import CloudKit
 		self.feedbackStatus = feedbackStatus
 		self.feedbackTags = feedbackTags
 		self.feedbackDescription = feedbackDescription
+		self.feedbackDeliveryReference = nil
 	}
 }

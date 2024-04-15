@@ -104,7 +104,7 @@ import CloudKit
 			record.setValue(feedback.feedbackStatus, forKey: FeedbackFields.feedbackStatus.rawValue)
 			record.setValue(feedback.feedbackTags, forKey: FeedbackFields.feedbackTags.rawValue)
 			record.setValue(feedback.feedbackDescription, forKey: FeedbackFields.feedbackDescription.rawValue)
-			record.setValue(feedback.feedbackDeliveryReference, forKey: FeedbackFields.feedbackDeliveryReference.rawValue)
+			record.setValue(reference, forKey: FeedbackFields.feedbackDeliveryReference.rawValue)
 			
 			return FeedbackModel.init(try await databasePublic.save(record))
 		} catch {
@@ -126,7 +126,7 @@ import CloudKit
 		do {
 			let recordToMatch = CKRecord.Reference(recordID: deliveryID, action: .deleteSelf)
 			
-			let predicate = NSPredicate(format: "\(DeliveryFields.deliveryTaskReference.rawValue) == %@", recordToMatch)
+			let predicate = NSPredicate(format: "\(FeedbackFields.feedbackDeliveryReference.rawValue) == %@", recordToMatch)
 			
 			let query = CKQuery(recordType: RecordNames.Feedback.rawValue, predicate: predicate)
 			

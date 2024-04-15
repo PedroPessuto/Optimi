@@ -56,6 +56,8 @@ import CloudKit
 		}
 	}
 	
+	// ========== FEEDBACK FUNCTIONS ==========
+	
 	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async {
 		let response = await cloudController.createFeedback(feedback, delivery)
 	}
@@ -64,20 +66,18 @@ import CloudKit
 		await cloudController.deleteFeedback(feedback)
 	}
 	
-	public func getFeedbacks() async -> [FeedbackModel] {
-		return []
+	public func getFeedbacksFromDelivery(_ delivery: DeliveryModel) async -> [FeedbackModel] {
+		await cloudController.getFeedbacksFromDelivery(delivery.getRecord().recordID)
 	}
 	
 	// ========== DELIVERY FUNCTIONS ==========
 	public func createDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> DeliveryModel? {
 		if let project = self.project {
 			let newDelivery = await cloudController.createDelivery(deliveryModel: deliveryModel, taskId: taskId)
-			print(newDelivery)
 			if let delivery = newDelivery {
 				for task in self.project!.projectTasks {
 					if (task.taskId == taskId) {
 						task.taskDeliveries.append(delivery)
-						print(task.taskDeliveries)
 					}
 				}
 			}
@@ -102,7 +102,6 @@ import CloudKit
 		if (self.project?.projectId) != nil {
 			let record = task.getRecord()
 			let response = await self.cloudController.getDeliveriesFromTask(record.recordID)
-			print(response)
 			task.taskDeliveries = response
 		}
 	}

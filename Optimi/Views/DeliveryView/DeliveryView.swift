@@ -54,12 +54,15 @@ struct DeliveryView: View {
 						  
 						  Divider()
 						  
-						  Text("Adicionar entrega")
+						  
 						  
 						  Button {
 								createDeliverySheetIsPresented.toggle()
 						  } label: {
-								Image(systemName: "plus")
+							  HStack {
+								  Text("Adicionar entrega")
+								  Image(systemName: "plus")
+							  }
 						  }
 						  .buttonStyle(PlainButtonStyle())
 					 }.foregroundColor(.secondary)
