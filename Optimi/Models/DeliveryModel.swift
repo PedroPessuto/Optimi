@@ -16,6 +16,7 @@ import CloudKit
 	public var deliveryDocumentation: String?
 	public var deliveryId: String?
 	public var deliveryImplementationLink: String?
+	public var deliveryTaskReference: String?
 	// MARK: Requireds atributtes
 	public var deliveryName: String
 	public var deliveryStatus: DeliveryStatus = .ReadyForDev
@@ -24,7 +25,7 @@ import CloudKit
 	func getRecord() -> CKRecord {
 		var deliveryRecord: CKRecord?
 		if let id = deliveryId {
-			deliveryRecord = CKRecord(recordType: RecordNames.Delivery.rawValue, recordID: CKRecord.ID(recordName: deliveryId!))
+			deliveryRecord = CKRecord(recordType: RecordNames.Delivery.rawValue, recordID: CKRecord.ID(recordName: id))
 		}
 		else {
 			deliveryRecord = CKRecord(recordType: RecordNames.Delivery.rawValue)
@@ -50,6 +51,7 @@ import CloudKit
 		self.deliveryCreatedAt = record.creationDate
 		self.deliveryName = deliveryName
 		self.deliveryStatus = DeliveryStatus.init(rawValue: deliveryStatus)!
+		self.deliveryTaskReference = record.parent?.recordID.recordName
 	}
 	// MARK: Init for first create
 	init(deliveryName: String, deliveryDevelopers: String = "", deliveryDocumentation: String? = nil, deliveryImplementationLink: String? = nil) {

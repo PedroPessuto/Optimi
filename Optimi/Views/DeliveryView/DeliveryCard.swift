@@ -21,6 +21,8 @@ struct DeliveryCard: View {
 		  formatter.dateFormat = "dd/MM/yyyy - hh:mm"
 		  return formatter
 	 }
+	
+	@State var feedbacks: [FeedbackModel] = []
 
 	 
 	 var body: some View {
@@ -69,33 +71,57 @@ struct DeliveryCard: View {
 					 
 				}
 				.frame(minWidth: 318, maxWidth: 550)
+				.onAppear {
+					Task {
+						await controller.getFeedbacks()
+					}
+				}
 				
 				Spacer()
 				
-//            if feedback == nil {
-//                HStack {
-//                    Spacer()
-//                    addFeedback
-//                        .fixedSize(horizontal: true, vertical: true)
-//                }
-//            }
-//            else {
-//                VStack(alignment: .leading) {
-//                    HStack {
-//
-//                        feedbacksTitle
-//
-//                        Spacer()
-//
-//                        //feedbackButtons
-//                    }
-//
-//                    Text(feedback!.description)
-//                        .fixedSize(horizontal: true, vertical: true)
-//                }
-//                .frame(minWidth: 260, maxWidth: 350)
-//            }
+			  feedbackCard
 		  }
 		  .padding()
 	 }
+}
+
+//#Preview {
+//	DeliveryCard(delivery: DeliveryModel(deliveryName: "Eita preula"))
+//		.environment(GeneralController())
+//}
+
+extension DeliveryCard {
+	
+	private var feedbackCard: some View {
+		HStack {
+			feedbackTitle
+			Spacer()
+			feedbackButton
+		}
+		
+		
+	}
+	
+	private var feedbackTitle: some View {
+		Text("Feedbacks")
+			.font(.largeTitle)
+			.fontWeight(.semibold)
+	}
+	
+	private var feedbackButton: some View {
+		Button {
+			
+		} label: {
+			Image(systemName: "ellipsis.circle")
+				.foregroundStyle(.secondary)
+		}
+	}
+	
+	private var feedbackDesignersAndDate: some View {
+		HStack {
+			Image(systemName: "person.fill")
+			
+		}
+	}
+	
 }

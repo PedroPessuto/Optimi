@@ -96,13 +96,15 @@ import CloudKit
 	//                return newProject
 	//            }
 	
-	public func createFeedback(_ feedback: FeedbackModel) async -> FeedbackModel? {
+	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async -> FeedbackModel? {
 		do {
+			let reference = CKRecord.Reference(recordID: CKRecord.ID(recordName: delivery.deliveryId!), action: .deleteSelf)
 			let record = CKRecord(recordType: RecordNames.Feedback.rawValue)
 			record.setValue(feedback.feedbackId, forKey: FeedbackFields.feedbackId.rawValue)
 			record.setValue(feedback.feedbackStatus, forKey: FeedbackFields.feedbackStatus.rawValue)
 			record.setValue(feedback.feedbackTags, forKey: FeedbackFields.feedbackTags.rawValue)
 			record.setValue(feedback.feedbackDescription, forKey: FeedbackFields.feedbackDescription.rawValue)
+			record.setValue(feedback.feedbackDeliveryReference, forKey: FeedbackFields.feedbackDeliveryReference.rawValue)
 			
 			return FeedbackModel.init(try await databasePublic.save(record))
 		} catch {
@@ -124,13 +126,12 @@ import CloudKit
 		do {
 			let recordToMatch = CKRecord.Reference(recordID: deliveryID, action: .deleteSelf)
 			
-			let predicate = NSPredicate(format: "\(DeliveryFields.deliveryTaskId.rawValue) == %@", recordToMatch)
+			let predicate = NSPredicate(format: "\(DeliveryFields.deliveryTaskReference.rawValue) == %@", recordToMatch)
 			
 			let query = CKQuery(recordType: RecordNames.Feedback.rawValue, predicate: predicate)
 			
 			let result = try await databasePublic.records(matching: query)
 			let records = result.matchResults.compactMap { try? $0.1.get() }
-			print(records)
 			return records.compactMap(FeedbackModel.init)
 		} catch {
 			print("Error fetching feedbacks from deliveries: \(error)")
@@ -140,16 +141,17 @@ import CloudKit
 	
 	// ========== DELIVERY FUNCTIONS ==========
 	// MARK: Create a Delivery on database
-	public func createDelivery(deliveryModel: DeliveryModel, projectId: CKRecord.ID) async -> DeliveryModel? {
+	public func createDelivery(deliveryModel: DeliveryModel, taskId: String) async -> DeliveryModel? {
 		do {
 			let deliveryRecord = deliveryModel.getRecord()
-			let reference = CKRecord.Reference(recordID: projectId, action: .deleteSelf)
-			deliveryRecord.setValue(reference, forKey: DeliveryFields.deliveryTaskId.rawValue)
+			let reference = CKRecord.Reference(recordID: CKRecord.ID(recordName: taskId), action: .deleteSelf)
+			deliveryRecord.setValue(reference, forKey: DeliveryFields.deliveryTaskReference.rawValue)
 			let record = try await databasePublic.save(deliveryRecord)
 			let newDelivery = DeliveryModel(record)
 			return newDelivery
 		}
 		catch {
+			print("Error creating delivery: \(error)")
 			return nil
 		}
 	}
@@ -157,8 +159,8 @@ import CloudKit
 	public func getDeliveriesFromTask(_ taskId: CKRecord.ID) async -> [DeliveryModel] {
 		do {
 			let recordToMatch = CKRecord.Reference(recordID: taskId, action: .deleteSelf)
-			let predicate = NSPredicate(format: "\(TaskFields.taskId.rawValue) == %@", recordToMatch)
-			let query = CKQuery(recordType: RecordNames.Task.rawValue, predicate: predicate)
+			let predicate = NSPredicate(format: "\(DeliveryFields.deliveryTaskReference.rawValue) == %@", recordToMatch)
+			let query = CKQuery(recordType: RecordNames.Delivery.rawValue, predicate: predicate)
 			let result = try await databasePublic.records(matching: query)
 			let records = result.matchResults.compactMap { try? $0.1.get() }
 			return records.compactMap(DeliveryModel.init)

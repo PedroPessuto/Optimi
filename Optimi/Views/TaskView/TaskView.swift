@@ -104,13 +104,7 @@ struct TaskView: View {
 					 .padding(.top, 20)
 					 #endif
 				}
-				.onAppear {
-					Task {
-						
-						await controller.getDeliveriesFromTask(task)
-						
-					}
-				}
+				
 			  
 				.toolbar {
 					 ToolbarItem(placement: .confirmationAction) {

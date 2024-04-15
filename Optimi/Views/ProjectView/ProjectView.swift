@@ -104,15 +104,14 @@ struct ProjectView: View {
 										TaskCard(task: task)
 											
 									}
-									.simultaneousGesture(
-										TapGesture()
-											.onEnded {
-												_ in
-												print("dwdwd")
-													controller.screen = .TaskView
-													
-											}
-									)
+//									.simultaneousGesture(
+//										TapGesture()
+//											.onEnded {
+//												_ in
+//													controller.screen = .TaskView
+//													
+//											}
+//									)
 								}
 							}
 						}

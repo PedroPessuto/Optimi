@@ -28,6 +28,13 @@ struct DeliveryView: View {
 					 }
 				}
 		  }
+		  .onAppear {
+			  Task {
+				  
+				  await controller.getDeliveriesFromTask(task)
+				  
+			  }
+		  }
 		  .sheet(isPresented: $createDeliverySheetIsPresented) {
 				CreateDeliveryView(task: task)
 		  }

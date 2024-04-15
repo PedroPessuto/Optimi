@@ -8,12 +8,12 @@
 import Foundation
 
 enum DeliveryFields: String {
-  case deliveryId
-  case deliveryName
-  case deliveryCreatedAt
-  case deliveryDevelopers
-  case deliveryDocumentation
-  case deliveryImplementationLink
-  case deliveryStatus
-  case deliveryTaskId
+	case deliveryId
+	case deliveryName
+	case deliveryCreatedAt
+	case deliveryDevelopers
+	case deliveryDocumentation
+	case deliveryImplementationLink
+	case deliveryStatus
+	case deliveryTaskReference
 }

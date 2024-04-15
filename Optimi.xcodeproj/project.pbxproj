@@ -209,7 +209,6 @@
 				BFEA29A02BC5F0B200543D27 /* TaskModel.swift */,
 				BFEA29902BC5CD1400543D27 /* PersonModel.swift */,
 				E97621832BC99F1C005FDAEC /* FeedbackModel.swift */,
-				E97621852BC9A0A6005FDAEC /* FeedbackFields.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +231,7 @@
 				BFEA29A22BC5F32400543D27 /* TaskFields.swift */,
 				E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */,
 				E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */,
+				E97621852BC9A0A6005FDAEC /* FeedbackFields.swift */,
 				BFEA29982BC5DEE000543D27 /* RecordNames.swift */,
 				BFEA29AB2BC601AA00543D27 /* Roles.swift */,
 				BFEA29B12BC603D300543D27 /* ScreenNames.swift */,
@@ -242,7 +242,6 @@
 		BFEA29A42BC5FF5D00543D27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E97621872BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift */,
 				E97621902BC9CCD0005FDAEC /* DeliveryView */,
 				E94B70412BC736AC0067D0F2 /* TaskView */,
 				BFEA29B52BC6161C00543D27 /* Components */,
@@ -261,6 +260,7 @@
 				E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */,
 				BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */,
 				BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */,
+				E97621872BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";

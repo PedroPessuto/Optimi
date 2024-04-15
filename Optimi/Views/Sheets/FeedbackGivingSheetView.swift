@@ -23,6 +23,8 @@ struct FeedbackGivingSheetView: View {
 	
 	@Environment(\.defaultMinListRowHeight) var rowHeight
 	
+	var delivery: DeliveryModel
+	
 	var body: some View {
 		VStack(alignment: .leading) {
 			Text("Feedback")
@@ -105,7 +107,7 @@ struct FeedbackGivingSheetView: View {
 							feedbackTags: tagSelections.isEmpty ? [] : tagSelections.first == "" && tagSelections.count == 1 ? [""] : tagSelections,
 							feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription)
 						
-						await controller.createFeedback(feedback)
+						await controller.createFeedback(feedback, delivery)
 						
 						dismiss()
 					}
@@ -119,7 +121,7 @@ struct FeedbackGivingSheetView: View {
 }
 
 #Preview {
-	FeedbackGivingSheetView()
+	FeedbackGivingSheetView(delivery: DeliveryModel(deliveryName: "Carreira"))
 		.environment(GeneralController())
 }
 

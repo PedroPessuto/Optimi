@@ -41,11 +41,9 @@ import CloudKit
 		
 		if let project = self.project {
 			let taskModel = TaskModel(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: taskPrototypeLink, taskProjectReference: project.projectId!, taskDesigners: taskDesigners)
-			print(taskModel)
 			let task = await self.cloudController.createTask(taskModel)
 			if let t = task {
 				self.project?.projectTasks.append(t)
-				print(t)
 			}
 		}
 		
@@ -54,13 +52,12 @@ import CloudKit
 	public func getTasksFromProject() async {
 		if let projectID = self.project?.projectId {
 			let response = await self.cloudController.getTasksFromProject(projectID)
-			print("Resposta: ", response)
 			self.project?.projectTasks = response
 		}
 	}
 	
-	public func createFeedback(_ feedback: FeedbackModel) async {
-		let response = await cloudController.createFeedback(feedback)
+	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async {
+		let response = await cloudController.createFeedback(feedback, delivery)
 	}
 	
 	public func deleteFeedback(_ feedback: FeedbackModel) async {
@@ -74,11 +71,13 @@ import CloudKit
 	// ========== DELIVERY FUNCTIONS ==========
 	public func createDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> DeliveryModel? {
 		if let project = self.project {
-			let newDelivery = await cloudController.createDelivery(deliveryModel: deliveryModel, projectId: project.projectId!)
+			let newDelivery = await cloudController.createDelivery(deliveryModel: deliveryModel, taskId: taskId)
+			print(newDelivery)
 			if let delivery = newDelivery {
 				for task in self.project!.projectTasks {
 					if (task.taskId == taskId) {
 						task.taskDeliveries.append(delivery)
+						print(task.taskDeliveries)
 					}
 				}
 			}
