@@ -174,12 +174,18 @@ extension DeliveryCard {
 	
 	private var feedbackTags: some View {
 		LazyVGrid(columns: gridRows, spacing: 20) {
-			ForEach(feedbacks.first?.feedbackTags ?? [], id:\.self) { item in
-				Text("\(item)")
-					.padding(.horizontal, 5)
-					.padding(.vertical, 1)
-					.background(item == "Cor" ? Color.backgroundRed : item == "Espaçamento" ? Color.backgroundBlue : item == "Opacidade" ? Color.backgroundYellow : item == "Alinhamento" ? Color.backgroundGreen : item == "Imagem" ? Color.backgroundOrange : item == "Tamanho" ? Color.backgroundRed : Color.backgroundBlue)
-					.clipShape(RoundedRectangle(cornerRadius: 3))
+			ForEach(0..<(feedbacks.first?.feedbackTags.count ?? 0), id:\.self) { index in
+				Menu {
+					Text("\(feedbacks.first?.feedbackDescription[index] ?? "")")
+				} label: {
+					Text("\(feedbacks.first?.feedbackTags[index] ?? "")")
+						
+				}
+				.padding(.horizontal, 5)
+				.padding(.vertical, 1)
+				.background(feedbacks.first?.feedbackTags[index] == "Cor" ? Color.backgroundRed : feedbacks.first?.feedbackTags[index] == "Espaçamento" ? Color.backgroundBlue : feedbacks.first?.feedbackTags[index] == "Opacidade" ? Color.backgroundYellow : feedbacks.first?.feedbackTags[index] == "Alinhamento" ? Color.backgroundGreen : feedbacks.first?.feedbackTags[index] == "Imagem" ? Color.backgroundOrange : feedbacks.first?.feedbackTags[index] == "Tamanho" ? Color.backgroundRed : Color.backgroundBlue)
+				.clipShape(RoundedRectangle(cornerRadius: 3))
+				.menuStyle(.borderlessButton)
 			}
 		}
 	}
