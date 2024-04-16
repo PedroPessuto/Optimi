@@ -21,7 +21,6 @@ struct TaskView: View {
 					 VStack(alignment: .leading){
 						 Image(background(for: task.taskStatus!))
 								.resizable()
-								.scaledToFill()
 					 }
 					 
 					 HStack(alignment: .center){
@@ -103,6 +102,9 @@ struct TaskView: View {
 					 .padding(.bottom, 4)
 					 .padding(.top, 20)
 					 #endif
+                     #if os(iOS)
+                     .padding(.leading,30)
+                     #endif
 				}
 				
 			  
@@ -119,13 +121,13 @@ struct TaskView: View {
 					 }
 				}
 		  }
-		  .scaledToFill()
+//		  .scaledToFill()
 		  #if os(macOS)
 		  .frame(minWidth: 620, maxWidth: .infinity)
 		  #endif
-		  #if os(iOS)
-		  .frame(minWidth: 500, maxWidth: 600, minHeight: 500, maxHeight: 700)
-		  #endif
+//		  #if os(iOS)
+//		  .frame(minWidth: 500, maxWidth: 600, minHeight: 500, maxHeight: 700)
+//		  #endif
 	 }
 }
 
