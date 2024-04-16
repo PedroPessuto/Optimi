@@ -155,7 +155,9 @@ extension DeliveryCard {
 	
 	private var feedbackButton: some View {
 		Button {
-			
+			Task {
+				await controller.deleteFeedback(feedbacks.first!)
+			}
 		} label: {
 			Image(systemName: "ellipsis.circle")
 				.foregroundStyle(.secondary)
