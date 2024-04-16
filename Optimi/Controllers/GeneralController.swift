@@ -40,7 +40,12 @@ import CloudKit
 	public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "") async {
 		
 		if let project = self.project {
-			let taskModel = TaskModel(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: taskPrototypeLink, taskProjectReference: project.projectId!, taskDesigners: taskDesigners)
+			let taskModel = TaskModel(taskName: taskName, 
+											  taskDescription: taskDescription,
+											  taskLink: taskLink,
+											  taskPrototypeLink: taskPrototypeLink,
+											  taskProjectReference: project.projectId!,
+											  taskDesigners: self.account?.accountName ?? taskDesigners)
 			let task = await self.cloudController.createTask(taskModel)
 			if let t = task {
 				self.project?.projectTasks.append(t)
