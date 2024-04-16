@@ -63,7 +63,3 @@ struct ProjectNotFoundView: View {
         #endif
     }
 }
-
-#Preview {
-    ProjectNotFoundView()
-}

@@ -112,6 +112,3 @@ struct CreateTaskView: View {
 
 	}
 }
-#Preview {
-	CreateTaskView()
-}

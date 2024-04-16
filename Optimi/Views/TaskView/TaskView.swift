@@ -42,13 +42,14 @@ struct TaskView: View {
 								HStack{
 									 Text("Deadline: ")
 									Text("\(task.taskCreatedAt)")
+                                    Text(task.taskProjectReference?.recordName ?? "nenhum")
 								}.padding(.bottom, 25)
 									 .font(.body)
 									 .bold()
 								
 								Button {
 									 Task{
-										  //Adiciona Nome da pessoa na String de Dev se Dev e Designer se Designer
+                                         await controller.changeTaskStatus(task, .EmAndamento)
 									 }
 								} label: {
 									 Text("Entrar na Task")

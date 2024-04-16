@@ -25,9 +25,6 @@ struct StatusPill: View {
 	 }
 }
 
-#Preview {
-	 StatusPill(status: "Ready for Dev")
-}
 
 extension StatusPill {
 	 func statusColor(for string: String) -> Color {

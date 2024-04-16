@@ -88,7 +88,7 @@ struct ProjectView: View {
 						}
 						else {
 							List {
-								ForEach((controller.project?.projectTasks.reversed())!, id:\.taskId) { task in
+                                ForEach((controller.project?.projectTasks.reversed() ?? []), id:\.taskId) { task in
 									NavigationLink {
 
 										if(controller.screen == .DeliveryView) {
@@ -152,8 +152,4 @@ struct ProjectView: View {
 			}
 		}
 	}
-}
-
-#Preview {
-	ProjectView()
 }

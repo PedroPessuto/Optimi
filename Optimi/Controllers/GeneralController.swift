@@ -55,7 +55,13 @@ import CloudKit
 			self.project?.projectTasks = response
 		}
 	}
+    
+    public func changeTaskStatus(_ taskModel: TaskModel, _ taskStatus: TaskStatus) async {
+        
+        await self.cloudController.changeTaskStatus(taskModel, taskStatus: taskStatus, personName: account!.accountName, role: account!.accountRole)
+    }
 	
+    // ========== FEEDBACK FUNCTIONS ==========
 	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async {
 		let response = await cloudController.createFeedback(feedback, delivery)
 	}

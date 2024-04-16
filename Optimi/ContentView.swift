@@ -12,17 +12,13 @@ struct ContentView: View {
     @Environment(GeneralController.self) private var controller
     
     var body: some View {
-		 if (controller.screen == .HomeView ) {
+        if (controller.screen == .HomeView || controller.screen == .ProjectNotFoundView ) {
 			 HomeView()
         }
         else {
-           
 			  ProjectView()
         }
         
     }
 }
 
-#Preview {
-    ContentView()
-}
