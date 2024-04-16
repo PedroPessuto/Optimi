@@ -1,7 +1,16 @@
 {
   "colors" : [
     {
-      "idiom" : "universal"
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0xDE",
+          "green" : "0x52",
+          "red" : "0xAF"
+        }
+      },
+      "idiom" : "ipad"
     }
   ],
   "info" : {

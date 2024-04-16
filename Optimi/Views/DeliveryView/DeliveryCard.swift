@@ -9,107 +9,107 @@
 import SwiftUI
 
 struct DeliveryCard: View {
-	
-	@Environment(GeneralController.self) var controller
-	
-	var delivery: DeliveryModel
-	
-	@State var createFeedbackViewIsPresented: Bool = false
-	
-	var formatter: DateFormatter {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "dd/MM/yyyy - hh:mm"
-		return formatter
-	}
-	
-	private let gridRows = [
-		GridItem(.adaptive(minimum: 77, maximum: 100), alignment: .leading)
-	]
-	
-	@State var feedbacks: [FeedbackModel] = []
-	@State var isLoading: Bool = false
-	
-	
-	var body: some View {
-		HStack(alignment: .top) {
-			VStack(alignment: .leading) {
-				HStack {
-					Text("\(delivery.deliveryName)")
-						.font(.title)
-					
-					StatusPill(status: delivery.deliveryStatus.rawValue)
-					
-					Spacer()
-					
-					Button {
-						//aqui edita ou deleta
-					} label: {
-						Image(systemName: "ellipsis.circle")
-							.foregroundColor(.secondary)
-					}
-					.buttonStyle(PlainButtonStyle())
-				}
-				
-				HStack{
-					Image(systemName: "link")
-					Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
-				}.foregroundStyle(.blue)
-					.font(.title2)
-				
-				HStack {
-					Image(systemName: "person.fill")
-					
-					Text("\(delivery.deliveryDevelopers)")
-					
-					//						 Text("\(delivery.deliveryCreatedAt)")
-					if let date = delivery.deliveryCreatedAt {
-						Text("\(formatter.string(from: date))")
-					}
-				}.foregroundColor(.secondary)
-				
-				HStack {
-					Text("\(delivery.deliveryDocumentation ?? "")")
-						.multilineTextAlignment(.leading)
-					
-					Spacer()
-				}
-				
-				
-			}
-			.frame(minWidth: 318, maxWidth: 550)
-			.onAppear {
-				Task {
-					self.isLoading = true
-					
-					self.feedbacks = await controller.getFeedbacksFromDelivery(delivery)
-					
-					self.isLoading = false
-				}
-			}
-			
-			Spacer()
-			
-			if isLoading {
-				HStack {
-					Spacer()
-					Text("Carregando feedbacks...")
-						.foregroundStyle(.secondary)
-				}
-			}
-			else {
-				if feedbacks.isEmpty {
-					addFeedbackButton
-				} else {
-					feedbackCard
-				}
-			}
-			
-		}
-		.padding()
-		.sheet(isPresented: $createFeedbackViewIsPresented) {
-			FeedbackGivingSheetView(delivery: delivery)
-		}
-	}
+    
+    @Environment(GeneralController.self) var controller
+    
+    var delivery: DeliveryModel
+    
+    @State var createFeedbackViewIsPresented: Bool = false
+    
+    var formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy - hh:mm"
+        return formatter
+    }
+    
+    private let gridRows = [
+        GridItem(.adaptive(minimum: 77, maximum: 100), alignment: .leading)
+    ]
+    
+    @State var feedbacks: [FeedbackModel] = []
+    @State var isLoading: Bool = false
+    
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("\(delivery.deliveryName)")
+                        .font(.title)
+                    
+                    StatusPill(status: delivery.deliveryStatus.rawValue)
+                    
+                    Spacer()
+                    
+                    Button {
+                        //aqui edita ou deleta
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .foregroundColor(.secondary)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                
+                HStack{
+                    Image(systemName: "link")
+                    Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
+                }.foregroundStyle(.blue)
+                    .font(.title2)
+                
+                HStack {
+                    Image(systemName: "person.fill")
+                    
+                    Text("\(delivery.deliveryDevelopers)")
+                    
+                    //						 Text("\(delivery.deliveryCreatedAt)")
+                    if let date = delivery.deliveryCreatedAt {
+                        Text("\(formatter.string(from: date))")
+                    }
+                }.foregroundColor(.secondary)
+                
+                HStack {
+                    Text("\(delivery.deliveryDocumentation ?? "")")
+                        .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                }
+                
+                
+            }
+            .frame(minWidth: 318, maxWidth: 550)
+            .onAppear {
+                Task {
+                    self.isLoading = true
+                    
+                    self.feedbacks = await controller.getFeedbacksFromDelivery(delivery)
+                    
+                    self.isLoading = false
+                }
+            }
+            
+            Spacer()
+            
+            if isLoading {
+                HStack {
+                    Spacer()
+                    Text("Carregando feedbacks...")
+                        .foregroundStyle(.secondary)
+                }
+            }
+            else {
+                if feedbacks.isEmpty {
+                    addFeedbackButton
+                } else {
+                    feedbackCard
+                }
+            }
+            
+        }
+        .padding()
+        .sheet(isPresented: $createFeedbackViewIsPresented) {
+            FeedbackGivingSheetView(delivery: delivery)
+        }
+    }
 }
 
 //#Preview {
