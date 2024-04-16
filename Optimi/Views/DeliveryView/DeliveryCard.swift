@@ -154,23 +154,38 @@ extension DeliveryCard {
 	}
 	
 	private var feedbackButton: some View {
-		Button {
-			Task {
-				await controller.deleteFeedback(feedbacks.first!)
+		Menu {
+			Button {
+				Task {
+					await controller.deleteFeedback(feedbacks.first!)
+				}
+			} label: {
+				HStack {
+					Image(systemName: "trash.fill")
+					Text("Deletar feedback")
+				}
+				.foregroundStyle(.red)
 			}
+			.buttonStyle(PlainButtonStyle())
+			
 		} label: {
 			Image(systemName: "ellipsis.circle")
 				.foregroundStyle(.secondary)
 		}
 		.buttonStyle(PlainButtonStyle())
+		
 	}
 	
 	private var feedbackDesignersAndDate: some View {
 		HStack {
 			Image(systemName: "person.fill")
-			//			Text("\(feedbacks.first. ?? "")")
+			Text("\(feedbacks.first?.feedbackDesigner ?? "Designer")")
+			
 			Spacer()
-			//			if let date = feedbacks.first.createdAt
+			
+			if let date = feedbacks.first?.feedbackCreatedAt {
+				Text("\(formatter.string(from: date))")
+			}
 		}
 	}
 	

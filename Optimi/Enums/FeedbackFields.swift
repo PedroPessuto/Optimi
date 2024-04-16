@@ -13,4 +13,6 @@ enum FeedbackFields: String {
 	case feedbackTags
 	case feedbackDescription
 	case feedbackDeliveryReference
+	case feedbackDesigner
+	case feedbackCreatedAt
 }

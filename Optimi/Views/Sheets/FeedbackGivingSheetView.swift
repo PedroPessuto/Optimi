@@ -107,7 +107,7 @@ struct FeedbackGivingSheetView: View {
 						let feedback = FeedbackModel(
 							feedbackStatus: feedbackStatusSelection,
 							feedbackTags: tagSelections.isEmpty ? [] : tagSelections.first == "" && tagSelections.count == 1 ? [""] : tagSelections,
-							feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription)
+							feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription, feedbackDesigner: controller.account?.accountName ?? "Designer")
 						
 						await controller.createFeedback(feedback, delivery)
 						

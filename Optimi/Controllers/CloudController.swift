@@ -105,6 +105,7 @@ import CloudKit
 			record.setValue(feedback.feedbackTags, forKey: FeedbackFields.feedbackTags.rawValue)
 			record.setValue(feedback.feedbackDescription, forKey: FeedbackFields.feedbackDescription.rawValue)
 			record.setValue(reference, forKey: FeedbackFields.feedbackDeliveryReference.rawValue)
+			record.setValue(feedback.feedbackDesigner, forKey: FeedbackFields.feedbackDesigner.rawValue)
 			
 			return FeedbackModel.init(try await databasePublic.save(record))
 		} catch {
@@ -115,7 +116,7 @@ import CloudKit
 	
 	public func deleteFeedback(_ feedback: FeedbackModel) async {
 		do {
-			let record = CKRecord(recordType: RecordNames.Feedback.rawValue)
+			let record = CKRecord(recordType: RecordNames.Feedback.rawValue, recordID: CKRecord.ID(recordName: feedback.feedbackId ?? ""))
 			try await databasePublic.deleteRecord(withID: record.recordID)
 		} catch {
 			print("Error deleting feedback: \(error)")
