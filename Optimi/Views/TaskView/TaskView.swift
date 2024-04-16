@@ -110,17 +110,6 @@ struct TaskView: View {
             
             
             .toolbar {
-                #if os(iOS)
-                ToolbarItem() {
-                    Button {
-                        controller.screen = .HomeView
-                    } label: {
-                        Image(systemName: "chevron.left")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                #endif
-                
                 ToolbarItem(placement: .confirmationAction) {
                     Picker("CurrentScreen", selection: $currentScreen) {
                         Text("Task").tag(ScreenNames.TaskView)

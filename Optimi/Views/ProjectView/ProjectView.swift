@@ -25,35 +25,62 @@ struct ProjectView: View {
             
             VStack {
                 
-                Button {
+                HStack{
+                    Button {
+                        controller.screen = .HomeView
+                    } label: {
+                        #if os(macOS)
+                        Image(systemName: "chevron.left")
+                        #endif
+                        #if os(iOS)
+                        Image(systemName: "house")
+                        #endif
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    Spacer()
+                    
+                    Button {
 #if os(macOS)
-                    let pasteboard = NSPasteboard.general
-                    pasteboard.clearContents()
-                    //Aqui tem que estar a Key do projeto
-                    pasteboard.writeObjects(["\(controller.project?.projectId?.recordName ?? "")" as NSString])
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.clearContents()
+                        //Aqui tem que estar a Key do projeto
+                        pasteboard.writeObjects(["\(controller.project?.projectId?.recordName ?? "")" as NSString])
 #endif
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        tokenWasCopied.toggle()
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now()+5) {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                tokenWasCopied.toggle()
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            tokenWasCopied.toggle()
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now()+5) {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    tokenWasCopied.toggle()
+                                }
                             }
                         }
-                    }
-                } label: {
-                    
-                    HStack {
-                        Text("Token")
-                        Image(systemName: "doc.on.doc")
-                        if tokenWasCopied {
-                            Image(systemName: "checkmark")
+                    } label: {
+                        
+                        HStack {
+                            Text("Token")
+                            Image(systemName: "doc.on.doc")
+                            if tokenWasCopied {
+                                Image(systemName: "checkmark")
+                            }
                         }
+                        .foregroundStyle(.secondary)
+                        .padding(.vertical, 12)
                     }
-                    .foregroundStyle(.secondary)
-                    .padding(.vertical, 12)
-                }
-                .buttonStyle(PlainButtonStyle())
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    Spacer()
+                    
+                    Button {
+                         //vai abrir um Menu com as duas opções
+                         //Aqui vai ter a opção de Delete e Update
+                    } label: {
+                         Image(systemName: "ellipsis")
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.vertical, 5)
+                }.padding()
                 
                 HStack {
                     Text(controller.project?.projectName ?? "")
@@ -118,16 +145,6 @@ struct ProjectView: View {
                 await controller.getTasksFromProject()
                 
                 tasksAreLoading = false
-            }
-        }
-        .toolbar(){
-            ToolbarItem() {
-                Button {
-                    controller.screen = .HomeView
-                } label: {
-                    Image(systemName: "chevron.left")
-                }
-                .buttonStyle(PlainButtonStyle())
             }
         }
     }

@@ -51,16 +51,6 @@ struct DeliveryView: View {
             
             ToolbarItemGroup(placement: .automatic) {
                 HStack {
-                    
-#if os(iOS)
-                    Button {
-                        controller.screen = .HomeView
-                    } label: {
-                        Image(systemName: "chevron.left")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-#endif
                     Divider()
                     
                     Button {
