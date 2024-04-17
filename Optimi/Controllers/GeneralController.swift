@@ -72,9 +72,9 @@ import CloudKit
     }
     
     // MARK: Delete a task from database
-    public func deleteTask(taskModel: TaskModel, projectModel: ProjectModel) async -> Void {
+    public func deleteTask(taskModel: TaskModel) async -> Void {
         await cloudController.deleteTask(taskModel)
-        projectModel.projectTasks.removeAll { task in
+        self.project!.projectTasks.removeAll { task in
             task.taskId == taskModel.taskId
         }
     }
