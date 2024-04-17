@@ -39,6 +39,16 @@ import CloudKit
 			screen = ScreenNames.ProjectNotFoundView
 		}
 	}
+    
+    // MARK: Delete a project
+    public func deleteProject() async -> Void {
+        if self.project != nil {
+            await cloudController.deleteProject(self.project!)
+            self.screen = .HomeView
+        }
+        
+    }
+    
 	
 	// ========== TASKS FUNCTIONS ==========
 	
@@ -66,7 +76,21 @@ import CloudKit
 			self.project?.projectTasks = response
 		}
 	}
-	
+    
+    public func changeTaskStatus(_ taskModel: TaskModel, _ taskStatus: TaskStatus) async {
+        
+        await self.cloudController.changeTaskStatus(taskModel, taskStatus: taskStatus, personName: account!.accountName, role: account!.accountRole)
+    }
+    
+    // MARK: Delete a task from database
+    public func deleteTask(taskModel: TaskModel) async -> Void {
+        await cloudController.deleteTask(taskModel)
+        self.project!.projectTasks.removeAll { task in
+            task.taskId == taskModel.taskId
+        }
+    }
+
+  
 	// ========== FEEDBACK FUNCTIONS ==========
 	
 	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async {
@@ -80,10 +104,20 @@ import CloudKit
 	public func getFeedbacksFromDelivery(_ delivery: DeliveryModel) async -> [FeedbackModel] {
 		await cloudController.getFeedbacksFromDelivery(delivery.getRecord().recordID)
 	}
+    
+    // MARK: Delete a feedback from database
+    public func deleteFeedback(feedbackModel: FeedbackModel, deliveryModel: DeliveryModel) async -> Void {
+        await cloudController.deleteFeedback(feedbackModel)
+        deliveryModel.deliveryFeedbacks.removeAll { feedback in
+            feedback.feedbackId == feedbackModel.feedbackId
+        }
+    }
 	
+    
 	// ========== DELIVERY FUNCTIONS ==========
+    
 	public func createDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> DeliveryModel? {
-		if let project = self.project {
+        if self.project != nil {
 			let newDelivery = await cloudController.createDelivery(deliveryModel: deliveryModel, taskId: taskId)
 			if let delivery = newDelivery {
 				for task in self.project!.projectTasks {
@@ -96,6 +130,7 @@ import CloudKit
 		}
 		return nil
 	}
+    
 	public func deleteDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> Void {
 		await cloudController.deleteDelivery(deliveryModel)
 		if (self.project != nil) {
@@ -116,4 +151,14 @@ import CloudKit
 			task.taskDeliveries = response
 		}
 	}
+    
+    // MARK: Delete a delivery from database
+    public func deleteDelivery(_ deliveryModel: DeliveryModel, _ taskModel: TaskModel) async -> Void {
+        await cloudController.deleteDelivery(deliveryModel)
+        taskModel.taskDeliveries.removeAll { delivery in
+            delivery.deliveryId == deliveryModel.deliveryId
+        }
+    }
+    
+    
 }

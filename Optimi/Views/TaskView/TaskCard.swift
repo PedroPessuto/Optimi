@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskCard: View {
 	 
+    @Environment(GeneralController.self) var controller
 	 var task: TaskModel
 	 
 	 var body: some View {
@@ -31,14 +32,19 @@ struct TaskCard: View {
 					 
 					 Spacer()
 					 
-//					 Button {
-//						  //vai abrir um Menu com as duas opções
-//						  //Aqui vai ter a opção de Delete e Update
-//					 } label: {
-//						  Image(systemName: "ellipsis")
-//					 }
-//					 .buttonStyle(PlainButtonStyle())
-//					 .padding(.vertical, 5)
+
+					 Button {
+						  //vai abrir um Menu com as duas opções
+						  //Aqui vai ter a opção de Delete e Update
+                         Task {
+                            await controller.deleteTask(taskModel: task)
+                         }
+					 } label: {
+						  Image(systemName: "ellipsis")
+					 }
+					 .buttonStyle(PlainButtonStyle())
+					 .padding(.vertical, 5)
+
 				}
 		  }.frame(height: 77)
 	 }

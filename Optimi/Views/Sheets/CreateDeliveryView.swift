@@ -103,6 +103,3 @@ struct CreateDeliveryView: View {
 		
 	}
 }
-#Preview {
-	CreateTaskView()
-}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF9218F02BCDB75700953448 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9218EF2BCDB75700953448 /* TaskStatus.swift */; };
 		BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F7D2BC45913003163E5 /* OptimiApp.swift */; };
 		BFD96F802BC45913003163E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F7F2BC45913003163E5 /* ContentView.swift */; };
 		BFD96F822BC45914003163E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD96F812BC45914003163E5 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF9218EF2BCDB75700953448 /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		BFD96F7A2BC45913003163E5 /* Optimi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optimi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD96F7D2BC45913003163E5 /* OptimiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiApp.swift; sourceTree = "<group>"; };
 		BFD96F7F2BC45913003163E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				BFEA29982BC5DEE000543D27 /* RecordNames.swift */,
 				BFEA29AB2BC601AA00543D27 /* Roles.swift */,
 				BFEA29B12BC603D300543D27 /* ScreenNames.swift */,
+				BF9218EF2BCDB75700953448 /* TaskStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
 				E97621942BC9CD7A005FDAEC /* DeliveryModel.swift in Sources */,
 				BFEA29A12BC5F0B200543D27 /* TaskModel.swift in Sources */,
+				BF9218F02BCDB75700953448 /* TaskStatus.swift in Sources */,
 				BFEA29B02BC602C500543D27 /* ProjectNotFoundView.swift in Sources */,
 				E97621882BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift in Sources */,
 				BFEA29992BC5DEE000543D27 /* RecordNames.swift in Sources */,

@@ -66,6 +66,3 @@ struct CreateProjectView: View {
 #endif
 	}
 }
-#Preview {
-	CreateProjectView(projectName: "")
-}

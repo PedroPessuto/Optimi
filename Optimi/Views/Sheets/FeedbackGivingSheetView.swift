@@ -123,9 +123,5 @@ struct FeedbackGivingSheetView: View {
 	}
 }
 
-#Preview {
-	FeedbackGivingSheetView(delivery: DeliveryModel(deliveryName: "Carreira"))
-		.environment(GeneralController())
-}
 
 
