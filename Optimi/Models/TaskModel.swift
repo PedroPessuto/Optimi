@@ -53,12 +53,13 @@ import CloudKit
 		self.taskDevelopers = record[TaskFields.taskDevelopers.rawValue] as? String
 	}
 	
-	init(taskName: String, taskDescription: String?, taskLink: String?, taskPrototypeLink: String?, taskProjectReference: CKRecord.ID, taskDesigners: String?) {
+	init(taskName: String, taskDescription: String?, taskLink: String?, taskPrototypeLink: String?, taskProjectReference: CKRecord.ID, taskDesigners: String?, taskDevelopers: String?) {
 		self.taskName = taskName
 		self.taskDescription = taskDescription
 		self.taskLink = taskLink
 		self.taskPrototypeLink = taskPrototypeLink
 		self.taskProjectReference = taskProjectReference
 		self.taskDesigners = taskDesigners
+		self.taskDevelopers = taskDevelopers
 	}
 }

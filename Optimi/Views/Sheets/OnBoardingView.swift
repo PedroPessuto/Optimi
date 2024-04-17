@@ -79,6 +79,9 @@ struct OnboardingView: View {
         }
         .frame(width: 448, height: 252)
         .onAppear {
+			  Task {
+				  await generalController.checkAccountStatus()
+			  }
             if let account = generalController.account {
                 yourName = account.accountName
                 cargoSelection = account.accountRole

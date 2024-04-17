@@ -14,6 +14,12 @@ struct TaskView: View {
     var task: TaskModel
     
     @State var currentScreen: ScreenNames = .TaskView
+	
+	var formatter: DateFormatter {
+		 let formatter = DateFormatter()
+		 formatter.dateFormat = "dd/MM/yyyy - hh:mm"
+		 return formatter
+	}
     
     var body: some View {
         NavigationStack{
@@ -40,8 +46,10 @@ struct TaskView: View {
                         }.frame(width: 200)
                         
                         HStack{
-                            Text("Deadline: ")
-                            Text("\(task.taskCreatedAt)")
+									if let date = task.taskCreatedAt {
+										Text("Deadline: ")
+										Text("\(formatter.string(from: date))")
+									}
                         }.padding(.bottom, 25)
                             .font(.body)
                             .bold()
@@ -88,7 +96,7 @@ struct TaskView: View {
                             VStack(alignment: .leading){
                                 Text("Developers")
                                     .font(.title2)
-                                Text(task.taskDesigners!)
+                                Text(task.taskDevelopers ?? "Nenhum dev associado...")
                                 //Aqui tem que trocar pra developers
                             }
                         }

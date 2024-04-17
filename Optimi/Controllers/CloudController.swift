@@ -17,6 +17,31 @@ import CloudKit
 		databasePublic = container.publicCloudDatabase
 	}
 	
+	
+	public func checkAccountStatus() async -> CKAccountStatus? {
+		do {
+			let result = try await CKContainer.default().accountStatus()
+			switch result.rawValue {
+			case 1:
+				print("iCloud available")
+			case 0:
+				print("iCloud couldNotDetermine")
+			case 2:
+				print("iCloud restricted")
+			case 3:
+				print("iCloud noAccount")
+			case 4:
+				print("iCloud temprarilyUnavailable")
+			default:
+				break
+			}
+			return result
+		} catch {
+			print("Error checking account status: \(error)")
+			return nil
+		}
+	}
+	
 	// ========== PROJECT FUNCTIONS ==========
 	
 	// Cria um projeto
@@ -77,7 +102,7 @@ import CloudKit
 		do {
 			let result = try await CKContainer.default().publicCloudDatabase.records(matching: query)
 			let records = result.matchResults.compactMap { try? $0.1.get() }
-			print(records)
+			print("Task records from project: ", records)
 			return records.compactMap(TaskModel.init)
 		} catch {
 			print("Error fetching tasks from project: \(error)")

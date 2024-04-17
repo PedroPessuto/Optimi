@@ -14,6 +14,11 @@ import CloudKit
 	public var account: AccountModel?
 	public var project: ProjectModel?
 	
+	
+	public func checkAccountStatus() async -> CKAccountStatus? {
+		return await cloudController.checkAccountStatus() ?? nil
+	}
+	
 	// ========== PROJECT FUNCTIONS ==========
 	
 	// Cria um projeto
@@ -45,7 +50,8 @@ import CloudKit
 											  taskLink: taskLink,
 											  taskPrototypeLink: taskPrototypeLink,
 											  taskProjectReference: project.projectId!,
-											  taskDesigners: self.account?.accountName ?? taskDesigners)
+											  taskDesigners: self.account?.accountName ?? taskDesigners,
+											  taskDevelopers: "Nenhum dev associado...")
 			let task = await self.cloudController.createTask(taskModel)
 			if let t = task {
 				self.project?.projectTasks.append(t)
