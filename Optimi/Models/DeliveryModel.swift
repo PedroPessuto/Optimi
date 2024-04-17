@@ -20,6 +20,8 @@ import CloudKit
 	// MARK: Requireds atributtes
 	public var deliveryName: String
 	public var deliveryStatus: DeliveryStatus = .ReadyForDev
+    public var deliveryFeedbacks: [FeedbackModel] = []
+    
 	// ========== FUNCTIONS ==========
 	// MARK: Creating a record to deliveryModel
 	func getRecord() -> CKRecord {

@@ -45,6 +45,17 @@ import CloudKit
         }
     }
     
+    // MARK: Delete a project from database
+    public func deleteProject(_ projectModel: ProjectModel) async -> Void {
+        do {
+            let record = projectModel.getRecord()
+            try await self.databasePublic.deleteRecord(withID: record.recordID)
+        }
+        catch {
+            return
+        }
+    }
+    
     // ========== TASKS FUNCTIONS ==========
     
     public func createTask(_ taskModel: TaskModel) async -> TaskModel? {
@@ -84,15 +95,27 @@ import CloudKit
         return []
     }
     
+    // MARK: Change Task Status From Database
     public func changeTaskStatus(_ taskModel: TaskModel, taskStatus: TaskStatus, personName: String, role: Roles) async {
         
         do {
             let rec = try await databasePublic.record(for: taskModel.getRecord().recordID)
             rec.setValue(taskStatus.rawValue, forKey: "taskStatus")
-            var saved = try await databasePublic.save(rec)
+            let saved = try await databasePublic.save(rec)
             taskModel.update(record: saved)
         } catch {
-            print("Erro: \(error)")
+            return
+        }
+    }
+    
+    // MARK: Delete a task from database
+    public func deleteTask(_ taskModel: TaskModel) async -> Void {
+        do {
+            let taskRecord = taskModel.getRecord()
+            try await self.databasePublic.deleteRecord(withID: taskRecord.recordID)
+        }
+        catch {
+            return
         }
     }
     
@@ -116,6 +139,7 @@ import CloudKit
         }
     }
     
+    // MARK: Delete a feedback from database
     public func deleteFeedback(_ feedback: FeedbackModel) async {
         do {
             let record = CKRecord(recordType: RecordNames.Feedback.rawValue)
@@ -125,6 +149,7 @@ import CloudKit
         }
     }
     
+    // MARK: Get Feedbacks from database
     public func getFeedbacksFromDelivery(_ deliveryID: CKRecord.ID) async -> [FeedbackModel] {
         do {
             let recordToMatch = CKRecord.Reference(recordID: deliveryID, action: .deleteSelf)
@@ -143,6 +168,7 @@ import CloudKit
     }
     
     // ========== DELIVERY FUNCTIONS ==========
+    
     // MARK: Create a Delivery on database
     public func createDelivery(deliveryModel: DeliveryModel, taskId: String) async -> DeliveryModel? {
         do {
@@ -154,10 +180,10 @@ import CloudKit
             return newDelivery
         }
         catch {
-            print("Error creating delivery: \(error)")
             return nil
         }
     }
+    
     // MARK: Get Deliveries from task
     public func getDeliveriesFromTask(_ taskId: CKRecord.ID) async -> [DeliveryModel] {
         do {
