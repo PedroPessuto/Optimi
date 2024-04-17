@@ -23,12 +23,6 @@ struct TaskView: View {
   
 	 var body: some View {
 		  NavigationStack{
-				ZStack{
-					 VStack(alignment: .leading){
-						 Image(background(for: task.taskStatus!))
-								.resizable()
-								.scaledToFill()
-					 }
 					 
 					 HStack(alignment: .center){
 						  VStack(alignment: .leading) {
@@ -114,7 +108,7 @@ struct TaskView: View {
 					#if os(iOS)
 					 .padding(.leading, 30)
 					#endif
-				}
+					 .background(imageBackground)
 				
 			  
 				.toolbar {
@@ -157,4 +151,11 @@ extension TaskView {
             return ""
         }
     }
+}
+
+extension TaskView {
+	private var imageBackground: some View {
+		Image(background(for: task.taskStatus!))
+			  .resizable()
+	}
 }
