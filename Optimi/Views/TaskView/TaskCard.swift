@@ -31,14 +31,14 @@ struct TaskCard: View {
 					 
 					 Spacer()
 					 
-					 Button {
-						  //vai abrir um Menu com as duas opções
-						  //Aqui vai ter a opção de Delete e Update
-					 } label: {
-						  Image(systemName: "ellipsis")
-					 }
-					 .buttonStyle(PlainButtonStyle())
-					 .padding(.vertical, 5)
+//					 Button {
+//						  //vai abrir um Menu com as duas opções
+//						  //Aqui vai ter a opção de Delete e Update
+//					 } label: {
+//						  Image(systemName: "ellipsis")
+//					 }
+//					 .buttonStyle(PlainButtonStyle())
+//					 .padding(.vertical, 5)
 				}
 		  }.frame(height: 77)
 	 }

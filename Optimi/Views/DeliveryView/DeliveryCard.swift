@@ -41,13 +41,13 @@ struct DeliveryCard: View {
                     
                     Spacer()
                     
-                    Button {
-                        //aqui edita ou deleta
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                            .foregroundColor(.secondary)
-                    }
-                    .buttonStyle(PlainButtonStyle())
+//                    Button {
+//                        //aqui edita ou deleta
+//                    } label: {
+//                        Image(systemName: "ellipsis.circle")
+//                            .foregroundColor(.secondary)
+//                    }
+//                    .buttonStyle(PlainButtonStyle())
                 }
                 
                 HStack{

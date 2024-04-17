@@ -29,10 +29,10 @@ struct CreateDeliveryView: View {
 					.font(.title)
 					.bold()
 				
-				Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ")
-					.font(.footnote)
-					.foregroundColor(.gray)
-					.padding(.bottom, 22)
+//				Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ")
+//					.font(.footnote)
+//					.foregroundColor(.gray)
+//					.padding(.bottom, 22)
 				
 				Text("Nome da Entrega")
 					.font(.headline)
