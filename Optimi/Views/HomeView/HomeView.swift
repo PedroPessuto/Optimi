@@ -101,6 +101,7 @@ struct HomeView: View {
             }
             .sheet(isPresented: $onboardingViewIsPresented) {
                 OnboardingView()
+                    .interactiveDismissDisabled(true)
             }
             .onChange(of: controller.screen) { oldValue, newValue in
                 if newValue == .ProjectNotFoundView {
