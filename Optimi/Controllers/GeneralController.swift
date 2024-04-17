@@ -14,6 +14,11 @@ import CloudKit
 	public var account: AccountModel?
 	public var project: ProjectModel?
 	
+	
+	public func checkAccountStatus() async -> CKAccountStatus? {
+		return await cloudController.checkAccountStatus() ?? nil
+	}
+	
 	// ========== PROJECT FUNCTIONS ==========
 	
 	// Cria um projeto
@@ -50,7 +55,13 @@ import CloudKit
 	public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "") async {
 		
 		if let project = self.project {
-			let taskModel = TaskModel(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: taskPrototypeLink, taskProjectReference: project.projectId!, taskDesigners: taskDesigners)
+			let taskModel = TaskModel(taskName: taskName, 
+											  taskDescription: taskDescription,
+											  taskLink: taskLink,
+											  taskPrototypeLink: taskPrototypeLink,
+											  taskProjectReference: project.projectId!,
+											  taskDesigners: self.account?.accountName ?? taskDesigners,
+											  taskDevelopers: "Nenhum dev associado...")
 			let task = await self.cloudController.createTask(taskModel)
 			if let t = task {
 				self.project?.projectTasks.append(t)
@@ -78,8 +89,10 @@ import CloudKit
             task.taskId == taskModel.taskId
         }
     }
+
+  
+	// ========== FEEDBACK FUNCTIONS ==========
 	
-    // ========== FEEDBACK FUNCTIONS ==========
 	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async {
 		let response = await cloudController.createFeedback(feedback, delivery)
 	}
@@ -88,8 +101,8 @@ import CloudKit
 		await cloudController.deleteFeedback(feedback)
 	}
 	
-	public func getFeedbacks() async -> [FeedbackModel] {
-		return []
+	public func getFeedbacksFromDelivery(_ delivery: DeliveryModel) async -> [FeedbackModel] {
+		await cloudController.getFeedbacksFromDelivery(delivery.getRecord().recordID)
 	}
     
     // MARK: Delete a feedback from database

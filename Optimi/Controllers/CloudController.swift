@@ -17,6 +17,30 @@ import CloudKit
         databasePublic = container.publicCloudDatabase
     }
     
+  	public func checkAccountStatus() async -> CKAccountStatus? {
+		do {
+			let result = try await CKContainer.default().accountStatus()
+			switch result.rawValue {
+			case 1:
+				print("iCloud available")
+			case 0:
+				print("iCloud couldNotDetermine")
+			case 2:
+				print("iCloud restricted")
+			case 3:
+				print("iCloud noAccount")
+			case 4:
+				print("iCloud temprarilyUnavailable")
+			default:
+				break
+			}
+			return result
+		} catch {
+			print("Error checking account status: \(error)")
+			return nil
+		}
+	}
+  
     // ========== PROJECT FUNCTIONS ==========
     
     // Cria um projeto
@@ -122,50 +146,50 @@ import CloudKit
     
     // ========== FEEDBACK FUNCTIONS ==========
     
-    public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async -> FeedbackModel? {
-        do {
-            let reference = CKRecord.Reference(recordID: CKRecord.ID(recordName: delivery.deliveryId!), action: .deleteSelf)
-            let record = CKRecord(recordType: RecordNames.Feedback.rawValue)
-            record.setValue(feedback.feedbackId, forKey: FeedbackFields.feedbackId.rawValue)
-            record.setValue(feedback.feedbackStatus, forKey: FeedbackFields.feedbackStatus.rawValue)
-            record.setValue(feedback.feedbackTags, forKey: FeedbackFields.feedbackTags.rawValue)
-            record.setValue(feedback.feedbackDescription, forKey: FeedbackFields.feedbackDescription.rawValue)
-            record.setValue(feedback.feedbackDeliveryReference, forKey: FeedbackFields.feedbackDeliveryReference.rawValue)
-            
-            return FeedbackModel.init(try await databasePublic.save(record))
-        } catch {
-            print("Error saving feedback: \(error)")
-            return nil
-        }
-    }
-    
-    // MARK: Delete a feedback from database
-    public func deleteFeedback(_ feedback: FeedbackModel) async {
-        do {
-            let record = CKRecord(recordType: RecordNames.Feedback.rawValue)
-            try await databasePublic.deleteRecord(withID: record.recordID)
-        } catch {
-            print("Error deleting feedback: \(error)")
-        }
-    }
+	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async -> FeedbackModel? {
+		do {
+			let reference = CKRecord.Reference(recordID: CKRecord.ID(recordName: delivery.deliveryId!), action: .deleteSelf)
+			let record = CKRecord(recordType: RecordNames.Feedback.rawValue)
+			record.setValue(feedback.feedbackId, forKey: FeedbackFields.feedbackId.rawValue)
+			record.setValue(feedback.feedbackStatus, forKey: FeedbackFields.feedbackStatus.rawValue)
+			record.setValue(feedback.feedbackTags, forKey: FeedbackFields.feedbackTags.rawValue)
+			record.setValue(feedback.feedbackDescription, forKey: FeedbackFields.feedbackDescription.rawValue)
+			record.setValue(reference, forKey: FeedbackFields.feedbackDeliveryReference.rawValue)
+			record.setValue(feedback.feedbackDesigner, forKey: FeedbackFields.feedbackDesigner.rawValue)
+			
+			return FeedbackModel.init(try await databasePublic.save(record))
+		} catch {
+			print("Error saving feedback: \(error)")
+			return nil
+		}
+	}
+
+  	public func deleteFeedback(_ feedback: FeedbackModel) async {
+		do {
+			let record = CKRecord(recordType: RecordNames.Feedback.rawValue, recordID: CKRecord.ID(recordName: feedback.feedbackId ?? ""))
+			try await databasePublic.deleteRecord(withID: record.recordID)
+		} catch {
+			print("Error deleting feedback: \(error)")
+		}
+	}
     
     // MARK: Get Feedbacks from database
-    public func getFeedbacksFromDelivery(_ deliveryID: CKRecord.ID) async -> [FeedbackModel] {
-        do {
-            let recordToMatch = CKRecord.Reference(recordID: deliveryID, action: .deleteSelf)
-            
-            let predicate = NSPredicate(format: "\(DeliveryFields.deliveryTaskReference.rawValue) == %@", recordToMatch)
-            
-            let query = CKQuery(recordType: RecordNames.Feedback.rawValue, predicate: predicate)
-            
-            let result = try await databasePublic.records(matching: query)
-            let records = result.matchResults.compactMap { try? $0.1.get() }
-            return records.compactMap(FeedbackModel.init)
-        } catch {
-            print("Error fetching feedbacks from deliveries: \(error)")
-            return []
-        }
-    }
+	public func getFeedbacksFromDelivery(_ deliveryID: CKRecord.ID) async -> [FeedbackModel] {
+		do {
+			let recordToMatch = CKRecord.Reference(recordID: deliveryID, action: .deleteSelf)
+			
+			let predicate = NSPredicate(format: "\(FeedbackFields.feedbackDeliveryReference.rawValue) == %@", recordToMatch)
+			
+			let query = CKQuery(recordType: RecordNames.Feedback.rawValue, predicate: predicate)
+			
+			let result = try await databasePublic.records(matching: query)
+			let records = result.matchResults.compactMap { try? $0.1.get() }
+			return records.compactMap(FeedbackModel.init)
+		} catch {
+			print("Error fetching feedbacks from deliveries: \(error)")
+			return []
+		}
+	}
     
     // ========== DELIVERY FUNCTIONS ==========
     
@@ -209,6 +233,5 @@ import CloudKit
             return
         }
     }
-    
     
 }

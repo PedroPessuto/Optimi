@@ -13,6 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         if (controller.screen == .HomeView || controller.screen == .ProjectNotFoundView ) {
+
 			 HomeView()
         }
         else {

@@ -20,7 +20,7 @@ struct AccountHomeDisplay: View {
     init(action: @escaping () -> Void) {
         self.action = action
 #if os(iOS)
-        self.iconColor = .blue
+        self.iconColor = .accentColor
         self.iconSize = 30
         self.roleSize = 15
         self.nameSize = 20

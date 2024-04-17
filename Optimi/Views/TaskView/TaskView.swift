@@ -15,6 +15,12 @@ struct TaskView: View {
 	 
 	@State var currentScreen: ScreenNames = .TaskView
 	 
+  	var formatter: DateFormatter {
+		 let formatter = DateFormatter()
+		 formatter.dateFormat = "dd/MM/yyyy - hh:mm"
+		 return formatter
+	}
+  
 	 var body: some View {
 		  NavigationStack{
 				ZStack{
@@ -38,14 +44,15 @@ struct TaskView: View {
 										  .padding(.bottom, 9)
 										  .font(.body)
 								}.frame(width: 200)
-								
-								HStack{
-									 Text("Deadline: ")
-									Text("\(task.taskCreatedAt)")
-                                    Text(task.taskProjectReference?.recordName ?? "nenhum")
-								}.padding(.bottom, 25)
-									 .font(.body)
-									 .bold()
+                
+                HStack{
+									if let date = task.taskCreatedAt {
+										Text("Deadline: ")
+										Text("\(formatter.string(from: date))")
+									}
+                }.padding(.bottom, 25)
+                 .font(.body)
+                 .bold()
 								
 								Button {
 									 Task{
@@ -80,19 +87,19 @@ struct TaskView: View {
 									 .bold()
 									 .padding(.bottom, 5)
 								HStack{
-									 VStack(alignment: .leading){
-										  Text("Designers")
-												.font(.title2)
-										  Text(task.taskDesigners!)
-									 }.padding(.trailing, 20)
-									 
-									 VStack(alignment: .leading){
-										  Text("Developers")
-												.font(.title2)
-										  Text(task.taskDesigners!)
-										  //Aqui tem que trocar pra developers
-									 }
-								}
+                            VStack(alignment: .leading){
+                                Text("Designers")
+                                    .font(.title2)
+                                Text(task.taskDesigners!)
+                            }.padding(.trailing, 20)
+                            
+                            VStack(alignment: .leading){
+                                Text("Developers")
+                                    .font(.title2)
+                                Text(task.taskDevelopers ?? "Nenhum dev associado...")
+                                //Aqui tem que trocar pra developers
+                            }
+                        }
 								
 								Spacer()
 						  }
@@ -135,20 +142,20 @@ struct TaskView: View {
 //}
 
 extension TaskView {
-	 func background(for string: String) -> String {
-		  switch string {
-		  case "Ready for Dev":
-				return "Dev"
-		  case "Aprovada":
-				return "Aprovada"
-		  case "Revisão Pendente":
-				return "Revisao"
-		  case "Reprovada":
-				return "Reprovada"
-		  case "Em Andamento":
-				return "Andamento"
-		  default:
-				return ""
-		  }
-	 }
+    func background(for string: String) -> String {
+        switch string {
+        case "Ready for Dev":
+            return "Dev"
+        case "Aprovada":
+            return "Aprovada"
+        case "Revisão Pendente":
+            return "Revisao"
+        case "Reprovada":
+            return "Reprovada"
+        case "Em Andamento":
+            return "Andamento"
+        default:
+            return ""
+        }
+    }
 }

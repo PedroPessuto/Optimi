@@ -22,7 +22,7 @@ struct CreateProjectView: View {
 		NavigationStack{
 			VStack(alignment: .leading){
 				Text("Crie o seu projeto")
-					.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+					.font(.title)
 					.padding(.bottom)
 				Text("Nome do Projeto")
 					.font(.headline)

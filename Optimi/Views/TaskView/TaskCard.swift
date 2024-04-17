@@ -32,6 +32,7 @@ struct TaskCard: View {
 					 
 					 Spacer()
 					 
+
 					 Button {
 						  //vai abrir um Menu com as duas opções
 						  //Aqui vai ter a opção de Delete e Update
@@ -43,6 +44,7 @@ struct TaskCard: View {
 					 }
 					 .buttonStyle(PlainButtonStyle())
 					 .padding(.vertical, 5)
+
 				}
 		  }.frame(height: 77)
 	 }
