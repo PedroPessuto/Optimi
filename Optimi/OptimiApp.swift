@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import Aptabase
 
 @main
 struct OptimiApp: App {
+	
+	init() {
+		Aptabase.shared.initialize(appKey: "A-US-6406790195")
+		Aptabase.shared.trackEvent("App_started")
+	}
+	
     var body: some Scene {
         
         @State var generalController: GeneralController = GeneralController()

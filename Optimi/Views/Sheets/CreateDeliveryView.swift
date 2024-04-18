@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Aptabase
 
 
 struct CreateDeliveryView: View {
@@ -93,6 +94,7 @@ struct CreateDeliveryView: View {
 							await controller.createDelivery(delivery, task.taskId!)
 							dismiss()
 						}
+						Aptabase.shared.trackEvent("Criou uma delivery")
 					}, label: {
 						ZStack{
 							Text("Criar Entrega")

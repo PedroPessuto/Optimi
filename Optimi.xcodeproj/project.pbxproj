@@ -35,6 +35,7 @@
 		BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */; };
 		BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BD2BC6FDA000543D27 /* oInput.swift */; };
 		BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29C02BC7133400543D27 /* ProjectView.swift */; };
+		E93945FC2BD19DBC00EA1D58 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = E93945FB2BD19DBC00EA1D58 /* Aptabase */; };
 		E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B703F2BC736A60067D0F2 /* TaskCard.swift */; };
 		E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B70422BC736F00067D0F2 /* StatusPill.swift */; };
 		E97621842BC99F1C005FDAEC /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621832BC99F1C005FDAEC /* FeedbackModel.swift */; };
@@ -121,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93945FC2BD19DBC00EA1D58 /* Aptabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +331,9 @@
 			dependencies = (
 			);
 			name = Optimi;
+			packageProductDependencies = (
+				E93945FB2BD19DBC00EA1D58 /* Aptabase */,
+			);
 			productName = Optimi;
 			productReference = BFD96F7A2BC45913003163E5 /* Optimi.app */;
 			productType = "com.apple.product-type.application";
@@ -401,6 +406,9 @@
 				Base,
 			);
 			mainGroup = BFD96F712BC45913003163E5;
+			packageReferences = (
+				E93945FA2BD19DBC00EA1D58 /* XCRemoteSwiftPackageReference "aptabase-swift" */,
+			);
 			productRefGroup = BFD96F7B2BC45913003163E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -650,14 +658,15 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.optimi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -691,14 +700,15 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.optimi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -847,6 +857,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E93945FA2BD19DBC00EA1D58 /* XCRemoteSwiftPackageReference "aptabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aptabase/aptabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E93945FB2BD19DBC00EA1D58 /* Aptabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E93945FA2BD19DBC00EA1D58 /* XCRemoteSwiftPackageReference "aptabase-swift" */;
+			productName = Aptabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFD96F722BC45913003163E5 /* Project object */;
 }
