@@ -20,6 +20,8 @@ struct CreateTaskView: View {
 	@State public var taskLink: String = ""
 	@State public var taskDesigners: String = ""
 	
+	@State public var taskDeadline: Date = Date.now
+	
 	var body: some View {
 		NavigationStack{
 			VStack(alignment: .leading){
@@ -57,6 +59,11 @@ struct CreateTaskView: View {
 				.cornerRadius(5)
 				.padding(.bottom, 14)
 
+				
+				DatePicker(selection: $taskDeadline) {
+					Text("Selecione um Deadline")
+				}
+				.datePickerStyle(.automatic)
 				
 				HStack {
 					VStack(alignment: .leading) {
@@ -103,7 +110,7 @@ struct CreateTaskView: View {
 					})
 					Button(action: {
 						Task {
-							await controller.createTask(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: prototypeLink, taskDesigners: taskDesigners)
+							await controller.createTask(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: prototypeLink, taskDesigners: taskDesigners, taskDeadline: taskDeadline)
 							dismiss()
 						}
 						Aptabase.shared.trackEvent("Criou uma Task")

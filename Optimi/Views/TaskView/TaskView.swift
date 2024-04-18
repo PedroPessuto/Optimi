@@ -41,7 +41,7 @@ struct TaskView: View {
 
                 
                 HStack{
-									if let date = task.taskCreatedAt {
+									if let date = task.taskDeadline {
 										Text("Deadline: ")
 										Text("\(formatter.string(from: date))")
 									}

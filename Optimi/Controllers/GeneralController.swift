@@ -49,33 +49,36 @@ import CloudKit
         
     }
     
-    
-    // ========== TASKS FUNCTIONS ==========
-    
-    public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "") async {
-        
-        if let project = self.project {
-            let taskModel = TaskModel(taskName: taskName,
-                                      taskDescription: taskDescription,
-                                      taskLink: taskLink,
-                                      taskPrototypeLink: taskPrototypeLink,
-                                      taskProjectReference: project.projectId!,
-                                      taskDesigners: self.account?.accountName ?? taskDesigners,
-                                      taskDevelopers: "Nenhum dev associado...")
-            let task = await self.cloudController.createTask(taskModel)
-            if let t = task {
-                self.project?.projectTasks.append(t)
-            }
-        }
-        
-    }
-    
-    public func getTasksFromProject() async {
-        if let projectID = self.project?.projectId {
-            let response = await self.cloudController.getTasksFromProject(projectID)
-            self.project?.projectTasks = response
-        }
-    }
+
+	
+	// ========== TASKS FUNCTIONS ==========
+	
+	public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "", taskDeadline: Date?) async {
+		
+		if let project = self.project {
+			let taskModel = TaskModel(taskName: taskName, 
+											  taskDescription: taskDescription,
+											  taskLink: taskLink,
+											  taskPrototypeLink: taskPrototypeLink,
+											  taskProjectReference: project.projectId!,
+											  taskDesigners: self.account?.accountName ?? taskDesigners,
+											  taskDevelopers: "Nenhum dev associado...",
+											  taskDeadline: taskDeadline)
+			let task = await self.cloudController.createTask(taskModel)
+			if let t = task {
+				self.project?.projectTasks.append(t)
+			}
+		}
+		
+	}
+	
+	public func getTasksFromProject() async {
+		if let projectID = self.project?.projectId {
+			let response = await self.cloudController.getTasksFromProject(projectID)
+			self.project?.projectTasks = response
+		}
+	}
+
     
     public func changeTaskStatus(_ taskModel: TaskModel, _ taskStatus: TaskStatus) async {
         
