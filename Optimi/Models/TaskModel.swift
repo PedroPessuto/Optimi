@@ -12,6 +12,7 @@ import CloudKit
 	var taskName: String
 	var taskDescription: String?
 	var taskCreatedAt: Date?
+	var taskDeadline: Date?
 	var taskLink: String?
 	var taskPrototypeLink: String?
 	var taskProjectReference: CKRecord.ID?
@@ -30,6 +31,7 @@ import CloudKit
 		taskRecord.setValue(self.taskStatus, forKey: TaskFields.taskStatus.rawValue)
 		taskRecord.setValue(self.taskDesigners, forKey: TaskFields.taskDesigners.rawValue)
 		taskRecord.setValue(self.taskDevelopers, forKey: TaskFields.taskDevelopers.rawValue)
+		taskRecord.setValue(self.taskDeadline, forKey: TaskFields.taskDeadline.rawValue)
         
         if let x = taskProjectReference {
             let reference = CKRecord.Reference(recordID: x, action: .deleteSelf)
@@ -49,6 +51,7 @@ import CloudKit
         self.taskDescription = record[TaskFields.taskDescription.rawValue] as? String
         self.taskLink = record[TaskFields.taskLink.rawValue] as? String
         self.taskPrototypeLink = record[TaskFields.taskPrototypeLink.rawValue] as? String
+		 self.taskDeadline = record[TaskFields.taskDeadline.rawValue] as? Date
         let x = record[TaskFields.taskProjectReference.rawValue] as? CKRecord.Reference
         if let u = x?.recordID {
             self.taskProjectReference = CKRecord.ID(recordName: u.recordName)
@@ -60,7 +63,7 @@ import CloudKit
 		self.taskDevelopers = record[TaskFields.taskDevelopers.rawValue] as? String
 	}
 	
-	init(taskName: String, taskDescription: String?, taskLink: String?, taskPrototypeLink: String?, taskProjectReference: CKRecord.ID, taskDesigners: String?, taskDevelopers: String?) {
+	init(taskName: String, taskDescription: String?, taskLink: String?, taskPrototypeLink: String?, taskProjectReference: CKRecord.ID, taskDesigners: String?, taskDevelopers: String?, taskDeadline: Date?) {
 		self.taskName = taskName
 		self.taskDescription = taskDescription
 		self.taskLink = taskLink
@@ -68,6 +71,7 @@ import CloudKit
 		self.taskProjectReference = taskProjectReference
 		self.taskDesigners = taskDesigners
 		self.taskDevelopers = taskDevelopers
+		self.taskDeadline = taskDeadline
 	}
     
     func update(record: CKRecord) {
@@ -80,6 +84,7 @@ import CloudKit
         self.taskDescription = record[TaskFields.taskDescription.rawValue] as? String
         self.taskLink = record[TaskFields.taskLink.rawValue] as? String
         self.taskPrototypeLink = record[TaskFields.taskPrototypeLink.rawValue] as? String
+		 self.taskDeadline = record[TaskFields.taskDeadline.rawValue] as? Date
         let x = record[TaskFields.taskProjectReference.rawValue] as? CKRecord.Reference
         if let u = x?.recordID {
             self.taskProjectReference = CKRecord.ID(recordName: u.recordName)
