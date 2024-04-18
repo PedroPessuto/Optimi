@@ -16,7 +16,25 @@ import CloudKit
 	public var feedbackDeliveryReference: String?
 	public var feedbackCreatedAt: Date?
 	public var feedbackDesigner: String?
+    public var record: CKRecord? = nil
 	
+    func update(_ record: CKRecord) {
+        guard
+            let feedbackStatus = record[FeedbackFields.feedbackStatus.rawValue] as? String,
+            let feedbackTags = record[FeedbackFields.feedbackTags.rawValue] as? [String],
+            let feedbackDescription = record[FeedbackFields.feedbackDescription.rawValue] as? [String],
+            let feedbackDesigner = record[FeedbackFields.feedbackDesigner.rawValue] as? String
+        else { return }
+        self.feedbackId = record.recordID.recordName
+        self.feedbackStatus = feedbackStatus
+        self.feedbackTags = feedbackTags
+        self.feedbackDescription = feedbackDescription
+        self.feedbackDeliveryReference = record.parent?.recordID.recordName
+        self.feedbackCreatedAt = record.creationDate
+        self.feedbackDesigner = feedbackDesigner
+        self.record = record
+    }
+    
 	init?(_ record: CKRecord) {
 		guard
 			let feedbackStatus = record[FeedbackFields.feedbackStatus.rawValue] as? String,
@@ -31,7 +49,9 @@ import CloudKit
 		self.feedbackDeliveryReference = record.parent?.recordID.recordName
 		self.feedbackCreatedAt = record.creationDate
 		self.feedbackDesigner = feedbackDesigner
+        self.record = record
 	}
+    
 	
 	init(feedbackStatus: String, feedbackTags: [String], feedbackDescription: [String], feedbackDesigner: String) {
 		self.feedbackId = nil

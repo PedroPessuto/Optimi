@@ -9,36 +9,36 @@ import Foundation
 import CloudKit
 
 @Observable class GeneralController {
-	private var cloudController: CloudController = CloudController()
-	public var screen: ScreenNames = .HomeView
-	public var account: AccountModel?
-	public var project: ProjectModel?
-	
-	
-	public func checkAccountStatus() async -> CKAccountStatus? {
-		return await cloudController.checkAccountStatus() ?? nil
-	}
-	
-	// ========== PROJECT FUNCTIONS ==========
-	
-	// Cria um projeto
-	public func createProject(_ projectName: String) async {
-		let project = await self.cloudController.createProject(projectName)
-		self.project = project
-		self.screen = .ProjectView
-	}
-	
-	// Acessa um projeto
-	public func getProject(_ projetKey: String) async {
-		let project = await self.cloudController.getProject(projetKey)
-		self.project = project
-		if (project != nil) {
-			screen = ScreenNames.ProjectView
-		}
-		else {
-			screen = ScreenNames.ProjectNotFoundView
-		}
-	}
+    private var cloudController: CloudController = CloudController()
+    public var screen: ScreenNames = .HomeView
+    public var account: AccountModel?
+    public var project: ProjectModel?
+    
+    
+    public func checkAccountStatus() async -> CKAccountStatus? {
+        return await cloudController.checkAccountStatus() ?? nil
+    }
+    
+    // ========== PROJECT FUNCTIONS ==========
+    
+    // Cria um projeto
+    public func createProject(_ projectName: String) async {
+        let project = await self.cloudController.createProject(projectName)
+        self.project = project
+        self.screen = .ProjectView
+    }
+    
+    // Acessa um projeto
+    public func getProject(_ projetKey: String) async {
+        let project = await self.cloudController.getProject(projetKey)
+        self.project = project
+        if (project != nil) {
+            screen = ScreenNames.ProjectView
+        }
+        else {
+            screen = ScreenNames.ProjectNotFoundView
+        }
+    }
     
     // MARK: Delete a project
     public func deleteProject() async -> Void {
@@ -49,6 +49,7 @@ import CloudKit
         
     }
     
+
 	
 	// ========== TASKS FUNCTIONS ==========
 	
@@ -77,6 +78,7 @@ import CloudKit
 			self.project?.projectTasks = response
 		}
 	}
+
     
     public func changeTaskStatus(_ taskModel: TaskModel, _ taskStatus: TaskStatus) async {
         
@@ -90,23 +92,37 @@ import CloudKit
             task.taskId == taskModel.taskId
         }
     }
-
-  
-	// ========== FEEDBACK FUNCTIONS ==========
-	
-	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async -> FeedbackModel? {
-		let response = await cloudController.createFeedback(feedback, delivery)
-        await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Approved)
-		return response
-	}
-	
-	public func deleteFeedback(_ feedback: FeedbackModel) async {
-		await cloudController.deleteFeedback(feedback)
-	}
-	
-	public func getFeedbacksFromDelivery(_ delivery: DeliveryModel) async -> [FeedbackModel] {
-		await cloudController.getFeedbacksFromDelivery(delivery.getRecord().recordID)
-	}
+    
+    
+    // ========== FEEDBACK FUNCTIONS ==========
+    
+    public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel, _ task: TaskModel) async -> FeedbackModel? {
+        let response = await cloudController.createFeedback(feedback, delivery)
+        if let approved = response!.feedbackStatus {
+            if approved == "Aprovada" {
+                await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Approved)
+                await cloudController.changeOnlyTaskStatus(task, taskStatus: .Aprovado)
+                delivery.deliveryStatus = DeliveryStatus.Approved
+                task.taskStatus = TaskStatus.Aprovado.rawValue
+            }
+            else {
+                await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Reproved)
+                await cloudController.changeOnlyTaskStatus(task, taskStatus: .Reprovada)
+                delivery.deliveryStatus = DeliveryStatus.Reproved
+                task.taskStatus = TaskStatus.ReadyForDev.rawValue
+            }
+        }
+      
+        return response
+    }
+    
+    public func deleteFeedback(_ feedback: FeedbackModel) async {
+        await cloudController.deleteFeedback(feedback)
+    }
+    
+    public func getFeedbacksFromDelivery(_ delivery: DeliveryModel) async -> [FeedbackModel] {
+        await cloudController.getFeedbacksFromDelivery(delivery.getRecord().recordID)
+    }
     
     // MARK: Delete a feedback from database
     public func deleteFeedback(feedbackModel: FeedbackModel, deliveryModel: DeliveryModel) async -> Void {
@@ -115,49 +131,49 @@ import CloudKit
             feedback.feedbackId == feedbackModel.feedbackId
         }
     }
-	
     
-	// ========== DELIVERY FUNCTIONS ==========
     
-	public func createDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> DeliveryModel? {
+    // ========== DELIVERY FUNCTIONS ==========
+    
+    public func createDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> DeliveryModel? {
         if self.project != nil {
-			let newDelivery = await cloudController.createDelivery(deliveryModel: deliveryModel, taskId: taskId)
-			if let delivery = newDelivery {
-				for task in self.project!.projectTasks {
-					if (task.taskId == taskId) {
-						task.taskDeliveries.append(delivery)
+            let newDelivery = await cloudController.createDelivery(deliveryModel: deliveryModel, taskId: taskId)
+            if let delivery = newDelivery {
+                for task in self.project!.projectTasks {
+                    if (task.taskId == taskId) {
+                        task.taskDeliveries.append(delivery)
                         task.taskStatus = TaskStatus.RevisaoPendente.rawValue
                         await cloudController.changeOnlyTaskStatus(task, taskStatus: .RevisaoPendente)
                         break
-					}
-				}
-			}
+                    }
+                }
+            }
             
-			return newDelivery
-		}
-		return nil
-	}
+            return newDelivery
+        }
+        return nil
+    }
     
-	public func deleteDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> Void {
-		await cloudController.deleteDelivery(deliveryModel)
-		if (self.project != nil) {
-			for task in self.project!.projectTasks {
-				if (task.taskId == taskId) {
-					task.taskDeliveries.removeAll { delivery in
-						deliveryModel.deliveryId == delivery.deliveryId
-					}
-				}
-			}
-		}
-	}
-	
-	public func getDeliveriesFromTask(_ task: TaskModel) async -> Void {
-		if (self.project?.projectId) != nil {
-			let record = task.getRecord()
-			let response = await self.cloudController.getDeliveriesFromTask(record.recordID)
-			task.taskDeliveries = response
-		}
-	}
+    public func deleteDelivery(_ deliveryModel: DeliveryModel, _ taskId: String) async -> Void {
+        await cloudController.deleteDelivery(deliveryModel)
+        if (self.project != nil) {
+            for task in self.project!.projectTasks {
+                if (task.taskId == taskId) {
+                    task.taskDeliveries.removeAll { delivery in
+                        deliveryModel.deliveryId == delivery.deliveryId
+                    }
+                }
+            }
+        }
+    }
+    
+    public func getDeliveriesFromTask(_ task: TaskModel) async -> Void {
+        if (self.project?.projectId) != nil {
+            let record = task.getRecord()
+            let response = await self.cloudController.getDeliveriesFromTask(record.recordID)
+            task.taskDeliveries = response
+        }
+    }
     
     // MARK: Delete a delivery from database
     public func deleteDelivery(_ deliveryModel: DeliveryModel, _ taskModel: TaskModel) async -> Void {
@@ -167,6 +183,8 @@ import CloudKit
         }
     }
     
+    
+   
     
 }
 

@@ -125,7 +125,7 @@ import CloudKit
         
         do {
             let rec = try await databasePublic.record(for: delivery.getRecord().recordID)
-            rec.setValue(deliveryStatus.rawValue, forKey: "taskStatus")
+            rec.setValue(deliveryStatus.rawValue, forKey: "deliveryStatus")
             let saved = try await databasePublic.save(rec)
             delivery.update(saved)
             
@@ -221,6 +221,19 @@ import CloudKit
 			return []
 		}
 	}
+    
+    // MARK: Change Task Status From Database
+    public func changeFeedbackStatus(_ feedback: FeedbackModel, feedbackStatus: String) async {
+        
+        do {
+            let rec = try await databasePublic.record(for: feedback.record!.recordID)
+            rec.setValue(feedbackStatus, forKey: "taskStatus")
+            let saved = try await databasePublic.save(rec)
+            feedback.update(saved)
+        } catch {
+            return
+        }
+    }
     
     // ========== DELIVERY FUNCTIONS ==========
     

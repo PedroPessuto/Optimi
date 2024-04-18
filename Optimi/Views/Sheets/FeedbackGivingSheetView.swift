@@ -22,7 +22,7 @@ struct FeedbackGivingSheetView: View {
 	
 	@State var tagSelections: [String] = [""]
 	@State var pickerTagDescription: [String] = [""]
-	
+    var task: TaskModel
 	@Binding var feedbackList: [FeedbackModel]
 	
 	@Environment(\.defaultMinListRowHeight) var rowHeight
@@ -116,7 +116,7 @@ struct FeedbackGivingSheetView: View {
 							feedbackTags: tagSelections.isEmpty ? [] : tagSelections.first == "" && tagSelections.count == 1 ? [""] : tagSelections,
 							feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription, feedbackDesigner: controller.account?.accountName ?? "Designer")
 						
-						let response = await controller.createFeedback(feedback, delivery)
+						let response = await controller.createFeedback(feedback, delivery, task)
 						
 						feedbackList.append(response ?? feedback)
 						
