@@ -34,6 +34,7 @@ struct FeedbackGivingSheetView: View {
 			Text("Feedback")
 				.font(.largeTitle)
 				.fontWeight(.bold)
+				.padding(.bottom, 14)
 			
 //			 HStack {
 //				 Text("\(delivery.deliveryName)")
@@ -129,7 +130,7 @@ struct FeedbackGivingSheetView: View {
 			
 		}
 		.padding()
-		.frame(minWidth: 450, maxWidth: 500, minHeight: 380, maxHeight: 400)
+		.frame(minWidth: 450, maxWidth: 500, minHeight: 380, maxHeight: 500)
 	}
 }
 

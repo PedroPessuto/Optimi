@@ -29,6 +29,7 @@ struct CreateDeliveryView: View {
 				Text("Criar Entrega")
 					.font(.title)
 					.bold()
+					.padding(.bottom, 14)
 				
 //				Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ")
 //					.font(.footnote)
@@ -103,7 +104,7 @@ struct CreateDeliveryView: View {
 				}
 			}
 			.padding()
-		}.frame(minWidth: 511, minHeight: 433)
+		}.frame(minWidth: 511, minHeight: 450)
 		
 	}
 }

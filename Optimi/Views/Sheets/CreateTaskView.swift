@@ -29,6 +29,7 @@ struct CreateTaskView: View {
 				Text("Criar Task")
 					.font(.title)
 					.bold()
+					.padding(.bottom, 14)
 				
 //				Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ")
 //					.font(.footnote)
@@ -59,11 +60,11 @@ struct CreateTaskView: View {
 				.cornerRadius(5)
 				.padding(.bottom, 14)
 
-				
-				DatePicker(selection: $taskDeadline) {
-					Text("Selecione um Deadline")
-				}
+				Text("Deadline")
+					.fontWeight(.semibold)
+				DatePicker("", selection: $taskDeadline)
 				.datePickerStyle(.automatic)
+				.padding(.bottom, 14)
 				
 				HStack {
 					VStack(alignment: .leading) {
@@ -122,7 +123,7 @@ struct CreateTaskView: View {
 				}
 			}
 			.padding()
-		}.frame(minWidth: 511, minHeight: 433)
+		}.frame(minWidth: 511, minHeight: 500)
 
 	}
 }
