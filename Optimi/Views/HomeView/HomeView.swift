@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Aptabase
 
 struct HomeView: View {
 	@Environment(GeneralController.self) private var controller
@@ -43,6 +44,7 @@ struct HomeView: View {
                             // Criar Projeto
                             Button(action: {
                                 createProjectViewIsPresented.toggle()
+										 Aptabase.shared.trackEvent("Abriu o formulário de criação de um projeto")
                             }) {
                                 Text("Criar Projeto")
                                 Image(systemName: "plus")
@@ -71,13 +73,14 @@ struct HomeView: View {
                             Spacer()
                         }
                         oInput(text: "Insira o token aqui", binding: $projectKey)
-                            .onChange(of: projectKey) { _, newValue in
-                                if (newValue.count == 36) {
-                                    getProject()
-                                }
-                            }
+//                            .onChange(of: projectKey) { _, newValue in
+//                                if (newValue.count == 36) {
+//                                    getProject()
+//                                }
+//                            }
                             .onSubmit {
                                 getProject()
+										 Aptabase.shared.trackEvent("Tentou acessar um projeto")
                             }
                             .disabled(isLoading)
                         oButton(text: "Entrar no Projeto") {

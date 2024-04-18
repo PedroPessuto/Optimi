@@ -5,6 +5,9 @@
 // Created by Pedro Pessuto on 09/04/24.
 //
 import SwiftUI
+import Aptabase
+
+
 struct CreateProjectView: View {
 	@Environment(\.dismiss) private var dismiss
 	@Environment(GeneralController.self) var controller
@@ -50,6 +53,7 @@ struct CreateProjectView: View {
 						Task {
 							await createProject()
 						}
+						Aptabase.shared.trackEvent("Criou um projeto")
 						dismiss()
 					} label: {
 						ZStack{
