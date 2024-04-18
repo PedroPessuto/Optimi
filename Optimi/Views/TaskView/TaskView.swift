@@ -73,7 +73,7 @@ struct TaskView: View {
 								HStack{
 									 Image(systemName: "link")
 										  .foregroundStyle(.blue)
-									 Link("Tarefa", destination: URL(string: task.taskLink!)!)
+									 Link("Tarefa", destination: URL(string: task.taskLink ?? "")!)
 								}.font(.title2)
 									 .padding(.bottom, 40)
 								

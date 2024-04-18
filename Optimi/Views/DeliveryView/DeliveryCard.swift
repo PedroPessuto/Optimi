@@ -117,7 +117,7 @@ struct DeliveryCard: View {
         }
         .padding()
         .sheet(isPresented: $createFeedbackViewIsPresented) {
-			  FeedbackGivingSheetView(feedbackList: $feedbacks, delivery: delivery)
+            FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
         }
     }
 }
