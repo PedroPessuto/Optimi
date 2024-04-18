@@ -8,6 +8,7 @@
 import Foundation
 
 enum DeliveryStatus: String {
-  case ReadyForDev = "Ready for Dev"
-  case ReadyForDesign = "Ready for Design"
+    case Approved = "Aprovada"
+    case Reproved = "Reprovada"
+    case Revision = "Revisão Pendente"
 }

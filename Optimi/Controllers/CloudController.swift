@@ -119,6 +119,35 @@ import CloudKit
         return []
     }
     
+    
+    // MARK: Change Task Status From Database
+    public func changeDeliveryStatus(_ delivery: DeliveryModel, deliveryStatus: DeliveryStatus) async {
+        
+        do {
+            let rec = try await databasePublic.record(for: delivery.getRecord().recordID)
+            rec.setValue(deliveryStatus.rawValue, forKey: "taskStatus")
+            let saved = try await databasePublic.save(rec)
+            delivery.update(saved)
+            
+        } catch {
+            return
+        }
+    }
+    
+    
+    // MARK: Change Task Status From Database
+    public func changeOnlyTaskStatus(_ taskModel: TaskModel, taskStatus: TaskStatus) async {
+        
+        do {
+            let rec = try await databasePublic.record(for: taskModel.getRecord().recordID)
+            rec.setValue(taskStatus.rawValue, forKey: "taskStatus")
+            let saved = try await databasePublic.save(rec)
+            taskModel.update(record: saved)
+        } catch {
+            return
+        }
+    }
+    
     // MARK: Change Task Status From Database
 	public func changeTaskStatus(_ taskModel: TaskModel, taskStatus: TaskStatus, personName: String, role: Roles) async {
 		
@@ -236,4 +265,6 @@ import CloudKit
         }
     }
     
+    
+   
 }

@@ -39,6 +39,24 @@ import CloudKit
 		deliveryRecord!.setValue(deliveryStatus.rawValue, forKey: DeliveryFields.deliveryStatus.rawValue)
 		return deliveryRecord!
 	}
+    
+    
+    func update(_ record: CKRecord) {
+        
+        guard
+            let deliveryStatus = record[DeliveryFields.deliveryStatus.rawValue] as? String,
+            let deliveryName = record[DeliveryFields.deliveryName.rawValue] as? String
+        else { return  }
+        self.deliveryId = record.recordID.recordName
+        self.deliveryDevelopers = record[DeliveryFields.deliveryDevelopers.rawValue] as? String
+        self.deliveryDocumentation = record[DeliveryFields.deliveryDocumentation.rawValue] as? String
+        self.deliveryImplementationLink = record[DeliveryFields.deliveryImplementationLink.rawValue] as? String
+        self.deliveryCreatedAt = record.creationDate
+        self.deliveryName = deliveryName
+        self.deliveryStatus = DeliveryStatus.init(rawValue: deliveryStatus)!
+        self.deliveryTaskReference = record.parent?.recordID.recordName
+    
+    }
 	// ========== BUILDERS ==========
 	// MARK: Init from cloud record
 	init?(_ record: CKRecord) {

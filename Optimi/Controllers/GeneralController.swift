@@ -95,6 +95,7 @@ import CloudKit
 	
 	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async -> FeedbackModel? {
 		let response = await cloudController.createFeedback(feedback, delivery)
+        await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Approved)
 		return response
 	}
 	
@@ -124,9 +125,13 @@ import CloudKit
 				for task in self.project!.projectTasks {
 					if (task.taskId == taskId) {
 						task.taskDeliveries.append(delivery)
+                        task.taskStatus = TaskStatus.RevisaoPendente.rawValue
+                        await cloudController.changeOnlyTaskStatus(task, taskStatus: .RevisaoPendente)
+                        break
 					}
 				}
 			}
+            
 			return newDelivery
 		}
 		return nil
@@ -163,3 +168,7 @@ import CloudKit
     
     
 }
+
+// Delivery criada --> delivery pendente --> task: revisao pendente
+// Feedback Aprovado --> delivery aprovada --> task aprovada
+// Feedback reprovar --> delivery reprovada --> task ready for dev
