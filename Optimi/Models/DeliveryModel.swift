@@ -19,7 +19,7 @@ import CloudKit
 	public var deliveryTaskReference: String?
 	// MARK: Requireds atributtes
 	public var deliveryName: String
-	public var deliveryStatus: DeliveryStatus = .ReadyForDev
+	public var deliveryStatus: DeliveryStatus = .Revision
     public var deliveryFeedbacks: [FeedbackModel] = []
     
 	// ========== FUNCTIONS ==========
