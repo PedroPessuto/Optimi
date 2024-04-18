@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Aptabase
+
 
 struct FeedbackGivingSheetView: View {
 	
@@ -120,6 +122,7 @@ struct FeedbackGivingSheetView: View {
 						
 						dismiss()
 					}
+					Aptabase.shared.trackEvent("Criou um feedback")
 				}
 				.keyboardShortcut(.defaultAction)
 			}

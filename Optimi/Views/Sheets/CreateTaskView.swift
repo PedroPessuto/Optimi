@@ -5,6 +5,9 @@
 // Created by Marina Martin on 02/04/24.
 //
 import SwiftUI
+import Aptabase
+
+
 struct CreateTaskView: View {
 	
 	@Environment(\.dismiss) private var dismiss
@@ -103,6 +106,7 @@ struct CreateTaskView: View {
 							await controller.createTask(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: prototypeLink, taskDesigners: taskDesigners)
 							dismiss()
 						}
+						Aptabase.shared.trackEvent("Criou uma Task")
 					}, label: {
 						ZStack{
 							Text("Criar Task")
