@@ -125,7 +125,7 @@ import CloudKit
         
         do {
             let rec = try await databasePublic.record(for: delivery.getRecord().recordID)
-            rec.setValue(deliveryStatus.rawValue, forKey: "taskStatus")
+            rec.setValue(deliveryStatus.rawValue, forKey: "deliveryStatus")
             let saved = try await databasePublic.save(rec)
             delivery.update(saved)
             
