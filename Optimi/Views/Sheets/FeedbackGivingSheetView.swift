@@ -21,6 +21,8 @@ struct FeedbackGivingSheetView: View {
 	@State var tagSelections: [String] = [""]
 	@State var pickerTagDescription: [String] = [""]
 	
+	@Binding var feedbackList: [FeedbackModel]
+	
 	@Environment(\.defaultMinListRowHeight) var rowHeight
 	
 	var delivery: DeliveryModel
@@ -83,10 +85,13 @@ struct FeedbackGivingSheetView: View {
 						}.pickerStyle(.automatic)
 							.frame(width: 120)
 						
-						TextEditor(text: $pickerTagDescription[index])
-							.scrollIndicators(.never)
+//						TextEditor(text: $pickerTagDescription[index])
+//							.scrollIndicators(.never)
+//							.padding(4)
+//							.background(RoundedRectangle(cornerRadius: 4).stroke())
+						TextField("", text: $pickerTagDescription[index], prompt: Text("Descrição"), axis: .vertical)
 							.padding(4)
-							.background(RoundedRectangle(cornerRadius: 4).stroke())
+							.background(RoundedRectangle(cornerRadius: 4).stroke(Color(red: 128/256, green: 128/256, blue: 128/256)))
 					}
 				}
 			}
@@ -109,7 +114,9 @@ struct FeedbackGivingSheetView: View {
 							feedbackTags: tagSelections.isEmpty ? [] : tagSelections.first == "" && tagSelections.count == 1 ? [""] : tagSelections,
 							feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription, feedbackDesigner: controller.account?.accountName ?? "Designer")
 						
-						await controller.createFeedback(feedback, delivery)
+						let response = await controller.createFeedback(feedback, delivery)
+						
+						feedbackList.append(response ?? feedback)
 						
 						dismiss()
 					}

@@ -33,11 +33,12 @@ struct TaskView: View {
 									 .font(.largeTitle)
 									 .fontWeight(.semibold)
 								
-								VStack{
-									 Text(task.taskDescription!)
-										  .padding(.bottom, 9)
-										  .font(.body)
-								}.frame(width: 200)
+
+								  Text(task.taskDescription!)
+									  .padding(.bottom, 9)
+									  .font(.body)
+									  .frame(width: 200, alignment: .leading)
+
                 
                 HStack{
 									if let date = task.taskCreatedAt {

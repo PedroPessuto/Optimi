@@ -48,9 +48,11 @@ struct CreateDeliveryView: View {
 					.padding(.bottom, 5)
 				
 				VStack {
-					TextEditor(text: $deliveryDescription)
-						.scrollDisabled(true)
-						.scrollIndicators(.never)
+//					TextEditor(text: $deliveryDescription)
+//						.scrollDisabled(true)
+//						.scrollIndicators(.never)
+					TextField("", text: $deliveryDescription, prompt: Text("Descrição"), axis: .vertical)
+						.lineLimit(5...10)
 				}
 				.cornerRadius(5)
 				.padding(.bottom, 14)

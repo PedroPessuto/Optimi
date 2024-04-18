@@ -13,6 +13,7 @@ struct DeliveryCard: View {
     @Environment(GeneralController.self) var controller
     
     var delivery: DeliveryModel
+	var task: TaskModel
     
     @State var createFeedbackViewIsPresented: Bool = false
     
@@ -41,13 +42,23 @@ struct DeliveryCard: View {
                     
                     Spacer()
                     
-//                    Button {
-//                        //aqui edita ou deleta
-//                    } label: {
-//                        Image(systemName: "ellipsis.circle")
-//                            .foregroundColor(.secondary)
-//                    }
-//                    .buttonStyle(PlainButtonStyle())
+						 Menu {
+							 Button {
+								 Task {
+									 await controller.deleteDelivery(delivery, task.taskId!)
+								 }
+							 } label: {
+								 HStack {
+									 Image(systemName: "trash")
+									 Text("Deletar entrega")
+								 }
+							 }
+
+						 } label: {
+							 Image(systemName: "ellipsis.circle")
+								 .foregroundColor(.secondary)
+						 }
+						 .buttonStyle(PlainButtonStyle())
                 }
                 
                 HStack{
@@ -59,9 +70,8 @@ struct DeliveryCard: View {
                 HStack {
                     Image(systemName: "person.fill")
                     
-                    Text("\(delivery.deliveryDevelopers)")
+						 Text("\(delivery.deliveryDevelopers ?? "Developers")")
                     
-                    //						 Text("\(delivery.deliveryCreatedAt)")
                     if let date = delivery.deliveryCreatedAt {
                         Text("\(formatter.string(from: date))")
                     }
@@ -107,7 +117,7 @@ struct DeliveryCard: View {
         }
         .padding()
         .sheet(isPresented: $createFeedbackViewIsPresented) {
-            FeedbackGivingSheetView(delivery: delivery)
+			  FeedbackGivingSheetView(feedbackList: $feedbacks, delivery: delivery)
         }
     }
 }
@@ -158,6 +168,7 @@ extension DeliveryCard {
 			Button {
 				Task {
 					await controller.deleteFeedback(feedbacks.first!)
+					feedbacks.removeFirst()
 				}
 			} label: {
 				HStack {

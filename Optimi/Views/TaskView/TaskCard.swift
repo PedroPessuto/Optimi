@@ -32,19 +32,24 @@ struct TaskCard: View {
 					 
 					 Spacer()
 					 
-
-					 Button {
-						  //vai abrir um Menu com as duas opções
-						  //Aqui vai ter a opção de Delete e Update
-                         Task {
-                            await controller.deleteTask(taskModel: task)
-                         }
-					 } label: {
-						  Image(systemName: "ellipsis")
-					 }
-					 .buttonStyle(PlainButtonStyle())
-					 .padding(.vertical, 5)
-
+					Menu {
+						Button(role: .destructive) {
+							Task {
+								await controller.deleteTask(taskModel: task)
+							}
+						} label: {
+							HStack {
+								Image(systemName: "trash")
+								Text("Deletar task")
+							}
+						}
+						
+					} label: {
+						Image(systemName: "ellipsis")
+					}
+					.buttonStyle(PlainButtonStyle())
+					.padding(.vertical, 5)
+					.padding(.horizontal, 3)
 				}
 		  }.frame(height: 77)
 	 }

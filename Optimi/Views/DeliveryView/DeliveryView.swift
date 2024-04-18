@@ -24,7 +24,7 @@ struct DeliveryView: View {
             //Falta um if pra mostrar um empty state se tiver 0 Deliverys
             List{
                 ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
-                    DeliveryCard(delivery: delivery)
+						 DeliveryCard(delivery: delivery, task: task)
                 }
             }
         }

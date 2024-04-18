@@ -120,17 +120,19 @@ import CloudKit
     }
     
     // MARK: Change Task Status From Database
-    public func changeTaskStatus(_ taskModel: TaskModel, taskStatus: TaskStatus, personName: String, role: Roles) async {
-        
-        do {
-            let rec = try await databasePublic.record(for: taskModel.getRecord().recordID)
-            rec.setValue(taskStatus.rawValue, forKey: "taskStatus")
-            let saved = try await databasePublic.save(rec)
-            taskModel.update(record: saved)
-        } catch {
-            return
-        }
-    }
+	public func changeTaskStatus(_ taskModel: TaskModel, taskStatus: TaskStatus, personName: String, role: Roles) async {
+		
+		do {
+			let rec = try await databasePublic.record(for: taskModel.getRecord().recordID)
+			rec.setValue(taskStatus.rawValue, forKey: "taskStatus")
+			rec.setValue(personName, forKey: TaskFields.taskDevelopers.rawValue)
+			let saved = try await databasePublic.save(rec)
+			taskModel.update(record: saved)
+			taskModel.taskDevelopers?.append(personName)
+		} catch {
+			return
+		}
+	}
     
     // MARK: Delete a task from database
     public func deleteTask(_ taskModel: TaskModel) async -> Void {

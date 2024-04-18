@@ -93,8 +93,9 @@ import CloudKit
   
 	// ========== FEEDBACK FUNCTIONS ==========
 	
-	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async {
+	public func createFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel) async -> FeedbackModel? {
 		let response = await cloudController.createFeedback(feedback, delivery)
+		return response
 	}
 	
 	public func deleteFeedback(_ feedback: FeedbackModel) async {
