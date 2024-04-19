@@ -23,7 +23,6 @@ struct TaskView: View {
   
 	 var body: some View {
 		  NavigationStack{
-					 
 					 HStack(alignment: .center){
 						  VStack(alignment: .leading) {
 								StatusPill(status: task.taskStatus!)
@@ -64,19 +63,18 @@ struct TaskView: View {
 								
 								HStack{
 									 Image(systemName: "link")
-										  .foregroundStyle(.blue)
 									 Link("Protótipo", destination: URL(string: task.taskPrototypeLink!)!)
 										  .padding(.trailing, 50)
-                                          .foregroundColor(.blue)
 									 
 								}.font(.title2)
+                                  .foregroundColor(.blue)
 								
 								HStack{
 									 Image(systemName: "link")
-										  .foregroundStyle(.blue)
 									 Link("Tarefa", destination: URL(string: task.taskLink ?? "")!)
 								}.font(.title2)
 									 .padding(.bottom, 40)
+                                     .foregroundColor(.blue)
 								
 								Text("Responsáveis")
 									 .font(.title2)
@@ -110,7 +108,7 @@ struct TaskView: View {
 					#if os(iOS)
 					 .padding(.leading, 30)
 					#endif
-					 .background(imageBackground)
+                     .background(imageBackground)
 				
                 .toolbar {
 					 ToolbarItem(placement: .confirmationAction) {
@@ -158,5 +156,8 @@ extension TaskView {
 	private var imageBackground: some View {
 		Image(background(for: task.taskStatus!))
 			  .resizable()
+        #if os(iOS)
+              .scaledToFill()
+        #endif
 	}
 }

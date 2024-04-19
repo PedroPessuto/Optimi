@@ -36,7 +36,9 @@ struct ProjectView: View {
                         Image(systemName: "house")
                         #endif
                     }
-                    //.buttonStyle(PlainButtonStyle())
+                    #if os(macOS)
+                    .buttonStyle(PlainButtonStyle())
+                    #endif
                     
                     Spacer()
                     
@@ -67,7 +69,9 @@ struct ProjectView: View {
                         }
                         .padding(.vertical, 12)
                     }
-                    //.buttonStyle(PlainButtonStyle())
+                    #if os(macOS)
+                    .buttonStyle(PlainButtonStyle())
+                    #endif
                     
                     Spacer()
                     
@@ -77,7 +81,9 @@ struct ProjectView: View {
                     } label: {
                          Image(systemName: "ellipsis")
                     }
-                    //.buttonStyle(PlainButtonStyle())
+                    #if os(macOS)
+                    .buttonStyle(PlainButtonStyle())
+                    #endif
                     .padding(.vertical, 5)
                 }.padding()
                 
@@ -99,7 +105,9 @@ struct ProjectView: View {
                         Image(systemName: "plus")
                             .font(.title3)
                     }
-                    //.buttonStyle(PlainButtonStyle())
+                    #if os(macOS)
+                    .buttonStyle(PlainButtonStyle())
+                    #endif
                 }
                 .padding(.horizontal)
                 if tasksAreLoading {
