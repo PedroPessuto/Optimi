@@ -67,6 +67,7 @@ struct TaskView: View {
 										  .foregroundStyle(.blue)
 									 Link("Protótipo", destination: URL(string: task.taskPrototypeLink!)!)
 										  .padding(.trailing, 50)
+                                          .foregroundColor(.blue)
 									 
 								}.font(.title2)
 								
@@ -111,8 +112,7 @@ struct TaskView: View {
 					#endif
 					 .background(imageBackground)
 				
-			  
-				.toolbar {
+                .toolbar {
 					 ToolbarItem(placement: .confirmationAction) {
 						  Picker("CurrentScreen", selection: $currentScreen) {
 							  Text("Task").tag(ScreenNames.TaskView)
