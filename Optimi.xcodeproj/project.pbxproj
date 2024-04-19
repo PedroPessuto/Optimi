@@ -48,6 +48,9 @@
 		E97621962BC9CDBB005FDAEC /* DeliveryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */; };
 		E97621982BC9CDC2005FDAEC /* DeliveryFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */; };
 		E976219A2BC9CFE0005FDAEC /* CreateDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */; };
+		E9A40ECD2BD2E2A3007B71BA /* TagDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */; };
+		E9A40ECF2BD2EF2D007B71BA /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */; };
+		E9A40ED12BD2FE74007B71BA /* FeedbackTagCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */; };
 		E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +117,9 @@
 		E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryStatus.swift; sourceTree = "<group>"; };
 		E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFields.swift; sourceTree = "<group>"; };
 		E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryView.swift; sourceTree = "<group>"; };
+		E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDescriptionView.swift; sourceTree = "<group>"; };
+		E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTagCard.swift; sourceTree = "<group>"; };
 		E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,6 +317,9 @@
 			children = (
 				E976218E2BC9CCCB005FDAEC /* DeliveryView.swift */,
 				E97621912BC9CD17005FDAEC /* DeliveryCard.swift */,
+				E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */,
+				E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */,
+				E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */,
 			);
 			path = DeliveryView;
 			sourceTree = "<group>";
@@ -452,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */,
+				E9A40ECD2BD2E2A3007B71BA /* TagDescriptionView.swift in Sources */,
 				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
 				E97621962BC9CDBB005FDAEC /* DeliveryStatus.swift in Sources */,
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
@@ -472,6 +482,7 @@
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
 				BFEA29AE2BC6028C00543D27 /* CreateProjectView.swift in Sources */,
 				E97621862BC9A0A6005FDAEC /* FeedbackFields.swift in Sources */,
+				E9A40ECF2BD2EF2D007B71BA /* FloatingPanel.swift in Sources */,
 				BFEA29B22BC603D300543D27 /* ScreenNames.swift in Sources */,
 				BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */,
 				BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */,
@@ -484,6 +495,7 @@
 				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
 				BFEA29AC2BC601AA00543D27 /* Roles.swift in Sources */,
 				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
+				E9A40ED12BD2FE74007B71BA /* FeedbackTagCard.swift in Sources */,
 				E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */,
 				E976218F2BC9CCCB005FDAEC /* DeliveryView.swift in Sources */,
 				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
