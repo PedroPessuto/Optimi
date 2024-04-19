@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF8706332BD2DF47003523C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8706312BD2DF47003523C9 /* Localizable.strings */; };
 		BF9218F02BCDB75700953448 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9218EF2BCDB75700953448 /* TaskStatus.swift */; };
 		BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F7D2BC45913003163E5 /* OptimiApp.swift */; };
 		BFD96F802BC45913003163E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F7F2BC45913003163E5 /* ContentView.swift */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF8706322BD2DF47003523C9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF8706342BD2EC89003523C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF9218EF2BCDB75700953448 /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		BFD96F7A2BC45913003163E5 /* Optimi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optimi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD96F7D2BC45913003163E5 /* OptimiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiApp.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 				BFD96F812BC45914003163E5 /* Assets.xcassets */,
 				BFD96F832BC45914003163E5 /* Optimi.entitlements */,
 				BFD96F842BC45914003163E5 /* Preview Content */,
+				BF8706312BD2DF47003523C9 /* Localizable.strings */,
 			);
 			path = Optimi;
 			sourceTree = "<group>";
@@ -399,11 +403,12 @@
 			};
 			buildConfigurationList = BFD96F752BC45913003163E5 /* Build configuration list for PBXProject "Optimi" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = BFD96F712BC45913003163E5;
 			packageReferences = (
@@ -426,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD96F862BC45914003163E5 /* Preview Assets.xcassets in Resources */,
+				BF8706332BD2DF47003523C9 /* Localizable.strings in Resources */,
 				BFD96F822BC45914003163E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +527,18 @@
 			targetProxy = BFD96F962BC45914003163E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF8706312BD2DF47003523C9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8706322BD2DF47003523C9 /* pt-BR */,
+				BF8706342BD2EC89003523C9 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BFD96F9D2BC45914003163E5 /* Debug */ = {

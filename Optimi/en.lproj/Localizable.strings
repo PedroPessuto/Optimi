@@ -1,0 +1,104 @@
+/* 
+  Localizable.strings
+  Optimi
+
+  Created by Pedro Pessuto on 19/04/24.
+  
+*/
+
+// DeliveryView
+"CurrentScreen" = "Tela Atual";
+"Adicionar entrega" = "Adicionar entrega";
+
+// DeliveryCard
+"Implementação" = "Implementação";
+"Carregando feedbacks..." = "Carregando feedbacks...";
+"Adicionar Feedback" = "Adicionar Feedback";
+"Deletar feedback" = "Deletar feedback";
+
+"Cor" = "Cor";
+"Espaçamento" = "Espaçamento";
+"Opacidade" = "Opacidade";
+"Alinhamento" = "Alinhamento";
+"Imagem" = "Imagem";
+"Tamanho" = "Tamanho";
+
+// TaskView
+"Deadline" = "Prazo Final";
+"Entrar na Task" = "Entrar na Task";
+"Links Importantes" = "Links Importantes";
+"Protótipo" = "Protótipo";
+"Tarefa" = "Tarefa";
+"Responsáveis" = "Responsáveis";
+"Nenhum dev associado..." = "Nenhum dev associado...";
+
+
+// TaskCard
+"Deletar task" = "Deletar task";
+
+// OnBoardingView
+"Olá! Este é o Optimi!" = "Olá! Este é o Optimi!";
+"Seu Nome" = "Seu Nome";
+"Nome" = "Nome";
+"Cargo" = "Cargo";
+"Sair" = "Sair";
+"Salvar Perfil" = "Salvar Perfil";
+"Seu Nome" = "Seu Nome";
+"Salvar Perfil" = "Salvar Perfil";
+
+// CreateTaskView
+"Criar Task" = "Criar Task";
+"Nome da Task" = "Nome da Task";
+"Descrição da Task" = "Descrição da Task";
+"Descrição" = "Descrição";
+"Link do Protótipo" = "Link do Protótipo";
+"Link" = "Link";
+"Cancelar" = "Cancelar";
+"Criar Task" = "Criar Task";
+
+// CreateDeliveryView
+"Criar Entrega" = "Criar Entrega";
+"Nome da Entrega" = "Nome da Entrega";
+"Descrição da Entrega" = "Descrição da Entrega";
+"Descrição"= "Descrição";
+"Link do Vídeo/Foto" = "Link do Vídeo/Foto";
+"Link" = "Link";
+
+// CreateProjectView
+"Crie o seu projeto" = "Crie o seu projeto";
+"Nome do Projeto" = "Nome do Projeto";
+"Projeto" = "Projeto";
+"Fechar" = "Fechar";
+"Criar Projeto" = "Criar Projeto";
+
+// ProjectNotFoundView
+"Projeto não encontrado" = "Projeto não encontrado";
+"Confirme o Token do projeto" = "Confirme o Token do projeto";
+"Fechar" = "Fechar";
+
+// FeedbackGivingSheetView
+"Status da Entrega" = "Status da Entrega";
+"Enviar Feedback" = "Enviar Feedback";
+
+// ProjectView
+"Carregando Tasks..." = "Carregando Tasks...";
+"Nenhuma Task Encontrada..." = "Nenhuma Task Encontrada...";
+"Selecione ou crie uma Task para começar" = "Selecione ou crie uma Task para começar";
+
+// HomeView
+"Criar Projeto" = "Criar Projeto";
+"Token do Projeto" = "Token do Projeto";
+"Insira o token aqui" = "Insira o token aqui";
+"Entrar no Projeto" = "Entrar no Projeto";
+
+// AccountHomeDisplay
+"Nenhum Cargo" = "Nenhum Cargo";
+"Seu Nome" = "Seu Nome";
+
+
+// ======== GLOBAL =======
+// Status
+"Aprovada" = "Aprovada";
+"Revisão Pendente" = "Revisão Pendente"
+"Reprovada" = "Reprovada";
+"Em Andamento" = "Em Andamento";

@@ -53,7 +53,7 @@ struct ProjectNotFoundView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Text("Done")
+                        Text("Fechar")
                     }
                 }
             }
