@@ -36,7 +36,9 @@ struct ProjectView: View {
                         Image(systemName: "house")
                         #endif
                     }
+                    #if os(macOS)
                     .buttonStyle(PlainButtonStyle())
+                    #endif
                     
                     Spacer()
                     
@@ -65,10 +67,11 @@ struct ProjectView: View {
                                 Image(systemName: "checkmark")
                             }
                         }
-                        .foregroundStyle(.secondary)
                         .padding(.vertical, 12)
                     }
+                    #if os(macOS)
                     .buttonStyle(PlainButtonStyle())
+                    #endif
                     
                     Spacer()
                     
@@ -78,13 +81,20 @@ struct ProjectView: View {
                     } label: {
                          Image(systemName: "ellipsis")
                     }
+                    #if os(macOS)
                     .buttonStyle(PlainButtonStyle())
+                    #endif
                     .padding(.vertical, 5)
                 }.padding()
                 
                 HStack {
                     Text(controller.project?.projectName ?? "")
+                    #if os(macOS)
                         .font(.title3)
+                    #endif
+                    #if os(iOS)
+                        .font(.title)
+                    #endif
                         .fontWeight(.semibold)
                     
                     Spacer()
@@ -93,8 +103,11 @@ struct ProjectView: View {
                         createTaskSheetIsPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
+                            .font(.title3)
                     }
+                    #if os(macOS)
                     .buttonStyle(PlainButtonStyle())
+                    #endif
                 }
                 .padding(.horizontal)
                 if tasksAreLoading {
@@ -106,6 +119,7 @@ struct ProjectView: View {
                     
                     if (controller.project?.projectTasks.count == 0) {
                         Text("Nenhuma Task Encontrada...")
+                            .padding(.top, 5)
                         Spacer()
                     }
                     else {

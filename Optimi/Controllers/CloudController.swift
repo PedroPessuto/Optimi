@@ -97,6 +97,7 @@ import CloudKit
             return newTask
         }
         catch {
+            print("Error creating task: \(error)")
             return nil
         }
     }

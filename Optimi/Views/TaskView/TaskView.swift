@@ -23,7 +23,6 @@ struct TaskView: View {
   
 	 var body: some View {
 		  NavigationStack{
-					 
 					 HStack(alignment: .center){
 						  VStack(alignment: .leading) {
 								StatusPill(status: task.taskStatus!)
@@ -58,24 +57,27 @@ struct TaskView: View {
 								}
 								.keyboardShortcut(.defaultAction)
 								.padding(.bottom, 25)
+                              #if os(iOS)
+                                .buttonStyle(.borderedProminent)
+                              #endif
 								
 								Text("Links Importantes")
 									 .font(.title)
 								
 								HStack{
 									 Image(systemName: "link")
-										  .foregroundStyle(.blue)
 									 Link("Protótipo", destination: URL(string: task.taskPrototypeLink!)!)
 										  .padding(.trailing, 50)
 									 
 								}.font(.title2)
+                                  .foregroundStyle(.accent)
 								
 								HStack{
 									 Image(systemName: "link")
-										  .foregroundStyle(.blue)
 									 Link("Tarefa", destination: URL(string: task.taskLink ?? "")!)
 								}.font(.title2)
 									 .padding(.bottom, 40)
+                                     .foregroundStyle(.accent)
 								
 								Text("Responsáveis")
 									 .font(.title2)
@@ -109,10 +111,9 @@ struct TaskView: View {
 					#if os(iOS)
 					 .padding(.leading, 30)
 					#endif
-					 .background(imageBackground)
+                     .background(imageBackground)
 				
-			  
-				.toolbar {
+                .toolbar {
 					 ToolbarItem(placement: .confirmationAction) {
 						  Picker("CurrentScreen", selection: $currentScreen) {
 							  Text("Task").tag(ScreenNames.TaskView)
@@ -158,5 +159,8 @@ extension TaskView {
 	private var imageBackground: some View {
 		Image(background(for: task.taskStatus!))
 			  .resizable()
+        #if os(iOS)
+              .scaledToFill()
+        #endif
 	}
 }
