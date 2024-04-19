@@ -44,7 +44,6 @@
 "Sair" = "Sair";
 "Salvar Perfil" = "Salvar Perfil";
 "Seu Nome" = "Seu Nome";
-"Salvar Perfil" = "Salvar Perfil";
 
 // CreateTaskView
 "Criar Task" = "Criar Task";
@@ -74,7 +73,6 @@
 // ProjectNotFoundView
 "Projeto não encontrado" = "Projeto não encontrado";
 "Confirme o Token do projeto" = "Confirme o Token do projeto";
-"Fechar" = "Fechar";
 
 // FeedbackGivingSheetView
 "Status da Entrega" = "Status da Entrega";
