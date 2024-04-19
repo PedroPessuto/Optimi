@@ -8,6 +8,7 @@
 import SwiftUI
  
 /// An NSPanel subclass that implements floating panel traits.
+#if os(macOS)
 class FloatingPanel<Content: View>: NSPanel {
 	@Binding var isPresented: Bool
 	
@@ -184,3 +185,4 @@ struct VisualEffectView: NSViewRepresentable {
 		  }
 	 }
   }
+#endif

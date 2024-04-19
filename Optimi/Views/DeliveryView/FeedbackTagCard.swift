@@ -37,6 +37,7 @@ struct FeedbackTagCard: View {
 			
 			
 		}
+#if os(macOS)
 		.floatingPanel(isPresented: $tagDescriptionPanelIsPresented) {
 			ZStack {
 				VisualEffectView(material: .sidebar, blendingMode: .behindWindow, state: .followsWindowActiveState, emphasized: true)
@@ -48,6 +49,17 @@ struct FeedbackTagCard: View {
 			.frame(minWidth: 272, maxWidth: 320, minHeight: 250, maxHeight: 270)
 			
 		}
+#endif
+#if os(iOS)
+		.popover(isPresented: $tagDescriptionPanelIsPresented) {
+			TagDescriptionView(tag: tag,
+									 description: description,
+									 designer: designer,
+									 dateString: dateString)
+			.frame(minWidth: 272, maxWidth: 320, minHeight: 250, maxHeight: 270)
+		}
+#endif
+		
 		
 	}
 }

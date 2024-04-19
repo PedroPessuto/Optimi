@@ -19,6 +19,8 @@ struct ProjectView: View {
     @State var tokenWasCopied: Bool = false
     @State var taskSelected: TaskModel? = nil
     
+	@Environment(\.colorScheme) var colorScheme
+	
     var body: some View {
         
         NavigationSplitView {
@@ -47,6 +49,11 @@ struct ProjectView: View {
                         //Aqui tem que estar a Key do projeto
                         pasteboard.writeObjects(["\(controller.project?.projectId?.recordName ?? "")" as NSString])
 #endif
+#if os(iOS)
+							  let pasteboard = UIPasteboard.general
+							  pasteboard.string = controller.project?.projectId?.recordName
+#endif
+							  
                         withAnimation(.easeInOut(duration: 0.5)) {
                             tokenWasCopied.toggle()
                             
@@ -76,7 +83,8 @@ struct ProjectView: View {
                          //vai abrir um Menu com as duas opções
                          //Aqui vai ter a opção de Delete e Update
                     } label: {
-                         Image(systemName: "ellipsis")
+                         Image(systemName: "ellipsis.circle.fill")
+								  .foregroundStyle(colorScheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5))
                     }
                     .buttonStyle(PlainButtonStyle())
                     .padding(.vertical, 5)
