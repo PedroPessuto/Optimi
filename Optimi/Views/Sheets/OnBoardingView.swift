@@ -117,10 +117,11 @@ struct OnboardingView: View {
                             TextField("Nome", text: $yourName)
                         }
                         
-                        
                         Picker("", selection: $cargoSelection) {
-                            Text("Designer")
-                            Text("Developer")
+                            ForEach(Roles.allCases) { role in
+                                Text(String(describing: role))
+                            }
+                            
                         }
                         .pickerStyle(.segmented)
                     }

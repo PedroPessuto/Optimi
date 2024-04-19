@@ -21,6 +21,8 @@ struct oInput: View {
             .textFieldStyle(.roundedBorder)
             .background(Color("textFieldColor"))
             .clipShape(RoundedRectangle(cornerRadius: 6))
+            .foregroundColor(.gray)
+            .tint(.gray)
 #endif
 #if os(iOS)
             .foregroundColor(Color(UIColor(red: 60/256, green: 60/256, blue: 67/256, alpha: 0.3)))
