@@ -57,6 +57,9 @@ struct TaskView: View {
 								}
 								.keyboardShortcut(.defaultAction)
 								.padding(.bottom, 25)
+                              #if os(iOS)
+                                .buttonStyle(.borderedProminent)
+                              #endif
 								
 								Text("Links Importantes")
 									 .font(.title)
@@ -67,14 +70,14 @@ struct TaskView: View {
 										  .padding(.trailing, 50)
 									 
 								}.font(.title2)
-                                  .foregroundColor(.blue)
+                                  .foregroundStyle(.accent)
 								
 								HStack{
 									 Image(systemName: "link")
 									 Link("Tarefa", destination: URL(string: task.taskLink ?? "")!)
 								}.font(.title2)
 									 .padding(.bottom, 40)
-                                     .foregroundColor(.blue)
+                                     .foregroundStyle(.accent)
 								
 								Text("Responsáveis")
 									 .font(.title2)

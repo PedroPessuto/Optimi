@@ -56,15 +56,19 @@ struct DeliveryCard: View {
 
 						 } label: {
 							 Image(systemName: "ellipsis.circle")
+                             #if os(macOS)
 								 .foregroundColor(.secondary)
+                             #endif
 						 }
+                    #if os(macOS)
 						 .buttonStyle(PlainButtonStyle())
+                    #endif
                 }
                 
                 HStack{
                     Image(systemName: "link")
                     Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
-                }.foregroundStyle(.blue)
+                }.foregroundStyle(.accent)
                 #if os(macOS)
                     .font(.title)
                 #endif
