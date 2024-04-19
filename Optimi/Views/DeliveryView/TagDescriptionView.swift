@@ -51,6 +51,7 @@ struct TagDescriptionView: View {
 					Text(tag)
 						.font(.largeTitle)
 						.fontWeight(.semibold)
+						.foregroundStyle(.white)
 					Spacer()
 				}
 				.foregroundStyle(tag == "Cor" ? Color.textRed : tag == "Espaçamento" ? Color.textBlue : tag == "Opacidade" ? Color.textYellow : tag == "Alinhamento" ? Color.textGreen : tag == "Imagem" ? Color.textOrange : tag == "Tamanho" ? Color.textRed : Color.textBlue)
