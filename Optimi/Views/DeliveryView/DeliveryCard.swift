@@ -62,9 +62,10 @@ struct DeliveryCard: View {
 							 }
 
 						 } label: {
-							 Image(systemName: "ellipsis.circle.fill")
+							 Image(systemName: "ellipsis.circle.fill")                             
+#if os(macOS)
 								 .foregroundColor(.secondary)
-                             #endif
+																																																	#endif
 						 }
                     #if os(macOS)
 						 .buttonStyle(PlainButtonStyle())
