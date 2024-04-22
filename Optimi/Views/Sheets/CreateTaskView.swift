@@ -50,12 +50,8 @@ struct CreateTaskView: View {
 					.padding(.bottom, 5)
 				
 				VStack {
-//					TextEditor(text: $taskDescription)
-//						.scrollDisabled(true)
-//						.scrollIndicators(.never)
 					TextField("", text: $taskDescription, prompt: Text("Descrição"), axis: .vertical)
 						.lineLimit(5...10)
-					
 				}
 				.cornerRadius(5)
 				.padding(.bottom, 14)

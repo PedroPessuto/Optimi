@@ -64,15 +64,24 @@ struct DeliveryCard: View {
 						 } label: {
 							 Image(systemName: "ellipsis.circle.fill")
 								 .foregroundColor(.secondary)
+                             #endif
 						 }
+                    #if os(macOS)
 						 .buttonStyle(PlainButtonStyle())
+                    #endif
                 }
                 
                 HStack{
                     Image(systemName: "link")
                     Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
-                }.foregroundStyle(.blue)
+                }.foregroundStyle(.accent)
+                #if os(macOS)
+                    .font(.title)
+                #endif
+                #if os(macOS)
                     .font(.title2)
+                #endif
+                    .padding(.bottom,5)
                 
                 HStack {
                     Image(systemName: "person.fill")
@@ -83,6 +92,7 @@ struct DeliveryCard: View {
                         Text("\(formatter.string(from: date))")
                     }
                 }.foregroundColor(.secondary)
+                    .padding(.bottom,5)
                 
                 HStack {
                     Text("\(delivery.deliveryDocumentation ?? "")")
