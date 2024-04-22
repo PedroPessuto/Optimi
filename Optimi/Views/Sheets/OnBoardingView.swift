@@ -35,8 +35,11 @@ struct OnboardingView: View {
                         Text("Seu Nome")
                             .bold()
                         
-                        oInput(text: "Nome", binding: $yourName)
-                        
+                        TextField("Nome", text: $yourName)
+                            .textFieldStyle(.roundedBorder)
+                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                            .foregroundColor(.gray)
+                            .tint(.gray)
                     }
                     
                     VStack(alignment: .leading) {
