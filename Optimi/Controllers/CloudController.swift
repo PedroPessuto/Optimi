@@ -53,12 +53,16 @@ import CloudKit
             return newProject
         }
         catch {
+			  print("Error creating project: \(error)")
             return nil
         }
     }
     
     // Acessa um projeto
     public func getProject(_ projectKey: String) async -> ProjectModel? {
+        if projectKey.count != 36 {
+            return nil
+        }
         let recordId = CKRecord.ID(recordName: projectKey)
         do {
             let record = try await self.databasePublic.record(for: recordId)

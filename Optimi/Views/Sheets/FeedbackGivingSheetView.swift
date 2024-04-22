@@ -106,10 +106,9 @@ struct FeedbackGivingSheetView: View {
 						let response = await controller.createFeedback(feedback, delivery, task)
 						
 						feedbackList.append(response ?? feedback)
-						
-						dismiss()
 					}
 					Aptabase.shared.trackEvent("Criou um feedback")
+					dismiss()
 				}
 				.keyboardShortcut(.defaultAction)
 			}

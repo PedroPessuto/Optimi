@@ -8,128 +8,139 @@
 import SwiftUI
 
 struct TaskView: View {
-	 
-	 @Environment(GeneralController.self) var controller
-	 
-	 var task: TaskModel
-	 
-	@State var currentScreen: ScreenNames = .TaskView
-	 
-  	var formatter: DateFormatter {
-		 let formatter = DateFormatter()
-		 formatter.dateFormat = "dd/MM/yyyy - hh:mm"
-		 return formatter
-	}
-  
-	 var body: some View {
-		  NavigationStack{
-					 HStack(alignment: .center){
-						  VStack(alignment: .leading) {
-								StatusPill(status: task.taskStatus!)
-									 .padding(.top)
-								
-								Text(task.taskName)
-									 .font(.largeTitle)
-									 .fontWeight(.semibold)
-								
-
-								  Text(task.taskDescription!)
-									  .padding(.bottom, 9)
-									  .font(.body)
-									  .frame(width: 200, alignment: .leading)
-
-                
-                HStack{
-									if let date = task.taskDeadline {
-										Text("Deadline: ")
-										Text("\(formatter.string(from: date))")
-									}
-                }.padding(.bottom, 25)
-                 .font(.body)
-                 .bold()
-								
-								Button {
-									 Task{
-                                         await controller.changeTaskStatus(task, .EmAndamento)
-									 }
-								} label: {
-									 Text("Entrar na Task")
-								}
-								.keyboardShortcut(.defaultAction)
-								.padding(.bottom, 25)
-                              #if os(iOS)
-                                .buttonStyle(.borderedProminent)
-                              #endif
-								
-								Text("Links Importantes")
-									 .font(.title)
-								
-								HStack{
-									 Image(systemName: "link")
-									 Link("Protótipo", destination: URL(string: task.taskPrototypeLink!)!)
-										  .padding(.trailing, 50)
-									 
-								}.font(.title2)
-                                  .foregroundStyle(.accent)
-								
-								HStack{
-									 Image(systemName: "link")
-									 Link("Tarefa", destination: URL(string: task.taskLink ?? "")!)
-								}.font(.title2)
-									 .padding(.bottom, 40)
-                                     .foregroundStyle(.accent)
-								
-								Text("Responsáveis")
-									 .font(.title2)
-									 .bold()
-									 .padding(.bottom, 5)
-								HStack{
-                            VStack(alignment: .leading){
-                                Text("Designers")
-                                    .font(.title2)
-                                Text(task.taskDesigners!)
-                            }.padding(.trailing, 20)
-                            
-                            VStack(alignment: .leading){
-                                Text("Developers")
-                                    .font(.title2)
-                                Text(task.taskDevelopers ?? "Nenhum dev associado...")
-                                //Aqui tem que trocar pra developers
-                            }
+    
+    @Environment(GeneralController.self) var controller
+    
+    var task: TaskModel
+    
+    @State var currentScreen: ScreenNames = .TaskView
+    
+    var formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy - hh:mm"
+        return formatter
+    }
+    
+    var body: some View {
+        NavigationStack{
+            HStack(alignment: .center){
+                VStack(alignment: .leading) {
+                    StatusPill(status: task.taskStatus!)
+                        .padding(.top)
+                    
+                    Text(task.taskName)
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                    
+                    
+                    Text(task.taskDescription!)
+                        .padding(.bottom, 9)
+                        .font(.body)
+                        .frame(width: 200, alignment: .leading)
+                    
+                    
+                    HStack{
+                        if let date = task.taskDeadline {
+                            Text("Deadline: ")
+                            Text("\(formatter.string(from: date))")
                         }
-								
-								Spacer()
-						  }
-						  Spacer()
-					 }
-					 #if os(macOS)
-					 .padding(.leading, 35)
-					 .padding(.trailing, 35)
-					 .padding(.bottom, 4)
-					 .padding(.top, 20)
-					 #endif
-					#if os(iOS)
-					 .padding(.leading, 30)
-					#endif
-                     .background(imageBackground)
-				
-                .toolbar {
-					 ToolbarItem(placement: .confirmationAction) {
-						  Picker("CurrentScreen", selection: $currentScreen) {
-							  Text("Task").tag(ScreenNames.TaskView)
-							  Text("Feedback").tag(ScreenNames.DeliveryView)
-						  }
-						  .pickerStyle(.segmented)
-							.onChange(of: currentScreen) {
-								controller.screen = currentScreen
-							}
-					 }
-				}
-		  }
-		  #if os(macOS)
-		  .frame(minWidth: 620, maxWidth: .infinity)
-		  #endif
-	 }
+                    }.padding(.bottom, 25)
+                        .font(.body)
+                        .bold()
+                    
+                    Button {
+                        Task{
+                            await controller.changeTaskStatus(task, .EmAndamento)
+                        }
+                    } label: {
+                        Text("Entrar na Task")
+                    }
+                    .keyboardShortcut(.defaultAction)
+                    .padding(.bottom, 25)
+#if os(iOS)
+                    .buttonStyle(.borderedProminent)
+#endif
+						 if (task.taskPrototypeLink != "") || (task.taskLink != "") {
+							 Text("Links Importantes")
+								  .font(.title)
+						 }
+                    
+                    
+						 HStack{
+							 if let link = task.taskPrototypeLink {
+								 if link != "" {
+									 Image(systemName: "link")
+									 Link("Protótipo", destination: URL(string: link)!)
+										 .padding(.trailing, 50)
+								 }
+							 }
+							 
+						 }.font(.title2)
+                        .foregroundStyle(Color.accentColor)
+                    
+                    HStack{
+							  if let link = task.taskLink {
+								  if link != ""{
+									  Image(systemName: "link")
+									  Link("Tarefa", destination: URL(string: link)!)
+								  }
+							  }
+                        
+                    }.font(.title2)
+                        .padding(.bottom, 40)
+                        .foregroundStyle(Color.accentColor)
+                    
+                    Text("Responsáveis")
+                        .font(.title2)
+                        .bold()
+                        .padding(.bottom, 5)
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text("Designers")
+                                .font(.title2)
+                            Text(task.taskDesigners!)
+                        }.padding(.trailing, 20)
+                        
+                        VStack(alignment: .leading){
+                            Text("Developers")
+                                .font(.title2)
+                            Text(task.taskDevelopers ?? "Nenhum dev associado...")
+                            //Aqui tem que trocar pra developers
+                        }
+                    }
+                    
+                    Spacer()
+                }
+                Spacer()
+            }
+#if os(macOS)
+            .padding(.leading, 35)
+            .padding(.trailing, 35)
+            .padding(.bottom, 4)
+            .padding(.top, 20)
+#endif
+#if os(iOS)
+            .padding(.leading, 30)
+#endif
+            .background(imageBackground)
+            
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Picker("CurrentScreen", selection: $currentScreen) {
+                        Text("Task").tag(ScreenNames.TaskView)
+                        Text("Feedback").tag(ScreenNames.DeliveryView)
+                    }
+                    .pickerStyle(.segmented)
+                    .onChange(of: currentScreen) {
+                        controller.screen = currentScreen
+                    }
+                }
+            }
+        }
+#if os(macOS)
+        .frame(minWidth: 620, maxWidth: .infinity)
+#endif
+    }
 }
 
 //#Preview {
@@ -156,11 +167,11 @@ extension TaskView {
 }
 
 extension TaskView {
-	private var imageBackground: some View {
-		Image(background(for: task.taskStatus!))
-			  .resizable()
-        #if os(iOS)
-              .scaledToFill()
-        #endif
-	}
+    private var imageBackground: some View {
+        Image(background(for: task.taskStatus!))
+            .resizable()
+#if os(iOS)
+            .scaledToFill()
+#endif
+    }
 }

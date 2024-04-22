@@ -107,9 +107,14 @@ struct CreateTaskView: View {
 					})
 					Button(action: {
 						Task {
-							await controller.createTask(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: prototypeLink, taskDesigners: taskDesigners, taskDeadline: taskDeadline)
-							dismiss()
+							await controller.createTask(taskName: taskName,
+																 taskDescription: taskDescription,
+																 taskLink: taskLink,
+																 taskPrototypeLink: prototypeLink,
+																 taskDesigners: taskDesigners,
+																 taskDeadline: taskDeadline)
 						}
+						dismiss()
 						Aptabase.shared.trackEvent("Criou uma Task")
 					}, label: {
 						ZStack{
@@ -119,6 +124,7 @@ struct CreateTaskView: View {
                     #if os(macOS)
                     .keyboardShortcut(.defaultAction)
                     #endif
+					.disabled(taskName == "" || taskDescription == "" ? true : false)  // MARK: Os links ficam opcionais
 				}
 			}
 			.padding()
