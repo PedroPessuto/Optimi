@@ -97,6 +97,6 @@
 // ======== GLOBAL =======
 // Status
 "Aprovada" = "Aprovada";
-"Revisão Pendente" = "Revisão Pendente"
+"Revisão Pendente" = "Revisão Pendente";
 "Reprovada" = "Reprovada";
 "Em Andamento" = "Em Andamento";

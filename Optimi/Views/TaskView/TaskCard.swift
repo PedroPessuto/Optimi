@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskCard: View {
-	 
+	@Environment(\.colorScheme) var colorScheme
     @Environment(GeneralController.self) var controller
 	 var task: TaskModel
 	 
@@ -45,7 +45,8 @@ struct TaskCard: View {
 						}
 						
 					} label: {
-						Image(systemName: "ellipsis")
+						Image(systemName: "ellipsis.circle.fill")
+							.foregroundStyle(colorScheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5))
 					}
 					.buttonStyle(PlainButtonStyle())
 					.padding(.vertical, 5)
