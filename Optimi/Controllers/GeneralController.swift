@@ -109,7 +109,7 @@ import CloudKit
                 await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Reproved)
                 await cloudController.changeOnlyTaskStatus(task, taskStatus: .Reprovada)
                 delivery.deliveryStatus = DeliveryStatus.Reproved
-                task.taskStatus = TaskStatus.ReadyForDev.rawValue
+                task.taskStatus = TaskStatus.Reprovada.rawValue
             }
         }
       

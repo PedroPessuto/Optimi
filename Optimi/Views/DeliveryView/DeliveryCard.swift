@@ -13,7 +13,7 @@ struct DeliveryCard: View {
     @Environment(GeneralController.self) var controller
     
     var delivery: DeliveryModel
-	var task: TaskModel
+    var task: TaskModel
     
     @State var createFeedbackViewIsPresented: Bool = false
     
@@ -22,21 +22,21 @@ struct DeliveryCard: View {
         formatter.dateFormat = "dd/MM/yyyy - hh:mm"
         return formatter
     }
-	
-	private let gridRows = [
-		 GridItem(.adaptive(minimum: 77, maximum: 100), alignment: .leading)
-	]
+    
+    private let gridRows = [
+        GridItem(.adaptive(minimum: 77, maximum: 100), alignment: .leading)
+    ]
     
     
     
     @State var feedbacks: [FeedbackModel] = []
     @State var isLoading: Bool = false
     
-	@State var tagDescriptionPanelIsPresented: Bool = false
-	@State var tagChosen: String = ""
-	@State var tagDescription: String = ""
-	@State var tagDesigner: String = ""
-	@State var dateString: String = ""
+    @State var tagDescriptionPanelIsPresented: Bool = false
+    @State var tagChosen: String = ""
+    @State var tagDescription: String = ""
+    @State var tagDesigner: String = ""
+    @State var dateString: String = ""
     
     var body: some View {
         HStack(alignment: .top) {
@@ -49,45 +49,46 @@ struct DeliveryCard: View {
                     
                     Spacer()
                     
-						 Menu {
-							 Button {
-								 Task {
-									 await controller.deleteDelivery(delivery, task.taskId!)
-								 }
-							 } label: {
-								 HStack {
-									 Image(systemName: "trash")
-									 Text("Deletar entrega")
-								 }
-							 }
-
-						 } label: {
-							 Image(systemName: "ellipsis.circle.fill")                             
+                    Menu {
+                        Button {
+                            Task {
+                                await controller.deleteDelivery(delivery, task.taskId!)
+                            }
+                        } label: {
+                            HStack {
+                                Image(systemName: "trash")
+                                Text("Deletar entrega")
+                            }
+                        }
+                        
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
 #if os(macOS)
-								 .foregroundColor(.secondary)
-																																																	#endif
-						 }
-                    #if os(macOS)
-						 .buttonStyle(PlainButtonStyle())
-                    #endif
+                            .foregroundColor(.secondary)
+#endif
+                    }
+#if os(macOS)
+                    .buttonStyle(PlainButtonStyle())
+#endif
                 }
                 
                 HStack{
                     Image(systemName: "link")
                     Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
-                }.foregroundStyle(.accent)
-                #if os(macOS)
-                    .font(.title)
-                #endif
-                #if os(macOS)
-                    .font(.title2)
-                #endif
-                    .padding(.bottom,5)
+                }
+                .foregroundStyle(Color.accentColor)
+#if os(macOS)
+                .font(.title)
+#endif
+#if os(macOS)
+                .font(.title2)
+#endif
+                .padding(.bottom,5)
                 
                 HStack {
                     Image(systemName: "person.fill")
                     
-						 Text("\(delivery.deliveryDevelopers ?? "Developers")")
+                    Text("\(delivery.deliveryDevelopers ?? "Developers")")
                     
                     if let date = delivery.deliveryCreatedAt {
                         Text("\(formatter.string(from: date))")
@@ -137,11 +138,11 @@ struct DeliveryCard: View {
         .sheet(isPresented: $createFeedbackViewIsPresented) {
             FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
         }
-//		  .popover(isPresented: $tagDescriptionPanelIsPresented) {
-//			  
-//				  .presentationBackground(.regularMaterial)
-//		  }
-		  
+        //		  .popover(isPresented: $tagDescriptionPanelIsPresented) {
+        //
+        //				  .presentationBackground(.regularMaterial)
+        //		  }
+        
     }
 }
 
@@ -151,91 +152,92 @@ struct DeliveryCard: View {
 //}
 
 extension DeliveryCard {
-	private var addFeedbackButton: some View {
-		Button {
-			createFeedbackViewIsPresented.toggle()
-		} label: {
-			HStack {
-				Text("Adicionar Feedback")
-				Image(systemName: "plus")
-			}
-			.foregroundStyle(.secondary)
-		}
-		.buttonStyle(PlainButtonStyle())
-	}
-	
-	private var feedbackCard: some View {
-		VStack {
-			HStack {
-				feedbackTitle
-				Spacer()
-				feedbackButton
-			}
-			feedbackDesignersAndDate
-			
-			feedbackTags
-			Spacer()
-		}
-		.frame(minWidth: 250, maxWidth: 300, minHeight: 125, maxHeight: 150)
-		.padding(.trailing, 25)
-	}
-	
-	private var feedbackTitle: some View {
-		Text("Feedbacks")
-			.font(.largeTitle)
-			.fontWeight(.semibold)
-	}
-	
-	private var feedbackButton: some View {
-		Menu {
-			Button {
-				Task {
-					await controller.deleteFeedback(feedbacks.first!)
-					feedbacks.removeFirst()
-				}
-			} label: {
-				HStack {
-					Image(systemName: "trash.fill")
-					Text("Deletar feedback")
-				}
-				.foregroundStyle(.red)
-			}
-			.buttonStyle(PlainButtonStyle())
-			
-		} label: {
-			Image(systemName: "ellipsis.circle.fill")
-				.foregroundStyle(.secondary)
-		}
-		.buttonStyle(PlainButtonStyle())
-		
-	}
-	
-	private var feedbackDesignersAndDate: some View {
-		HStack {
-			Image(systemName: "person.fill")
-			Text("\(feedbacks.first?.feedbackDesigner ?? "Designer")")
-			
-			Spacer()
-			
-			if let date = feedbacks.first?.feedbackCreatedAt {
-				Text("\(formatter.string(from: date))")
-					.onAppear { self.dateString = formatter.string(from: date) }
-			}
-		}
-	}
-	
-	private var feedbackTags: some View {
-		LazyVGrid(columns: gridRows) {
-			
-			ForEach(0..<(feedbacks.first?.feedbackTags.count ?? 0), id:\.self) { index in
-				FeedbackTagCard(tag: feedbacks.first?.feedbackTags[index] ?? "",
-									 dateString: formatter.string(from: feedbacks.first?.feedbackCreatedAt ?? Date.now),
-									 description: feedbacks.first?.feedbackDescription[index] ?? "",
-									 designer: feedbacks.first?.feedbackDesigner ?? "")
-			}
-			
-		}
-		
-	}
-	
+    private var addFeedbackButton: some View {
+        Button {
+            createFeedbackViewIsPresented.toggle()
+        } label: {
+            HStack {
+                Text("Adicionar Feedback")
+                Image(systemName: "plus")
+            }
+            .foregroundStyle(.secondary)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+    
+    private var feedbackCard: some View {
+        VStack {
+            HStack {
+                feedbackTitle
+                Spacer()
+                feedbackButton
+            }
+            feedbackDesignersAndDate
+            
+            feedbackTags
+            Spacer()
+        }
+        .frame(minWidth: 250, maxWidth: 300, minHeight: 125, maxHeight: 150)
+        .padding(.trailing, 25)
+    }
+    
+    private var feedbackTitle: some View {
+        Text("Feedbacks")
+            .font(.largeTitle)
+            .fontWeight(.semibold)
+    }
+    
+    private var feedbackButton: some View {
+        Menu {
+            Button {
+                Task {
+                    await controller.deleteFeedback(feedbacks.first!)
+                    feedbacks.removeFirst()
+                }
+            } label: {
+                HStack {
+                    Image(systemName: "trash.fill")
+                    Text("Deletar feedback")
+                }
+                .foregroundStyle(.red)
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+        } label: {
+            Image(systemName: "ellipsis.circle")
+                .foregroundStyle(.secondary)
+        }
+        .menuStyle(.borderlessButton)
+        
+        
+    }
+    
+    private var feedbackDesignersAndDate: some View {
+        HStack {
+            Image(systemName: "person.fill")
+            Text("\(feedbacks.first?.feedbackDesigner ?? "Designer")")
+            
+            Spacer()
+            
+            if let date = feedbacks.first?.feedbackCreatedAt {
+                Text("\(formatter.string(from: date))")
+                    .onAppear { self.dateString = formatter.string(from: date) }
+            }
+        }
+    }
+    
+    private var feedbackTags: some View {
+        LazyVGrid(columns: gridRows) {
+            
+            ForEach(0..<(feedbacks.first?.feedbackTags.count ?? 0), id:\.self) { index in
+                FeedbackTagCard(tag: feedbacks.first?.feedbackTags[index] ?? "",
+                                dateString: formatter.string(from: feedbacks.first?.feedbackCreatedAt ?? Date.now),
+                                description: feedbacks.first?.feedbackDescription[index] ?? "",
+                                designer: feedbacks.first?.feedbackDesigner ?? "")
+            }
+            
+        }
+        
+    }
+    
 }
