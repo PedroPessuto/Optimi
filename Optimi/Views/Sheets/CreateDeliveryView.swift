@@ -93,8 +93,8 @@ struct CreateDeliveryView: View {
 						Task {
 							let delivery = DeliveryModel(deliveryName: deliveryName, deliveryDevelopers: deliveryDevelopers, deliveryDocumentation: deliveryDescription, deliveryImplementationLink: implementationLink)
 							await controller.createDelivery(delivery, task.taskId!)
-							dismiss()
 						}
+						dismiss()
 						Aptabase.shared.trackEvent("Criou uma delivery")
 					}, label: {
 						ZStack{
