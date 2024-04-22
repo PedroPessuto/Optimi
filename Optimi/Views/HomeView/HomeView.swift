@@ -9,93 +9,95 @@ import SwiftUI
 import Aptabase
 
 struct HomeView: View {
-	@Environment(GeneralController.self) private var controller
-	@Environment(\.dismiss) private var dismiss
-	@State var onboardingViewIsPresented: Bool = true
-	@State var createProjectViewIsPresented: Bool = false
-	@State var projectNotFoundSheetIsPresented: Bool = false
-	@State var projectKey: String = ""
-	@State var isLoading: Bool = false
-	
-	func getProject() -> Void {
-		if projectKey == "" {
-			return
-		}
-		Task {
-			isLoading = true
-			await controller.getProject(projectKey)
-			isLoading = false
-		}
-	}
-	
-	var body: some View {
+    @Environment(GeneralController.self) private var controller
+    @Environment(\.dismiss) private var dismiss
+    @State var onboardingViewIsPresented: Bool = true
+    @State var createProjectViewIsPresented: Bool = false
+    @State var projectNotFoundSheetIsPresented: Bool = false
+    @State var projectKey: String = ""
+    @State var isLoading: Bool = false
+    
+    func getProject() -> Void {
+        if projectKey == "" {
+            return
+        }
+        Task {
+            isLoading = true
+            await controller.getProject(projectKey)
+            isLoading = false
+        }
+    }
+    
+    var body: some View {
         NavigationStack {
+            VStack {
                 VStack {
-                    VStack {
-                        // ========== HEADER ==========
-                        HStack {
-                            // Dados da conta
-                            if(controller.account != nil) {
-                                AccountHomeDisplay {
-                                    onboardingViewIsPresented.toggle()
-                                }
+                    // ========== HEADER ==========
+                    HStack {
+                        // Dados da conta
+                        if(controller.account != nil) {
+                            AccountHomeDisplay {
+                                onboardingViewIsPresented.toggle()
                             }
-                            Spacer()
-                            // Criar Projeto
-                            Button(action: {
-                                createProjectViewIsPresented.toggle()
-										 Aptabase.shared.trackEvent("Abriu o formulário de criação de um projeto")
-                            }) {
-                                Text("Criar Projeto")
-                                Image(systemName: "plus")
-                            }
-                            .font(.title3)
-#if os(macOS)
-                            .foregroundColor(.gray)
-                            .buttonStyle(.plain)
-#endif
                         }
-                    }
-                    // ========== BODY ==========
-                    VStack (spacing: 20) {
-                        HStack {
+                        Spacer()
+                        // Criar Projeto
+                        Button(action: {
+                            createProjectViewIsPresented.toggle()
+                            Aptabase.shared.trackEvent("Abriu o formulário de criação de um projeto")
+                        }) {
+                            Text("Criar Projeto")
+                            Image(systemName: "plus")
+                        }
+                        .font(.title3)
 #if os(macOS)
-                            Text("Token do Projeto")
-                                .font(.headline)
-                                .multilineTextAlignment(.leading)
+                        .foregroundColor(.gray)
+                        .buttonStyle(.plain)
+#endif
+                    }
+                }
+                // ========== BODY ==========
+                VStack (spacing: 20) {
+                    HStack {
+#if os(macOS)
+                        Text("Token do Projeto")
+                            .font(.headline)
+                            .multilineTextAlignment(.leading)
 #endif
 #if os(iOS)
-                            Text("Token Do Projeto")
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .multilineTextAlignment(.leading)
+                        Text("Token Do Projeto")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.leading)
 #endif
-                            Spacer()
-                        }
-                        oInput(text: "Insira o token aqui", binding: $projectKey)
-//                            .onChange(of: projectKey) { _, newValue in
-//                                if (newValue.count == 36) {
-//                                    getProject()
-//                                }
-//                            }
-                            .onSubmit {
-                                getProject()
-										 Aptabase.shared.trackEvent("Tentou acessar um projeto")
-                            }
-                            .disabled(isLoading)
-                        oButton(text: "Entrar no Projeto") {
-                            getProject()
-                        }
-                        .isDisabled(isLoading)
-                        .variant(.fill)
-                        .keyboardShortcut(.defaultAction)
+                        Spacer()
                     }
-                    .frame(width: 300)
-                    .frame(maxHeight: .infinity)
+                    oInput(text: "Insira o token aqui", binding: $projectKey)
+                        .onSubmit {
+                            getProject()
+                            Aptabase.shared.trackEvent("Tentou acessar um projeto")
+                        }
+                        .disabled(isLoading)
+                    oButton(text: "Entrar no Projeto") {
+                        getProject()
+                    }
+                    .isDisabled(isLoading)
+                    .variant(.fill)
+                    .keyboardShortcut(.defaultAction)
                 }
-                .background(Image("Inicio"))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(22.5)
+                .frame(width: 300)
+                .frame(maxHeight: .infinity)
+            }
+            .background(){
+                Image("Inicio")
+#if os(macOS)
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+#endif
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(22.5)
             .sheet(isPresented: $projectNotFoundSheetIsPresented) {
                 ProjectNotFoundView()
             }
@@ -114,5 +116,5 @@ struct HomeView: View {
                 }
             }
         }
-	}
+    }
 }

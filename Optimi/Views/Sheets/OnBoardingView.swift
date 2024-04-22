@@ -35,8 +35,11 @@ struct OnboardingView: View {
                         Text("Seu Nome")
                             .bold()
                         
-                        oInput(text: "Nome", binding: $yourName)
-                        
+                        TextField("Nome", text: $yourName)
+                            .textFieldStyle(.roundedBorder)
+                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                            .foregroundColor(.gray)
+                            .tint(.gray)
                     }
                     
                     VStack(alignment: .leading) {
@@ -103,9 +106,9 @@ struct OnboardingView: View {
                     .bold()
                     .padding(.bottom, 5)
                 
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia sagittis leo, eget malesuada magna varius eget.")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.bottom, 25)
+//                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia sagittis leo, eget malesuada magna varius eget.")
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .padding(.bottom, 25)
                 
                 Form{
                     Section{
