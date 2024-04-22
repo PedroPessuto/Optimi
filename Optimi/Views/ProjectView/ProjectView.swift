@@ -132,7 +132,7 @@ struct ProjectView: View {
                     }
                     else {
                         List {
-                            ForEach((controller.project?.projectTasks.reversed())!, id:\.taskId) { task in
+									ForEach((controller.project?.projectTasks.reversed())!, id:\.taskId) { task in // MARK: AQUI
                                 NavigationLink {
                                     
                                     if(controller.screen == .DeliveryView) {
