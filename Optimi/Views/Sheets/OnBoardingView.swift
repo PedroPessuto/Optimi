@@ -103,9 +103,9 @@ struct OnboardingView: View {
                     .bold()
                     .padding(.bottom, 5)
                 
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia sagittis leo, eget malesuada magna varius eget.")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.bottom, 25)
+//                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia sagittis leo, eget malesuada magna varius eget.")
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .padding(.bottom, 25)
                 
                 Form{
                     Section{
