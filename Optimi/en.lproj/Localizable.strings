@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  Optimi
+
+  Created by Pedro Pessuto on 19/04/24.
+  
+*/
+
+// DeliveryView
+"CurrentScreen" = "CurrentScreen";
+"Adicionar entrega" = "Add Delivery";
+
+// DeliveryCard
+"Implementação" = "Implementation";
+"Carregando feedbacks..." = "Loading feedbacks...";
+"Adicionar Feedback" = "Add Feedback";
+"Deletar feedback" = "Delete feedback";
+
+"Cor" = "Color";
+"Espaçamento" = "Spacing";
+"Opacidade" = "Opacity";
+"Alinhamento" = "Alignment";
+"Imagem" = "Image";
+"Tamanho" = "Size";
+
+// TaskView
+"Deadline" = "Deadline";
+"Entrar na Task" = "Participate in the Task";
+"Links Importantes" = "Importants Links";
+"Protótipo" = "Prototype";
+"Tarefa" = "Task";
+"Responsáveis" = "Responsables";
+"Nenhum dev associado..." = "No associated developers...";
+
+
+// TaskCard
+"Deletar task" = "Delete task";
+
+// OnBoardingView
+"Olá! Este é o Optimi!" = "Hi! This is the Optimi!";
+"Seu Nome" = "Your Name";
+"Nome" = "Name";
+"Cargo" = "Role";
+"Sair" = "Leave";
+"Salvar Perfil" = "Save Profile";
+"Seu Nome" = "Your Name";
+
+// CreateTaskView
+"Criar Task" = "Create Task";
+"Nome da Task" = "Task Name";
+"Descrição da Task" = "Task Description";
+"Descrição" = "Description";
+"Link do Protótipo" = "Prototype Link";
+"Link" = "Link";
+"Cancelar" = "Cancel";
+"Criar Task" = "Create Task";
+
+// CreateDeliveryView
+"Criar Entrega" = "Create Delivery";
+"Nome da Entrega" = "Delivery Name";
+"Descrição da Entrega" = "Delivery Description";
+"Link do Vídeo/Foto" = "Video/Photo Link";
+"Link" = "Link";
+
+// CreateProjectView
+"Crie o seu projeto" = "Create your project";
+"Nome do Projeto" = "Project Name";
+"Projeto" = "Project";
+"Fechar" = "Close";
+"Criar Projeto" = "Create Project";
+
+// ProjectNotFoundView
+"Projeto não encontrado" = "Project Not Found";
+"Confirme o Token do projeto" = "Confirm the project Token";
+
+// FeedbackGivingSheetView
+"Status da Entrega" = "Delivery Status";
+"Enviar Feedback" = "Send Feedback";
+
+// ProjectView
+"Carregando Tasks..." = "Loading Tasks...";
+"Nenhuma Task Encontrada..." = "No Tasks Found...";
+"Selecione ou crie uma Task para começar" = "Select or create a Task to get started";
+
+// HomeView
+"Criar Projeto" = "Create Project";
+"Token do Projeto" = "Project Token";
+"Insira o token aqui" = "Insert token here";
+"Entrar no Projeto" = "Enter the Project";
+
+// AccountHomeDisplay
+"Nenhum Cargo" = "No Role";
+"Seu Nome" = "Your Name";
+
+
+// ======== GLOBAL =======
+// Status
+"Aprovada" = "Approved";
+"Revisão Pendente" = "Pending Review"
+"Reprovada" = "Reject";
+"Em Andamento" = "In progress";
