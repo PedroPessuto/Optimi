@@ -29,16 +29,16 @@ struct ProjectView: View {
                     Button {
                         controller.screen = .HomeView
                     } label: {
-                        #if os(macOS)
+#if os(macOS)
                         Image(systemName: "chevron.left")
-                        #endif
-                        #if os(iOS)
+#endif
+#if os(iOS)
                         Image(systemName: "house")
-                        #endif
+#endif
                     }
-                    #if os(macOS)
+#if os(macOS)
                     .buttonStyle(PlainButtonStyle())
-                    #endif
+#endif
                     
                     Spacer()
                     
@@ -69,32 +69,44 @@ struct ProjectView: View {
                         }
                         .padding(.vertical, 12)
                     }
-                    #if os(macOS)
+#if os(macOS)
                     .buttonStyle(PlainButtonStyle())
-                    #endif
+#endif
                     
                     Spacer()
                     
-                    Button {
-                         //vai abrir um Menu com as duas opções
-                         //Aqui vai ter a opção de Delete e Update
+                    Menu {
+                        Button {
+                            Task {
+                                await controller.deleteProject()
+                            }
+                        } label: {
+                            HStack {
+                                Image(systemName: "trash.fill")
+                                Text("Deletar Projeto")
+                            }
+                            .foregroundStyle(.red)
+                        }
+                        
                     } label: {
-                         Image(systemName: "ellipsis")
+                        Image(systemName: "ellipsis.circle.fill")
+                            .foregroundStyle(.secondary)
                     }
-                    #if os(macOS)
                     .buttonStyle(PlainButtonStyle())
-                    #endif
-                    .padding(.vertical, 5)
-                }.padding()
+//                    .menuStyle(.borderlessButton)
+                    .frame(width: 15)
+                    
+                }
+                .padding()
                 
                 HStack {
                     Text(controller.project?.projectName ?? "")
-                    #if os(macOS)
+#if os(macOS)
                         .font(.title3)
-                    #endif
-                    #if os(iOS)
+#endif
+#if os(iOS)
                         .font(.title)
-                    #endif
+#endif
                         .fontWeight(.semibold)
                     
                     Spacer()
@@ -105,9 +117,9 @@ struct ProjectView: View {
                         Image(systemName: "plus")
                             .font(.title3)
                     }
-                    #if os(macOS)
+#if os(macOS)
                     .buttonStyle(PlainButtonStyle())
-                    #endif
+#endif
                 }
                 .padding(.horizontal)
                 if tasksAreLoading {

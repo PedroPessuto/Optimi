@@ -11,6 +11,8 @@ struct TaskCard: View {
 	 
     @Environment(GeneralController.self) var controller
 	 var task: TaskModel
+    @Environment(\.dismiss) private var dismiss
+
 	 
 	 var body: some View {
 		  VStack {
@@ -37,6 +39,8 @@ struct TaskCard: View {
 							Task {
 								await controller.deleteTask(taskModel: task)
 							}
+                            dismiss()
+                        
 						} label: {
 							HStack {
 								Image(systemName: "trash")

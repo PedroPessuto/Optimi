@@ -15,11 +15,8 @@ import CloudKit
     public var projectTasks: [TaskModel] = []
     
     func getRecord() -> CKRecord {
-        let projectRecord = CKRecord(recordType: RecordNames.Project.rawValue)
-        
-        if let id = projectId {
-            projectRecord.setValue(id, forKey: ProjectFields.projectId.rawValue)
-        }
+        let projectRecord = CKRecord(recordType: RecordNames.Project.rawValue, recordID: projectId ?? CKRecord(recordType: RecordNames.Project.rawValue, recordID: CKRecord.ID(recordName: UUID().uuidString)).recordID)
+            
         projectRecord.setValue(self.projectName, forKey: ProjectFields.projectName.rawValue)
         
         if let createdAt = projectCreatedAt {
