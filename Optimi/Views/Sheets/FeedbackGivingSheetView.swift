@@ -36,16 +36,6 @@ struct FeedbackGivingSheetView: View {
 				.fontWeight(.bold)
 				.padding(.bottom, 14)
 			
-//			 HStack {
-//				 Text("\(delivery.deliveryName)")
-//
-//				 HStack {
-//					 Image(systemName: "link")
-//					 Link("Review", destination: delivery.deliveryURL)
-//				 }
-//				 .foregroundStyle(.blue)
-//			 }
-			
 			Text("Status da Entrega")
 				.fontWeight(.semibold)
 			
@@ -88,10 +78,6 @@ struct FeedbackGivingSheetView: View {
 						}.pickerStyle(.automatic)
 							.frame(width: 120)
 						
-//						TextEditor(text: $pickerTagDescription[index])
-//							.scrollIndicators(.never)
-//							.padding(4)
-//							.background(RoundedRectangle(cornerRadius: 4).stroke())
 						TextField("", text: $pickerTagDescription[index], prompt: Text("Descrição"), axis: .vertical)
 							.padding(4)
 							.background(RoundedRectangle(cornerRadius: 4).stroke(Color(red: 128/256, green: 128/256, blue: 128/256)))

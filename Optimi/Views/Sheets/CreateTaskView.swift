@@ -121,6 +121,9 @@ struct CreateTaskView: View {
 							Text("Criar Task")
 						}
 					})
+                    #if os(macOS)
+                    .keyboardShortcut(.defaultAction)
+                    #endif
 					.disabled(taskName == "" || taskDescription == "" ? true : false)  // MARK: Os links ficam opcionais
 				}
 			}

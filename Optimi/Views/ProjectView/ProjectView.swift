@@ -36,7 +36,8 @@ struct ProjectView: View {
                         Image(systemName: "house")
 #endif
                     }
-#if os(macOS)
+                    #if os(macOS)
+                    .foregroundColor(.accent)
                     .buttonStyle(PlainButtonStyle())
 #endif
                     
@@ -69,7 +70,8 @@ struct ProjectView: View {
                         }
                         .padding(.vertical, 12)
                     }
-#if os(macOS)
+                    #if os(macOS)
+                    .foregroundColor(.accent)
                     .buttonStyle(PlainButtonStyle())
 #endif
                     
@@ -89,9 +91,10 @@ struct ProjectView: View {
                         }
                         
                     } label: {
-                        Image(systemName: "ellipsis.circle.fill")
-                            .foregroundStyle(.secondary)
+                         Image(systemName: "ellipsis.circle")
                     }
+                    #if os(macOS)
+                    .foregroundStyle(.accent)
                     .buttonStyle(PlainButtonStyle())
 //                    .menuStyle(.borderlessButton)
                     .frame(width: 15)
