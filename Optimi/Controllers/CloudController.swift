@@ -53,6 +53,7 @@ import CloudKit
             return newProject
         }
         catch {
+			  print("Error creating project: \(error)")
             return nil
         }
     }
