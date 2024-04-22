@@ -208,8 +208,8 @@ extension DeliveryCard {
 		}
 		.buttonStyle(PlainButtonStyle())
         .foregroundStyle(.accent)
+        .menuStyle(.borderlessButton)
 	}
-  .menuStyle(.borderlessButton)
 	
 	private var feedbackDesignersAndDate: some View {
 		HStack {

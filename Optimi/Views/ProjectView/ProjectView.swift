@@ -98,6 +98,7 @@ struct ProjectView: View {
                     .buttonStyle(PlainButtonStyle())
 //                    .menuStyle(.borderlessButton)
                     .frame(width: 15)
+                    #endif
                     
                 }
                 .padding()
