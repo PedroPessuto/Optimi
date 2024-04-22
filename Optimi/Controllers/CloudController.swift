@@ -178,6 +178,23 @@ import CloudKit
         }
     }
     
+    // MARK: Change Task Status From Database
+    public func updateTask(_ task: TaskModel) async {
+        
+        do {
+            let rec = try await databasePublic.record(for: task.getRecord().recordID)
+            rec.setValue(task.taskName, forKey: TaskFields.taskName.rawValue)
+            rec.setValue(task.taskDescription, forKey: TaskFields.taskDescription.rawValue)
+            rec.setValue(task.taskLink, forKey: TaskFields.taskLink.rawValue)
+            rec.setValue(task.taskPrototypeLink, forKey: TaskFields.taskPrototypeLink.rawValue)
+            rec.setValue(task.taskDeadline, forKey: TaskFields.taskDeadline.rawValue)
+            let saved = try await databasePublic.save(rec)
+            task.update(record: saved)
+            
+        } catch {
+            return
+        }
+    }
     
     // ========== FEEDBACK FUNCTIONS ==========
     

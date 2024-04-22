@@ -36,6 +36,7 @@
 		BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */; };
 		BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29BD2BC6FDA000543D27 /* oInput.swift */; };
 		BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA29C02BC7133400543D27 /* ProjectView.swift */; };
+		BFF679542BD6FE8B00417CAF /* UpdateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF679532BD6FE8B00417CAF /* UpdateTaskView.swift */; };
 		E93945FC2BD19DBC00EA1D58 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = E93945FB2BD19DBC00EA1D58 /* Aptabase */; };
 		E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B703F2BC736A60067D0F2 /* TaskCard.swift */; };
 		E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94B70422BC736F00067D0F2 /* StatusPill.swift */; };
@@ -108,6 +109,7 @@
 		BFEA29BB2BC6D9B600543D27 /* AccountHomeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHomeDisplay.swift; sourceTree = "<group>"; };
 		BFEA29BD2BC6FDA000543D27 /* oInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oInput.swift; sourceTree = "<group>"; };
 		BFEA29C02BC7133400543D27 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		BFF679532BD6FE8B00417CAF /* UpdateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskView.swift; sourceTree = "<group>"; };
 		E94B703F2BC736A60067D0F2 /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
 		E94B70422BC736F00067D0F2 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		E97621832BC99F1C005FDAEC /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				BFEA29AD2BC6028C00543D27 /* CreateProjectView.swift */,
 				BFEA29AF2BC602C500543D27 /* ProjectNotFoundView.swift */,
 				E97621872BC9A3C8005FDAEC /* FeedbackGivingSheetView.swift */,
+				BFF679532BD6FE8B00417CAF /* UpdateTaskView.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				BFEA29BE2BC6FDA000543D27 /* oInput.swift in Sources */,
 				BFEA29B42BC6132000543D27 /* AccountModel.swift in Sources */,
 				E97621842BC99F1C005FDAEC /* FeedbackModel.swift in Sources */,
+				BFF679542BD6FE8B00417CAF /* UpdateTaskView.swift in Sources */,
 				E976219A2BC9CFE0005FDAEC /* CreateDeliveryView.swift in Sources */,
 				E97621982BC9CDC2005FDAEC /* DeliveryFields.swift in Sources */,
 				BFEA29A72BC5FF9100543D27 /* HomeView.swift in Sources */,
