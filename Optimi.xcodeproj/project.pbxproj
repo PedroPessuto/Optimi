@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF8706332BD2DF47003523C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8706312BD2DF47003523C9 /* Localizable.strings */; };
 		BF9218F02BCDB75700953448 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9218EF2BCDB75700953448 /* TaskStatus.swift */; };
 		BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F7D2BC45913003163E5 /* OptimiApp.swift */; };
 		BFD96F802BC45913003163E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD96F7F2BC45913003163E5 /* ContentView.swift */; };
@@ -48,6 +49,9 @@
 		E97621962BC9CDBB005FDAEC /* DeliveryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */; };
 		E97621982BC9CDC2005FDAEC /* DeliveryFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */; };
 		E976219A2BC9CFE0005FDAEC /* CreateDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */; };
+		E9A40ECD2BD2E2A3007B71BA /* TagDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */; };
+		E9A40ECF2BD2EF2D007B71BA /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */; };
+		E9A40ED12BD2FE74007B71BA /* FeedbackTagCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */; };
 		E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF8706322BD2DF47003523C9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF8706342BD2EC89003523C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF9218EF2BCDB75700953448 /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		BFD96F7A2BC45913003163E5 /* Optimi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optimi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD96F7D2BC45913003163E5 /* OptimiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimiApp.swift; sourceTree = "<group>"; };
@@ -114,6 +120,9 @@
 		E97621952BC9CDBB005FDAEC /* DeliveryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryStatus.swift; sourceTree = "<group>"; };
 		E97621972BC9CDC2005FDAEC /* DeliveryFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFields.swift; sourceTree = "<group>"; };
 		E97621992BC9CFE0005FDAEC /* CreateDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryView.swift; sourceTree = "<group>"; };
+		E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDescriptionView.swift; sourceTree = "<group>"; };
+		E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTagCard.swift; sourceTree = "<group>"; };
 		E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +185,7 @@
 				BFD96F812BC45914003163E5 /* Assets.xcassets */,
 				BFD96F832BC45914003163E5 /* Optimi.entitlements */,
 				BFD96F842BC45914003163E5 /* Preview Content */,
+				BF8706312BD2DF47003523C9 /* Localizable.strings */,
 			);
 			path = Optimi;
 			sourceTree = "<group>";
@@ -311,6 +321,9 @@
 			children = (
 				E976218E2BC9CCCB005FDAEC /* DeliveryView.swift */,
 				E97621912BC9CD17005FDAEC /* DeliveryCard.swift */,
+				E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */,
+				E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */,
+				E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */,
 			);
 			path = DeliveryView;
 			sourceTree = "<group>";
@@ -399,11 +412,12 @@
 			};
 			buildConfigurationList = BFD96F752BC45913003163E5 /* Build configuration list for PBXProject "Optimi" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = BFD96F712BC45913003163E5;
 			packageReferences = (
@@ -426,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD96F862BC45914003163E5 /* Preview Assets.xcassets in Resources */,
+				BF8706332BD2DF47003523C9 /* Localizable.strings in Resources */,
 				BFD96F822BC45914003163E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E94B70432BC736F00067D0F2 /* StatusPill.swift in Sources */,
+				E9A40ECD2BD2E2A3007B71BA /* TagDescriptionView.swift in Sources */,
 				BFEA299B2BC5E24900543D27 /* GeneralController.swift in Sources */,
 				E97621962BC9CDBB005FDAEC /* DeliveryStatus.swift in Sources */,
 				BFEA29912BC5CD1400543D27 /* PersonModel.swift in Sources */,
@@ -472,6 +488,7 @@
 				BFD96F802BC45913003163E5 /* ContentView.swift in Sources */,
 				BFEA29AE2BC6028C00543D27 /* CreateProjectView.swift in Sources */,
 				E97621862BC9A0A6005FDAEC /* FeedbackFields.swift in Sources */,
+				E9A40ECF2BD2EF2D007B71BA /* FloatingPanel.swift in Sources */,
 				BFEA29B22BC603D300543D27 /* ScreenNames.swift in Sources */,
 				BFEA29C12BC7133400543D27 /* ProjectView.swift in Sources */,
 				BFEA29BC2BC6D9B600543D27 /* AccountHomeDisplay.swift in Sources */,
@@ -484,6 +501,7 @@
 				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
 				BFEA29AC2BC601AA00543D27 /* Roles.swift in Sources */,
 				BFEA29962BC5DB6E00543D27 /* ProjectModel.swift in Sources */,
+				E9A40ED12BD2FE74007B71BA /* FeedbackTagCard.swift in Sources */,
 				E94B70402BC736A60067D0F2 /* TaskCard.swift in Sources */,
 				E976218F2BC9CCCB005FDAEC /* DeliveryView.swift in Sources */,
 				BFEA29942BC5CFBA00543D27 /* CloudController.swift in Sources */,
@@ -521,6 +539,18 @@
 			targetProxy = BFD96F962BC45914003163E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF8706312BD2DF47003523C9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8706322BD2DF47003523C9 /* pt-BR */,
+				BF8706342BD2EC89003523C9 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BFD96F9D2BC45914003163E5 /* Debug */ = {

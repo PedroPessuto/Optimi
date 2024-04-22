@@ -22,14 +22,21 @@ struct DeliveryCard: View {
         formatter.dateFormat = "dd/MM/yyyy - hh:mm"
         return formatter
     }
+	
+	private let gridRows = [
+		 GridItem(.adaptive(minimum: 77, maximum: 100), alignment: .leading)
+	]
     
-    private let gridRows = [
-        GridItem(.adaptive(minimum: 77, maximum: 100), alignment: .leading)
-    ]
+    
     
     @State var feedbacks: [FeedbackModel] = []
     @State var isLoading: Bool = false
     
+	@State var tagDescriptionPanelIsPresented: Bool = false
+	@State var tagChosen: String = ""
+	@State var tagDescription: String = ""
+	@State var tagDesigner: String = ""
+	@State var dateString: String = ""
     
     var body: some View {
         HStack(alignment: .top) {
@@ -55,10 +62,10 @@ struct DeliveryCard: View {
 							 }
 
 						 } label: {
-							 Image(systemName: "ellipsis.circle")
-                             #if os(macOS)
+							 Image(systemName: "ellipsis.circle.fill")                             
+#if os(macOS)
 								 .foregroundColor(.secondary)
-                             #endif
+																																																	#endif
 						 }
                     #if os(macOS)
 						 .buttonStyle(PlainButtonStyle())
@@ -130,6 +137,11 @@ struct DeliveryCard: View {
         .sheet(isPresented: $createFeedbackViewIsPresented) {
             FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
         }
+//		  .popover(isPresented: $tagDescriptionPanelIsPresented) {
+//			  
+//				  .presentationBackground(.regularMaterial)
+//		  }
+		  
     }
 }
 
@@ -191,7 +203,7 @@ extension DeliveryCard {
 			.buttonStyle(PlainButtonStyle())
 			
 		} label: {
-			Image(systemName: "ellipsis.circle")
+			Image(systemName: "ellipsis.circle.fill")
 				.foregroundStyle(.secondary)
 		}
 		.buttonStyle(PlainButtonStyle())
@@ -207,26 +219,23 @@ extension DeliveryCard {
 			
 			if let date = feedbacks.first?.feedbackCreatedAt {
 				Text("\(formatter.string(from: date))")
+					.onAppear { self.dateString = formatter.string(from: date) }
 			}
 		}
 	}
 	
 	private var feedbackTags: some View {
-		LazyVGrid(columns: gridRows, spacing: 20) {
+		LazyVGrid(columns: gridRows) {
+			
 			ForEach(0..<(feedbacks.first?.feedbackTags.count ?? 0), id:\.self) { index in
-				Menu {
-					Text("\(feedbacks.first?.feedbackDescription[index] ?? "")")
-				} label: {
-					Text("\(feedbacks.first?.feedbackTags[index] ?? "")")
-						
-				}
-				.padding(.horizontal, 5)
-				.padding(.vertical, 1)
-				.background(feedbacks.first?.feedbackTags[index] == "Cor" ? Color.backgroundRed : feedbacks.first?.feedbackTags[index] == "Espaçamento" ? Color.backgroundBlue : feedbacks.first?.feedbackTags[index] == "Opacidade" ? Color.backgroundYellow : feedbacks.first?.feedbackTags[index] == "Alinhamento" ? Color.backgroundGreen : feedbacks.first?.feedbackTags[index] == "Imagem" ? Color.backgroundOrange : feedbacks.first?.feedbackTags[index] == "Tamanho" ? Color.backgroundRed : Color.backgroundBlue)
-				.clipShape(RoundedRectangle(cornerRadius: 3))
-				.menuStyle(.borderlessButton)
+				FeedbackTagCard(tag: feedbacks.first?.feedbackTags[index] ?? "",
+									 dateString: formatter.string(from: feedbacks.first?.feedbackCreatedAt ?? Date.now),
+									 description: feedbacks.first?.feedbackDescription[index] ?? "",
+									 designer: feedbacks.first?.feedbackDesigner ?? "")
 			}
+			
 		}
+		
 	}
 	
 }
