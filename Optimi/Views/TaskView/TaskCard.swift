@@ -45,9 +45,9 @@ struct TaskCard: View {
 						}
 						
 					} label: {
-						Image(systemName: "ellipsis.circle.fill")
-							.foregroundStyle(colorScheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5))
+						Image(systemName: "ellipsis.circle")
 					}
+                    .foregroundStyle(.accent)
 					.buttonStyle(PlainButtonStyle())
 					.padding(.vertical, 5)
 					.padding(.horizontal, 3)

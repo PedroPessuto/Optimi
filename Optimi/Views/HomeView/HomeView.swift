@@ -39,7 +39,9 @@ struct HomeView: View {
                             AccountHomeDisplay {
                                 onboardingViewIsPresented.toggle()
                             }
+                            .padding()
                         }
+                        
                         Spacer()
                         // Criar Projeto
                         Button(action: {
@@ -50,8 +52,9 @@ struct HomeView: View {
                             Image(systemName: "plus")
                         }
                         .font(.title3)
+                        .padding()
 #if os(macOS)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.accent)
                         .buttonStyle(.plain)
 #endif
                     }
@@ -59,13 +62,12 @@ struct HomeView: View {
                 // ========== BODY ==========
                 VStack (spacing: 20) {
                     HStack {
-#if os(macOS)
                         Text("Token do Projeto")
+#if os(macOS)
                             .font(.headline)
                             .multilineTextAlignment(.leading)
 #endif
 #if os(iOS)
-                        Text("Token Do Projeto")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .multilineTextAlignment(.leading)
@@ -92,12 +94,8 @@ struct HomeView: View {
                 Image("Inicio")
 #if os(macOS)
                     .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
 #endif
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(22.5)
             .sheet(isPresented: $projectNotFoundSheetIsPresented) {
                 ProjectNotFoundView()
             }

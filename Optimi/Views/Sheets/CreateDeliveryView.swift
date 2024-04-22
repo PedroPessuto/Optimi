@@ -101,6 +101,9 @@ struct CreateDeliveryView: View {
 							Text("Criar Entrega")
 						}
 					})
+                    #if os(macOS)
+                    .keyboardShortcut(.defaultAction)
+                    #endif
 				}
 			}
 			.padding()

@@ -116,6 +116,9 @@ struct CreateTaskView: View {
 							Text("Criar Task")
 						}
 					})
+                    #if os(macOS)
+                    .keyboardShortcut(.defaultAction)
+                    #endif
 				}
 			}
 			.padding()

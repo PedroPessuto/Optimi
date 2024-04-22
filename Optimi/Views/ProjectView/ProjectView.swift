@@ -39,6 +39,7 @@ struct ProjectView: View {
                         #endif
                     }
                     #if os(macOS)
+                    .foregroundColor(.accent)
                     .buttonStyle(PlainButtonStyle())
                     #endif
                     
@@ -77,6 +78,7 @@ struct ProjectView: View {
                         .padding(.vertical, 12)
                     }
                     #if os(macOS)
+                    .foregroundColor(.accent)
                     .buttonStyle(PlainButtonStyle())
                     #endif
                     
@@ -86,10 +88,10 @@ struct ProjectView: View {
                          //vai abrir um Menu com as duas opções
                          //Aqui vai ter a opção de Delete e Update
                     } label: {
-                         Image(systemName: "ellipsis.circle.fill")
-								  .foregroundStyle(colorScheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5))
+                         Image(systemName: "ellipsis.circle")
                     }
                     #if os(macOS)
+                    .foregroundStyle(.accent)
                     .buttonStyle(PlainButtonStyle())
                     #endif
                     .padding(.vertical, 5)

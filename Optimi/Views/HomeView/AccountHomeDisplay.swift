@@ -27,7 +27,7 @@ struct AccountHomeDisplay: View {
         
 #endif
 #if os(macOS)
-        self.iconColor = .gray
+        self.iconColor = .accentColor
         self.iconSize = 20
         self.roleSize = 10
         self.nameSize = 12
@@ -64,7 +64,5 @@ struct AccountHomeDisplay: View {
             }
         }
             .buttonStyle(.plain)
-        .foregroundColor(.gray)
-        
     }
 }

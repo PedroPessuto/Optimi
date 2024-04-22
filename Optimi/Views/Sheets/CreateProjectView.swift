@@ -61,6 +61,9 @@ struct CreateProjectView: View {
 						}
 					}
 					.disabled(isLoading || projectName == "")
+                    #if os(macOS)
+                    .keyboardShortcut(.defaultAction)
+                    #endif
 				}
 			}
 			.padding()
