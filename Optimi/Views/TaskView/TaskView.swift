@@ -60,21 +60,32 @@ struct TaskView: View {
 #if os(iOS)
                     .buttonStyle(.borderedProminent)
 #endif
+						 if (task.taskPrototypeLink != "") || (task.taskLink != "") {
+							 Text("Links Importantes")
+								  .font(.title)
+						 }
                     
-                    Text("Links Importantes")
-                        .font(.title)
                     
-                    HStack{
-                        Image(systemName: "link")
-                        Link("Protótipo", destination: URL(string: task.taskPrototypeLink!)!)
-                            .padding(.trailing, 50)
-                        
-                    }.font(.title2)
+						 HStack{
+							 if let link = task.taskPrototypeLink {
+								 if link != "" {
+									 Image(systemName: "link")
+									 Link("Protótipo", destination: URL(string: link)!)
+										 .padding(.trailing, 50)
+								 }
+							 }
+							 
+						 }.font(.title2)
                         .foregroundStyle(Color.accentColor)
                     
                     HStack{
-                        Image(systemName: "link")
-                        Link("Tarefa", destination: URL(string: task.taskLink ?? "")!)
+							  if let link = task.taskLink {
+								  if link != ""{
+									  Image(systemName: "link")
+									  Link("Tarefa", destination: URL(string: link)!)
+								  }
+							  }
+                        
                     }.font(.title2)
                         .padding(.bottom, 40)
                         .foregroundStyle(Color.accentColor)

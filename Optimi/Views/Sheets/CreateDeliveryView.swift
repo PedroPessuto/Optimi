@@ -101,6 +101,7 @@ struct CreateDeliveryView: View {
 							Text("Criar Entrega")
 						}
 					})
+					.disabled(deliveryName == "" || deliveryDescription == "")
 				}
 			}
 			.padding()
