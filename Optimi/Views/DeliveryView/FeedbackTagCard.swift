@@ -29,6 +29,7 @@ struct FeedbackTagCard: View {
 			} label: {
 				Text("\(tag)")
 			}
+            .foregroundStyle(.white)
 			.buttonStyle(PlainButtonStyle())
 			.padding(.horizontal, 5)
 			.padding(.vertical, 1)
