@@ -55,6 +55,7 @@ struct CreateDeliveryView: View {
 //						.scrollIndicators(.never)
 					TextField("", text: $deliveryDescription, prompt: Text("Descrição"), axis: .vertical)
 						.lineLimit(5...10)
+						.textFieldStyle(.roundedBorder)
 				}
 				.cornerRadius(5)
 				.padding(.bottom, 14)
@@ -79,6 +80,7 @@ struct CreateDeliveryView: View {
 				
 				TextField("Developers", text: $deliveryDevelopers)
 					.padding(.bottom, 26)
+					.textFieldStyle(.roundedBorder)
 				
 				HStack{
 					Spacer()
@@ -108,7 +110,13 @@ struct CreateDeliveryView: View {
 				}
 			}
 			.padding()
-		}.frame(minWidth: 511, minHeight: 450)
+		}
+#if os(macOS)
+		.frame(minWidth: 511, minHeight: 450)
+#endif
+#if os(iOS)
+		.frame(minWidth: 510, minHeight: 550)
+#endif
 		
 	}
 }

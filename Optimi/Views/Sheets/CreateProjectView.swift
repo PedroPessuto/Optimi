@@ -71,5 +71,8 @@ struct CreateProjectView: View {
 #if os(macOS)
 		.frame(minWidth: 289, maxWidth: 350, minHeight: 138, maxHeight: 250)
 #endif
+#if os(iOS)
+		.frame(minWidth: 300, maxWidth: 350, minHeight: 200, maxHeight: 300)
+#endif
 	}
 }

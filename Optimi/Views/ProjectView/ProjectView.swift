@@ -165,9 +165,17 @@ struct ProjectView: View {
             Text("Selecione ou crie uma Task para começar")
                 .font(.largeTitle)
         }
-        .sheet(isPresented: $createTaskSheetIsPresented) {
-            CreateTaskView()
-        }
+#if os (macOS)
+		  .sheet(isPresented: $createTaskSheetIsPresented) {
+			  CreateTaskView()
+		  }
+#endif
+#if os(iOS)
+		  .formSheet(isPresented: $createTaskSheetIsPresented) {
+			  CreateTaskView()
+				  .environment(controller)
+		  }
+#endif
         .onAppear {
             Task {
                 tasksAreLoading = true

@@ -162,7 +162,7 @@ import CloudKit
 			rec.setValue(personName, forKey: TaskFields.taskDevelopers.rawValue)
 			let saved = try await databasePublic.save(rec)
 			taskModel.update(record: saved)
-			taskModel.taskDevelopers?.append(personName)
+			//taskModel.taskDevelopers?.append(personName)
 		} catch {
 			return
 		}

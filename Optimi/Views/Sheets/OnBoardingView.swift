@@ -100,6 +100,19 @@ struct OnboardingView: View {
         NavigationStack{
             
             VStack(alignment: .leading){
+					HStack {
+						Spacer()
+						
+						Button {
+							 generalController.account = AccountModel(accountName: yourName, accountRole: cargoSelection)
+							 dismiss()
+						} label: {
+							 Text("Salvar Perfil")
+						}
+						.clipShape(.capsule)
+						.disabled(yourName == "")
+						
+					}
                 
                 Text("Olá! Este é o Optimi!")
                     .font(.largeTitle)
@@ -129,22 +142,10 @@ struct OnboardingView: View {
                         .pickerStyle(.segmented)
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .confirmationAction) {
-                        
-                        Button {
-                            generalController.account = AccountModel(accountName: yourName, accountRole: cargoSelection)
-                            dismiss()
-                        } label: {
-                            Text("Salvar Perfil")
-                        }
-                        .clipShape(.capsule)
-                        .disabled(yourName == "")
-                    }
-                }
             }
             .padding()
         }
+		  .frame(minWidth: 511, minHeight: 350)
 #endif
     }
 }

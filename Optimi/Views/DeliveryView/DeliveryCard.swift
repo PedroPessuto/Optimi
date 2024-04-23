@@ -72,18 +72,24 @@ struct DeliveryCard: View {
 #endif
                 }
                 
-                HStack{
-                    Image(systemName: "link")
-                    Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
-                }
-                .foregroundStyle(Color.accentColor)
+					if let link = delivery.deliveryImplementationLink {
+						if link != ""{
+							HStack {
+								 Image(systemName: "link")
+								 Link("Implementação", destination: URL(string: link)!)
+							}
+							.foregroundStyle(Color.accentColor)
+							.padding(.bottom,5)
+						}
+						
+					}
+                
 #if os(macOS)
                 .font(.title)
 #endif
 #if os(macOS)
                 .font(.title2)
 #endif
-                .padding(.bottom,5)
                 
                 HStack {
                     Image(systemName: "person.fill")
@@ -135,21 +141,23 @@ struct DeliveryCard: View {
             
         }
         .padding()
+		 #if os(macOS)
         .sheet(isPresented: $createFeedbackViewIsPresented) {
             FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
         }
-        //		  .popover(isPresented: $tagDescriptionPanelIsPresented) {
-        //
-        //				  .presentationBackground(.regularMaterial)
-        //		  }
+		 #endif
+		 #if os(iOS)
+		  .formSheet(isPresented: $createFeedbackViewIsPresented) {
+			  FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
+				  .environment(controller)
+		  }
+		 #endif
+
         
     }
 }
 
-//#Preview {
-//	DeliveryCard(delivery: DeliveryModel(deliveryName: "Eita preula"))
-//		.environment(GeneralController())
-//}
+
 
 extension DeliveryCard {
 	private var addFeedbackButton: some View {

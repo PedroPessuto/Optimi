@@ -29,15 +29,29 @@ struct DeliveryView: View {
             }
         }
         .onAppear {
+			  print("Apareci")
             Task {
                 
                 await controller.getDeliveriesFromTask(task)
                 
             }
         }
-        .sheet(isPresented: $createDeliverySheetIsPresented) {
-            CreateDeliveryView(task: task)
-        }
+		  .onChange(of: task.taskId) { oldValue, newValue in
+			  Task {
+				  await controller.getDeliveriesFromTask(task)
+			  }
+		  }
+#if os(macOS)
+		  .sheet(isPresented: $createDeliverySheetIsPresented) {
+			  CreateDeliveryView(task: task)
+		  }
+#endif
+#if os(iOS)
+		  .formSheet(isPresented: $createDeliverySheetIsPresented) {
+			  CreateDeliveryView(task: task)
+				  .environment(controller)
+		  }
+#endif
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("CurrentScreen", selection: $currentScreen){
@@ -51,8 +65,10 @@ struct DeliveryView: View {
             
             ToolbarItemGroup(placement: .automatic) {
                 HStack {
-                    Divider()
-                    
+#if os(macOS)
+						 Divider()
+#endif
+						 
                     Button {
                         createDeliverySheetIsPresented.toggle()
                     } label: {
