@@ -64,6 +64,7 @@ struct DeliveryView: View {
             }
             
             ToolbarItemGroup(placement: .automatic) {
+
                 HStack {
 #if os(macOS)
 						 Divider()
@@ -75,10 +76,11 @@ struct DeliveryView: View {
                         HStack {
                             Text("Adicionar entrega")
                             Image(systemName: "plus")
+
                         }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }.foregroundColor(.secondary)
+                        .buttonStyle(PlainButtonStyle())
+                    }.foregroundColor(.secondary)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
