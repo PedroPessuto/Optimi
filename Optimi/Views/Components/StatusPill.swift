@@ -20,7 +20,9 @@ struct StatusPill: View {
 			}
 			.padding(.horizontal, 9)
 			.padding(.vertical, 3)
-			.background(statusColor(for: status))
+			.background(statusColor(for: status)
+                .opacity(0.5)
+            )
 			.clipShape(RoundedRectangle(cornerRadius: 360))
 	 }
 }

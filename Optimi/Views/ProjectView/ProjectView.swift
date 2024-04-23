@@ -115,15 +115,17 @@ struct ProjectView: View {
                     
                     Spacer()
                     
-                    Button {
-                        createTaskSheetIsPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.title3)
-                    }
+                    if(controller.account?.accountRole == .Designer){
+                        Button {
+                            createTaskSheetIsPresented.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.title3)
+                        }
 #if os(macOS)
-                    .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(PlainButtonStyle())
 #endif
+                    }
                 }
                 .padding(.horizontal)
                 if tasksAreLoading {

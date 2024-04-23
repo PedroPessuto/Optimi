@@ -78,9 +78,6 @@ struct DeliveryCard: View {
                 }
                 .foregroundStyle(Color.accentColor)
 #if os(macOS)
-                .font(.title)
-#endif
-#if os(macOS)
                 .font(.title2)
 #endif
                 .padding(.bottom,5)
@@ -127,7 +124,11 @@ struct DeliveryCard: View {
             }
             else {
                 if feedbacks.isEmpty {
-                    addFeedbackButton
+                    if(controller.account?.accountRole == .Designer){
+                        addFeedbackButton
+                    }else{
+                        noFeedbackView
+                    }
                 } else {
                     feedbackCard
                 }
@@ -164,6 +165,17 @@ extension DeliveryCard {
 		}
 		.buttonStyle(PlainButtonStyle())
 	}
+    
+    private var noFeedbackView: some View{
+        VStack{
+            Spacer()
+            Text("Sem feedback ainda")
+                .font(.title3)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
+            Spacer()
+        }
+    }
 	
 	private var feedbackCard: some View {
 		VStack {
