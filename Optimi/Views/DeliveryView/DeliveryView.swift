@@ -50,21 +50,23 @@ struct DeliveryView: View {
             }
             
             ToolbarItemGroup(placement: .automatic) {
-                HStack {
-                    #if os(macOS)
-                    Divider()
-                    #endif
-                    
-                    Button {
-                        createDeliverySheetIsPresented.toggle()
-                    } label: {
-                        HStack {
-                            Text("Adicionar entrega")
-                            Image(systemName: "plus")
+                if(controller.account?.accountRole == .Developer){
+                    HStack {
+#if os(macOS)
+                        Divider()
+#endif
+                        
+                        Button {
+                            createDeliverySheetIsPresented.toggle()
+                        } label: {
+                            HStack {
+                                Text("Adicionar entrega")
+                                Image(systemName: "plus")
+                            }
                         }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }.foregroundColor(.secondary)
+                        .buttonStyle(PlainButtonStyle())
+                    }.foregroundColor(.secondary)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
