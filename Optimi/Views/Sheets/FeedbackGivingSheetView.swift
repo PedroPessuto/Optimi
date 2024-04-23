@@ -85,7 +85,6 @@ struct FeedbackGivingSheetView: View {
 				}
 			}
 			.scrollContentBackground(.hidden)
-			.frame(height: rowHeight*CGFloat(tagSelections.count)+100)
 			
 			Spacer()
 			
@@ -115,7 +114,12 @@ struct FeedbackGivingSheetView: View {
 			
 		}
 		.padding()
+		#if os(macOS)
 		.frame(minWidth: 450, maxWidth: 500, minHeight: 380, maxHeight: 500)
+		#endif
+		#if os(iOS)
+		.frame(minWidth: 450, minHeight: 450, maxHeight: .infinity)
+		#endif
 	}
 }
 

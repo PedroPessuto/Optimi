@@ -52,6 +52,7 @@ struct CreateTaskView: View {
 				VStack {
 					TextField("", text: $taskDescription, prompt: Text("Descrição"), axis: .vertical)
 						.lineLimit(5...10)
+						.textFieldStyle(.roundedBorder)
 				}
 				.cornerRadius(5)
 				.padding(.bottom, 14)
@@ -95,6 +96,7 @@ struct CreateTaskView: View {
 				
 				TextField("Designers", text: $taskDesigners)
 					.padding(.bottom, 26)
+					.textFieldStyle(.roundedBorder)
 				
 				HStack{
 					Spacer()
@@ -128,7 +130,7 @@ struct CreateTaskView: View {
 				}
 			}
 			.padding()
-		}.frame(minWidth: 511, minHeight: 500)
+		}.frame(minWidth: 511, minHeight: 670, maxHeight: .infinity)
 
 	}
 }

@@ -29,15 +29,29 @@ struct DeliveryView: View {
             }
         }
         .onAppear {
+			  print("Apareci")
             Task {
                 
                 await controller.getDeliveriesFromTask(task)
                 
             }
         }
-        .sheet(isPresented: $createDeliverySheetIsPresented) {
-            CreateDeliveryView(task: task)
-        }
+		  .onChange(of: task.taskId) { oldValue, newValue in
+			  Task {
+				  await controller.getDeliveriesFromTask(task)
+			  }
+		  }
+#if os(macOS)
+		  .sheet(isPresented: $createDeliverySheetIsPresented) {
+			  CreateDeliveryView(task: task)
+		  }
+#endif
+#if os(iOS)
+		  .formSheet(isPresented: $createDeliverySheetIsPresented) {
+			  CreateDeliveryView(task: task)
+				  .environment(controller)
+		  }
+#endif
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("CurrentScreen", selection: $currentScreen){
@@ -50,19 +64,19 @@ struct DeliveryView: View {
             }
             
             ToolbarItemGroup(placement: .automatic) {
-                if(controller.account?.accountRole == .Developer){
-                    HStack {
+
+                HStack {
 #if os(macOS)
-                        Divider()
+						 Divider()
 #endif
-                        
-                        Button {
-                            createDeliverySheetIsPresented.toggle()
-                        } label: {
-                            HStack {
-                                Text("Adicionar entrega")
-                                Image(systemName: "plus")
-                            }
+						 
+                    Button {
+                        createDeliverySheetIsPresented.toggle()
+                    } label: {
+                        HStack {
+                            Text("Adicionar entrega")
+                            Image(systemName: "plus")
+
                         }
                         .buttonStyle(PlainButtonStyle())
                     }.foregroundColor(.secondary)
