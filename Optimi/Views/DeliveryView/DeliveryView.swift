@@ -51,7 +51,9 @@ struct DeliveryView: View {
             
             ToolbarItemGroup(placement: .automatic) {
                 HStack {
+                    #if os(macOS)
                     Divider()
+                    #endif
                     
                     Button {
                         createDeliverySheetIsPresented.toggle()
