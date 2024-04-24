@@ -20,7 +20,7 @@ struct FeedbackGivingSheetView: View {
 	@State var feedbackTags: [String] = []
 	@State var feedbackDescription: [String] = []
 	
-	@State var tagSelections: [String] = [""]
+	@State var tagSelections: [String] = ["Cor"]
 	@State var pickerTagDescription: [String] = [""]
     var task: TaskModel
 	@Binding var feedbackList: [FeedbackModel]

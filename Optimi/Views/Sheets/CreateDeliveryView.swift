@@ -93,7 +93,7 @@ struct CreateDeliveryView: View {
 					})
 					Button(action: {
 						Task {
-							let delivery = DeliveryModel(deliveryName: deliveryName, deliveryDevelopers: deliveryDevelopers, deliveryDocumentation: deliveryDescription, deliveryImplementationLink: implementationLink)
+							let delivery = DeliveryModel(deliveryName: deliveryName, deliveryDevelopers: deliveryDevelopers, deliveryDocumentation: deliveryDescription, deliveryImplementationLink: implementationLink.replacingOccurrences(of: " ", with: ""))
 							await controller.createDelivery(delivery, task.taskId!)
 						}
 						dismiss()
