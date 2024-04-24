@@ -111,8 +111,8 @@ struct CreateTaskView: View {
 						Task {
 							await controller.createTask(taskName: taskName,
 																 taskDescription: taskDescription,
-																 taskLink: taskLink,
-																 taskPrototypeLink: prototypeLink,
+																 taskLink: taskLink.replacingOccurrences(of: " ", with: ""),
+																 taskPrototypeLink: prototypeLink.replacingOccurrences(of: " ", with: ""),
 																 taskDesigners: taskDesigners,
 																 taskDeadline: taskDeadline)
 						}

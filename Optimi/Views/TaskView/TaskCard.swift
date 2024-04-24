@@ -13,7 +13,8 @@ struct TaskCard: View {
 	 var task: TaskModel
     @Environment(\.dismiss) private var dismiss
 
-	 
+	@State var focused: Bool = false
+	
 	 var body: some View {
 		  VStack {
 				HStack {
@@ -24,6 +25,7 @@ struct TaskCard: View {
 					 Spacer()
 					 
 					StatusPill(status: task.taskStatus!)
+						.foregroundStyle(focused ? .red : .blue)
 				}
 				.padding(.bottom)
 				
@@ -57,6 +59,11 @@ struct TaskCard: View {
 					.padding(.horizontal, 3)
 				}
 		  }.frame(height: 77)
+			 .onTapGesture {
+				 withAnimation(.easeInOut(duration: 0.3)) {
+					 self.focused.toggle()
+				 }
+			 }
 	 }
 }
 

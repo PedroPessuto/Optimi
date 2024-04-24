@@ -59,6 +59,7 @@ struct ProjectNotFoundView: View {
             }
             .padding()
         }
+		  .frame(minWidth: 300, maxWidth: 400, minHeight: 140, maxHeight: 250)
         
         #endif
     }

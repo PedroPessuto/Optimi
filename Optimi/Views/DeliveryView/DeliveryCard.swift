@@ -80,13 +80,14 @@ struct DeliveryCard: View {
 							}
 							.foregroundStyle(Color.accentColor)
 							.padding(.bottom,5)
+#if os(macOS)
+					 .font(.title2)
+#endif
 						}
 						
 					}
                 
-#if os(macOS)
-                .font(.title2)
-#endif
+
                 
                 HStack {
                     Image(systemName: "person.fill")

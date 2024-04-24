@@ -22,11 +22,19 @@ struct DeliveryView: View {
     var body: some View {
         NavigationStack{
             //Falta um if pra mostrar um empty state se tiver 0 Deliverys
-            List{
-                ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
-						 DeliveryCard(delivery: delivery, task: task)
-                }
-            }
+			  if !task.taskDeliveries.isEmpty {
+				  List{
+						ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
+							DeliveryCard(delivery: delivery, task: task)
+						}
+				  }
+			  } 
+			  else {
+				  Text("Nenhuma entrega feita...")
+					  .font(.largeTitle)
+					  .fontWeight(.semibold)
+			  }
+            
         }
         .onAppear {
 			  print("Apareci")

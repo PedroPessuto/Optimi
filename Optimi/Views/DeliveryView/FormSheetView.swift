@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if os(iOS)
 class FormSheetWrapper<Content: View>: UIViewController, UIPopoverPresentationControllerDelegate {
 	
 	@Environment(GeneralController.self) var controller
@@ -80,3 +81,4 @@ extension View {
 										  content: content))
 	}
 }
+#endif
