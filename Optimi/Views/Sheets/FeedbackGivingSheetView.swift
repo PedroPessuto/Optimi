@@ -23,11 +23,12 @@ struct FeedbackGivingSheetView: View {
 	@State var tagSelections: [String] = ["Cor"]
 	@State var pickerTagDescription: [String] = [""]
     var task: TaskModel
-	@Binding var feedbackList: [FeedbackModel]
-	
+    @Binding var feedbackList: [FeedbackModel]
+    var delivery: DeliveryModel
+
 	@Environment(\.defaultMinListRowHeight) var rowHeight
 	
-	var delivery: DeliveryModel
+   
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -67,6 +68,7 @@ struct FeedbackGivingSheetView: View {
 								.foregroundStyle(.red)
 						}
 						.buttonStyle(PlainButtonStyle())
+                        
 						Picker("", selection: $tagSelections[index]) {
 							Text("Cor").tag("Cor")
 							Text("Alinhamento").tag("Alinhamento")
@@ -75,8 +77,9 @@ struct FeedbackGivingSheetView: View {
 							Text("Imagem").tag("Imagem")
 							Text("Opacidade").tag("Opacidade")
 							Text("Tamanho").tag("Tamanho")
-						}.pickerStyle(.automatic)
-							.frame(width: 120)
+						}
+                        .pickerStyle(.automatic)
+                        .frame(width: 120)
 						
 						TextField("", text: $pickerTagDescription[index], prompt: Text("Descrição"), axis: .vertical)
 							.padding(4)
@@ -95,31 +98,61 @@ struct FeedbackGivingSheetView: View {
 					dismiss()
 				}
 				
-				Button("Enviar Feedback") {
-					Task {
-						let feedback = FeedbackModel(
-							feedbackStatus: feedbackStatusSelection,
-							feedbackTags: tagSelections.isEmpty ? [] : tagSelections.first == "" && tagSelections.count == 1 ? [""] : tagSelections,
-							feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription, feedbackDesigner: controller.account?.accountName ?? "Designer")
-						
-						let response = await controller.createFeedback(feedback, delivery, task)
-						
-						feedbackList.append(response ?? feedback)
-					}
-					Aptabase.shared.trackEvent("Criou um feedback")
-					dismiss()
-				}
-				.keyboardShortcut(.defaultAction)
+
+                if feedbackList.count > 0 {
+                    Button("Atualizar Feedback") {
+                        dismiss()
+                        Task {
+                            feedbackList[0].feedbackStatus = feedbackStatusSelection
+                            feedbackList[0].feedbackTags = tagSelections
+                            feedbackList[0].feedbackDescription = pickerTagDescription
+                            await controller.updateFeedback(feedbackList[0], delivery, task)
+                        }
+                        Aptabase.shared.trackEvent("Atualizou um feedback")
+                    }
+                    .keyboardShortcut(.defaultAction)
+                }
+                else {
+                    Button("Enviar Feedback") {
+                        Task {
+                            let feedback = FeedbackModel(
+                                feedbackStatus: feedbackStatusSelection,
+                                feedbackTags: tagSelections.isEmpty ? [] : tagSelections.first == "" && tagSelections.count == 1 ? [""] : tagSelections,
+                                feedbackDescription: pickerTagDescription.isEmpty ? [] : pickerTagDescription.first == "" && pickerTagDescription.count == 1 ? [""] : pickerTagDescription, feedbackDesigner: controller.account?.accountName ?? "Designer")
+                            
+                            let response = await controller.createFeedback(feedback, delivery, task)
+                            
+                            feedbackList.append(response ?? feedback)
+                            
+                            dismiss()
+                        }
+                        Aptabase.shared.trackEvent("Criou um feedback")
+                    }
+                    .keyboardShortcut(.defaultAction)
+                }
+
 			}
 			
 		}
 		.padding()
 		#if os(macOS)
 		.frame(minWidth: 450, maxWidth: 500, minHeight: 380, maxHeight: 500)
+
+        .onAppear {
+            if self.feedbackList.count > 0 {
+                feedbackStatusSelection = feedbackList[0].feedbackStatus ?? ""
+                feedbackTags = feedbackList[0].feedbackTags
+                tagSelections = feedbackList[0].feedbackTags
+                pickerTagDescription =  feedbackList[0].feedbackDescription
+                feedbackDescription = feedbackList[0].feedbackDescription
+            }
+        }
+
 		#endif
 		#if os(iOS)
 		.frame(minWidth: 450, minHeight: 450, maxHeight: .infinity)
 		#endif
+
 	}
 }
 

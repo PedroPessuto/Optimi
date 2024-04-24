@@ -16,8 +16,10 @@ struct ProjectView: View {
     
     @State var tasksAreLoading: Bool = false
     @State var createTaskSheetIsPresented: Bool = false
+    @State var updateTaskViewIsPresented: Bool = false
+    @State var isUpdating: Bool = false
     @State var tokenWasCopied: Bool = false
-    @State var taskSelected: TaskModel? = nil
+    
     
     var body: some View {
         
@@ -96,7 +98,7 @@ struct ProjectView: View {
                     #if os(macOS)
                     .foregroundStyle(.accent)
                     .buttonStyle(PlainButtonStyle())
-//                    .menuStyle(.borderlessButton)
+                    //                    .menuStyle(.borderlessButton)
                     .frame(width: 15)
                     #endif
                     
@@ -153,7 +155,12 @@ struct ProjectView: View {
                                     }
                                 } label: {
                                     
-                                    TaskCard(task: task)
+                                    TaskCard(task: task, updateTaskViewIsPresented: $updateTaskViewIsPresented)
+                                        .sheet(isPresented: $updateTaskViewIsPresented) {
+                                            
+                                            UpdateTaskView(task: task)
+                                            
+                                        }
                                 }
                             }
                         }
@@ -167,6 +174,7 @@ struct ProjectView: View {
             Text("Selecione ou crie uma Task para começar")
                 .font(.largeTitle)
         }
+
 #if os (macOS)
 		  .sheet(isPresented: $createTaskSheetIsPresented) {
 			  CreateTaskView()
@@ -178,6 +186,7 @@ struct ProjectView: View {
 				  .environment(controller)
 		  }
 #endif
+
         .onAppear {
             Task {
                 tasksAreLoading = true

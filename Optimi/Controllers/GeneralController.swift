@@ -49,36 +49,36 @@ import CloudKit
         
     }
     
-
-	
-	// ========== TASKS FUNCTIONS ==========
-	
-	public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "", taskDeadline: Date?) async {
-		
-		if let project = self.project {
-			let taskModel = TaskModel(taskName: taskName, 
-											  taskDescription: taskDescription,
-											  taskLink: taskLink,
-											  taskPrototypeLink: taskPrototypeLink,
-											  taskProjectReference: project.projectId!,
-											  taskDesigners: self.account?.accountName ?? taskDesigners,
-											  taskDevelopers: "Nenhum dev associado...",
-											  taskDeadline: taskDeadline)
-			let task = await self.cloudController.createTask(taskModel)
-			if let t = task {
-				self.project?.projectTasks.append(t)
-			}
-		}
-		
-	}
-	
-	public func getTasksFromProject() async {
-		if let projectID = self.project?.projectId {
-			let response = await self.cloudController.getTasksFromProject(projectID)
-			self.project?.projectTasks = response
-		}
-	}
-
+    
+    
+    // ========== TASKS FUNCTIONS ==========
+    
+    public func createTask(taskName: String, taskDescription: String = "", taskLink: String = "", taskPrototypeLink: String = "", taskDesigners: String = "", taskDeadline: Date?) async {
+        
+        if let project = self.project {
+            let taskModel = TaskModel(taskName: taskName,
+                                      taskDescription: taskDescription,
+                                      taskLink: taskLink,
+                                      taskPrototypeLink: taskPrototypeLink,
+                                      taskProjectReference: project.projectId!,
+                                      taskDesigners: self.account?.accountName ?? taskDesigners,
+                                      taskDevelopers: "Nenhum dev associado...",
+                                      taskDeadline: taskDeadline)
+            let task = await self.cloudController.createTask(taskModel)
+            if let t = task {
+                self.project?.projectTasks.append(t)
+            }
+        }
+        
+    }
+    
+    public func getTasksFromProject() async {
+        if let projectID = self.project?.projectId {
+            let response = await self.cloudController.getTasksFromProject(projectID)
+            self.project?.projectTasks = response
+        }
+    }
+    
     
     public func changeTaskStatus(_ taskModel: TaskModel, _ taskStatus: TaskStatus) async {
         
@@ -91,6 +91,10 @@ import CloudKit
         self.project!.projectTasks.removeAll { task in
             task.taskId == taskModel.taskId
         }
+    }
+    
+    public func updateTask(taskModel: TaskModel) async {
+        await self.cloudController.updateTask(taskModel)
     }
     
     
@@ -130,6 +134,27 @@ import CloudKit
         deliveryModel.deliveryFeedbacks.removeAll { feedback in
             feedback.feedbackId == feedbackModel.feedbackId
         }
+    }
+    
+    // MARK: Update Feedback
+    public func updateFeedback(_ feedback: FeedbackModel, _ delivery: DeliveryModel, _ task: TaskModel) async {
+        
+        await cloudController.updateFeedback(feedback)
+        if let approved = feedback.feedbackStatus {
+            if approved == "Aprovada" {
+                await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Approved)
+                await cloudController.changeOnlyTaskStatus(task, taskStatus: .Aprovado)
+                delivery.deliveryStatus = DeliveryStatus.Approved
+                task.taskStatus = TaskStatus.Aprovado.rawValue
+            }
+            else {
+                await cloudController.changeDeliveryStatus(delivery, deliveryStatus: .Reproved)
+                await cloudController.changeOnlyTaskStatus(task, taskStatus: .Reprovada)
+                delivery.deliveryStatus = DeliveryStatus.Reproved
+                task.taskStatus = TaskStatus.Reprovada.rawValue
+            }
+        }
+        
     }
     
     
@@ -183,6 +208,12 @@ import CloudKit
         }
     }
     
+    // MARK: Update delivery
+    public func updateDelivery(_ delivery: DeliveryModel) async {
+        
+        await cloudController.updateDelivery(delivery)
+        
+    }
     
    
     

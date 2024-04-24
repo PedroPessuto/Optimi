@@ -14,7 +14,7 @@ struct DeliveryCard: View {
     
     var delivery: DeliveryModel
     var task: TaskModel
-    
+    @Binding var updateDeliverySheetIsPresented: Bool
     @State var createFeedbackViewIsPresented: Bool = false
     
     var formatter: DateFormatter {
@@ -50,6 +50,16 @@ struct DeliveryCard: View {
                     Spacer()
                     
                     Menu {
+                        
+                        Button {
+                            updateDeliverySheetIsPresented = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "arrow.clockwise")
+                                Text("Atualizar entrega")
+                            }
+                        }
+                        
                         Button {
                             Task {
                                 await controller.deleteDelivery(delivery, task.taskId!)
@@ -178,6 +188,7 @@ extension DeliveryCard {
     private var noFeedbackView: some View{
         VStack{
             Spacer()
+
             Text("Sem feedback ainda")
                 .font(.title3)
                 .padding(.leading, 30)

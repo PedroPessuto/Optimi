@@ -13,6 +13,7 @@ struct DeliveryView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State var noDeliveriesFound: Bool = false
+    @State var updateDeliverySheetIsPresented: Bool = false
     @State var createDeliverySheetIsPresented: Bool = false
     
     @State var currentScreen: ScreenNames = .DeliveryView
@@ -22,6 +23,7 @@ struct DeliveryView: View {
     var body: some View {
         NavigationStack{
             //Falta um if pra mostrar um empty state se tiver 0 Deliverys
+
 			  if !task.taskDeliveries.isEmpty {
 				  List{
 						ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
@@ -44,6 +46,7 @@ struct DeliveryView: View {
                 
             }
         }
+
 		  .onChange(of: task.taskId) { oldValue, newValue in
 			  Task {
 				  await controller.getDeliveriesFromTask(task)

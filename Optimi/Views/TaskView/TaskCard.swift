@@ -8,63 +8,68 @@
 import SwiftUI
 
 struct TaskCard: View {
-	@Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colorScheme
     @Environment(GeneralController.self) var controller
-	 var task: TaskModel
+    var task: TaskModel
+    @Binding var updateTaskViewIsPresented: Bool
     @Environment(\.dismiss) private var dismiss
-
-	@State var focused: Bool = false
-	
-	 var body: some View {
-		  VStack {
-				HStack {
-					 Text(task.taskName)
-						  .font(.title3)
-						  .multilineTextAlignment(.leading)
-					 
-					 Spacer()
-					 
-					StatusPill(status: task.taskStatus!)
-						.foregroundStyle(focused ? .red : .blue)
-				}
-				.padding(.bottom)
-				
-				HStack {
-					 Image(systemName: "person.fill")
-					 Text(task.taskDesigners ?? "")
-						  .foregroundStyle(.secondary)
-					 
-					 Spacer()
-					 
-					Menu {
-						Button(role: .destructive) {
-							Task {
-								await controller.deleteTask(taskModel: task)
-							}
-                            dismiss()
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text(task.taskName)
+                    .font(.title3)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+                
+                StatusPill(status: task.taskStatus!)
+            }
+            .padding(.bottom)
+            
+            HStack {
+                Image(systemName: "person.fill")
+                Text(task.taskDesigners ?? "")
+                    .foregroundStyle(.secondary)
+                
+                Spacer()
+                
+                Menu {
+                    Button() {
+                        updateTaskViewIsPresented = true
                         
-						} label: {
-							HStack {
-								Image(systemName: "trash")
-								Text("Deletar task")
-							}
-						}
-						
-					} label: {
-						Image(systemName: "ellipsis.circle")
-					}
-                    .foregroundStyle(.accent)
-					.buttonStyle(PlainButtonStyle())
-					.padding(.vertical, 5)
-					.padding(.horizontal, 3)
-				}
-		  }.frame(height: 77)
-			 .onTapGesture {
-				 withAnimation(.easeInOut(duration: 0.3)) {
-					 self.focused.toggle()
-				 }
-			 }
-	 }
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text("Atualizar task")
+                        }
+                    }
+                    
+                    
+                    Button(role: .destructive) {
+                    
+                        Task {
+                            await controller.deleteTask(taskModel: task)
+                        }
+                        dismiss()
+                        
+                    } label: {
+                        HStack {
+                            Image(systemName: "trash")
+                            Text("Deletar task")
+                        }
+                    }
+                    
+                } label: {
+                    Image(systemName: "ellipsis.circle.fill")
+                        .foregroundStyle(colorScheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5))
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.vertical, 5)
+                .padding(.horizontal, 3)
+            }
+        }.frame(height: 77)
+    }
 }
 
 //#Preview {
@@ -72,20 +77,20 @@ struct TaskCard: View {
 //}
 
 extension TaskCard {
-	 func statusColor(for string: String) -> Color {
-		  switch string {
-		  case "Ready for Dev":
-				return .backgroundOrange
-		  case "Aprovada":
-				return .backgroundGreen
-		  case "Revisão Pendente":
-				return .backgroundYellow
-		  case "Reprovada":
-				return .backgroundRed
-		  case "Em Andamento":
-				return .backgroundBlue
-		  default:
-				return .black
-		  }
-	 }
+    func statusColor(for string: String) -> Color {
+        switch string {
+        case "Ready for Dev":
+            return .backgroundOrange
+        case "Aprovada":
+            return .backgroundGreen
+        case "Revisão Pendente":
+            return .backgroundYellow
+        case "Reprovada":
+            return .backgroundRed
+        case "Em Andamento":
+            return .backgroundBlue
+        default:
+            return .black
+        }
+    }
 }

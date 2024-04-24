@@ -108,6 +108,7 @@ struct CreateTaskView: View {
 						}
 					})
 					Button(action: {
+
 						Task {
 							await controller.createTask(taskName: taskName,
 																 taskDescription: taskDescription,
@@ -118,6 +119,7 @@ struct CreateTaskView: View {
 						}
 						dismiss()
 						Aptabase.shared.trackEvent("Criou uma Task")
+
 					}, label: {
 						ZStack{
 							Text("Criar Task")
