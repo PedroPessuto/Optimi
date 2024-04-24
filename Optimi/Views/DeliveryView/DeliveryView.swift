@@ -13,6 +13,7 @@ struct DeliveryView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State var noDeliveriesFound: Bool = false
+    @State var updateDeliverySheetIsPresented: Bool = false
     @State var createDeliverySheetIsPresented: Bool = false
     
     @State var currentScreen: ScreenNames = .DeliveryView
@@ -24,7 +25,10 @@ struct DeliveryView: View {
             //Falta um if pra mostrar um empty state se tiver 0 Deliverys
             List{
                 ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
-						 DeliveryCard(delivery: delivery, task: task)
+                    DeliveryCard(delivery: delivery, task: task, updateDeliverySheetIsPresented: $updateDeliverySheetIsPresented)
+                            .sheet(isPresented: $updateDeliverySheetIsPresented) {
+                                UpdateDeliveryView(delivery: delivery)
+                            }
                 }
             }
         }
@@ -38,6 +42,7 @@ struct DeliveryView: View {
         .sheet(isPresented: $createDeliverySheetIsPresented) {
             CreateDeliveryView(task: task)
         }
+       
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("CurrentScreen", selection: $currentScreen){

@@ -256,6 +256,26 @@ import CloudKit
         }
     }
     
+    // MARK: Change Task Status From Database
+    public func updateFeedback(_ feedback: FeedbackModel) async {
+        
+        do {
+            
+//            let rec = try await databasePublic.record(for: feedback.record.recordID)
+            feedback.record!.setValue(feedback.feedbackDesigner, forKey: FeedbackFields.feedbackDesigner.rawValue)
+            feedback.record!.setValue(feedback.feedbackTags, forKey: FeedbackFields.feedbackTags.rawValue)
+            feedback.record!.setValue(feedback.feedbackDescription ,forKey: FeedbackFields.feedbackDescription.rawValue)
+            feedback.record!.setValue(feedback.feedbackStatus ,forKey: FeedbackFields.feedbackStatus.rawValue)
+            try await databasePublic.save( feedback.record!)
+//            feedback.update(saved)
+            
+        }
+        catch {
+            print("2")
+            return
+        }
+    }
+    
     // ========== DELIVERY FUNCTIONS ==========
     
     // MARK: Create a Delivery on database
@@ -294,6 +314,24 @@ import CloudKit
             let deliveryRecord = deliveryModel.getRecord()
             try await self.databasePublic.deleteRecord(withID: deliveryRecord.recordID)
         }
+        catch {
+            return
+        }
+    }
+    
+    // MARK: Change Task Status From Database
+    public func updateDelivery(_ delivery: DeliveryModel) async {
+        
+        do {
+            let rec = try await databasePublic.record(for: delivery.getRecord().recordID)
+            rec.setValue(delivery.deliveryName, forKey: DeliveryFields.deliveryName.rawValue)
+            rec.setValue(delivery.deliveryDocumentation, forKey: DeliveryFields.deliveryDocumentation.rawValue)
+            rec.setValue(delivery.deliveryImplementationLink, forKey: DeliveryFields.deliveryImplementationLink.rawValue)
+            rec.setValue(delivery.deliveryDevelopers, forKey: DeliveryFields.deliveryDevelopers.rawValue)
+            let saved = try await databasePublic.save(rec)
+            delivery.update(saved)
+            
+        } 
         catch {
             return
         }

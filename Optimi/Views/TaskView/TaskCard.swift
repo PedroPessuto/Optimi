@@ -41,6 +41,7 @@ struct TaskCard: View {
                         
                     } label: {
                         HStack {
+                            Image(systemName: "arrow.clockwise")
                             Text("Atualizar task")
                         }
                     }
