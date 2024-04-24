@@ -11,7 +11,7 @@ import Aptabase
 struct HomeView: View {
     @Environment(GeneralController.self) private var controller
     @Environment(\.dismiss) private var dismiss
-    @State var onboardingViewIsPresented: Bool = true
+    @State var onboardingViewIsPresented: Bool = false
     @State var createProjectViewIsPresented: Bool = false
     @State var projectNotFoundSheetIsPresented: Bool = false
     @State var projectKey: String = ""
@@ -39,7 +39,9 @@ struct HomeView: View {
                             AccountHomeDisplay {
                                 onboardingViewIsPresented.toggle()
                             }
+                            .padding()
                         }
+                        
                         Spacer()
                         // Criar Projeto
                         Button(action: {
@@ -50,22 +52,27 @@ struct HomeView: View {
                             Image(systemName: "plus")
                         }
                         .font(.title3)
+                        .padding()
 #if os(macOS)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.accent)
                         .buttonStyle(.plain)
 #endif
                     }
+						  .onAppear {
+							  DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+								  self.onboardingViewIsPresented = true
+							  }
+						  }
                 }
                 // ========== BODY ==========
                 VStack (spacing: 20) {
                     HStack {
-#if os(macOS)
                         Text("Token do Projeto")
+#if os(macOS)
                             .font(.headline)
                             .multilineTextAlignment(.leading)
 #endif
 #if os(iOS)
-                        Text("Token Do Projeto")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .multilineTextAlignment(.leading)
@@ -88,26 +95,55 @@ struct HomeView: View {
                 .frame(width: 300)
                 .frame(maxHeight: .infinity)
             }
-            .background(){
-                Image("Inicio")
+				.background(){
+					Image("Inicio")
 #if os(macOS)
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
+						.resizable()
 #endif
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(22.5)
+				}
+
+// MARK: Project Not Found Sheets
+#if os(macOS)
             .sheet(isPresented: $projectNotFoundSheetIsPresented) {
                 ProjectNotFoundView()
             }
+#endif
+#if os(iOS)
+				.formSheet(isPresented: $projectNotFoundSheetIsPresented) {
+					ProjectNotFoundView()
+						.environment(controller)
+				}
+#endif
+
+
+// MARK: Create Project Sheets
+#if os(macOS)
             .sheet(isPresented: $createProjectViewIsPresented) {
                 CreateProjectView()
             }
+#endif
+#if os(iOS)
+				.formSheet(isPresented: $createProjectViewIsPresented) {
+					CreateProjectView()
+						.environment(controller)
+				}
+#endif
+
+
+// MARK: Onboarding Sheets
+#if os(macOS)
             .sheet(isPresented: $onboardingViewIsPresented) {
                 OnboardingView()
                     .interactiveDismissDisabled(true)
             }
+#endif
+#if os(iOS)
+				.formSheet(isPresented: $onboardingViewIsPresented) {
+					OnboardingView()
+						.environment(controller)
+						.interactiveDismissDisabled(true)
+				}
+#endif
             .onChange(of: controller.screen) { oldValue, newValue in
                 if newValue == .ProjectNotFoundView {
                     projectNotFoundSheetIsPresented = true

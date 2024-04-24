@@ -38,7 +38,8 @@ struct ProjectView: View {
                         Image(systemName: "house")
 #endif
                     }
-#if os(macOS)
+                    #if os(macOS)
+                    .foregroundColor(.accent)
                     .buttonStyle(PlainButtonStyle())
 #endif
                     
@@ -71,7 +72,8 @@ struct ProjectView: View {
                         }
                         .padding(.vertical, 12)
                     }
-#if os(macOS)
+                    #if os(macOS)
+                    .foregroundColor(.accent)
                     .buttonStyle(PlainButtonStyle())
 #endif
                     
@@ -91,12 +93,14 @@ struct ProjectView: View {
                         }
                         
                     } label: {
-                        Image(systemName: "ellipsis.circle.fill")
-                            .foregroundStyle(.secondary)
+                         Image(systemName: "ellipsis.circle")
                     }
+                    #if os(macOS)
+                    .foregroundStyle(.accent)
                     .buttonStyle(PlainButtonStyle())
                     //                    .menuStyle(.borderlessButton)
                     .frame(width: 15)
+                    #endif
                     
                 }
                 .padding()
@@ -113,15 +117,17 @@ struct ProjectView: View {
                     
                     Spacer()
                     
-                    Button {
-                        createTaskSheetIsPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.title3)
-                    }
+                    if(controller.account?.accountRole == .Designer){
+                        Button {
+                            createTaskSheetIsPresented.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.title3)
+                        }
 #if os(macOS)
-                    .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(PlainButtonStyle())
 #endif
+                    }
                 }
                 .padding(.horizontal)
                 if tasksAreLoading {
@@ -168,11 +174,19 @@ struct ProjectView: View {
             Text("Selecione ou crie uma Task para começar")
                 .font(.largeTitle)
         }
-        .sheet(isPresented: $createTaskSheetIsPresented) {
-            CreateTaskView()
-        }
-        
-        
+
+#if os (macOS)
+		  .sheet(isPresented: $createTaskSheetIsPresented) {
+			  CreateTaskView()
+		  }
+#endif
+#if os(iOS)
+		  .formSheet(isPresented: $createTaskSheetIsPresented) {
+			  CreateTaskView()
+				  .environment(controller)
+		  }
+#endif
+
         .onAppear {
             Task {
                 tasksAreLoading = true

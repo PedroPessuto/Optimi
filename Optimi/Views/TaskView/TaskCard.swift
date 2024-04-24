@@ -14,7 +14,6 @@ struct TaskCard: View {
     @Binding var updateTaskViewIsPresented: Bool
     @Environment(\.dismiss) private var dismiss
     
-    
     var body: some View {
         VStack {
             HStack {

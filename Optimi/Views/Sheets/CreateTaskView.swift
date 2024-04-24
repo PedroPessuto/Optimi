@@ -52,6 +52,7 @@ struct CreateTaskView: View {
 				VStack {
 					TextField("", text: $taskDescription, prompt: Text("Descrição"), axis: .vertical)
 						.lineLimit(5...10)
+						.textFieldStyle(.roundedBorder)
 				}
 				.cornerRadius(5)
 				.padding(.bottom, 14)
@@ -95,6 +96,7 @@ struct CreateTaskView: View {
 				
 				TextField("Designers", text: $taskDesigners)
 					.padding(.bottom, 26)
+					.textFieldStyle(.roundedBorder)
 				
 				HStack{
 					Spacer()
@@ -106,25 +108,31 @@ struct CreateTaskView: View {
 						}
 					})
 					Button(action: {
-                     
-                    
-                        Task {
-                            await controller.createTask(taskName: taskName, taskDescription: taskDescription, taskLink: taskLink, taskPrototypeLink: prototypeLink, taskDesigners: taskDesigners, taskDeadline: taskDeadline)
-                            dismiss()
-                        }
-                        Aptabase.shared.trackEvent("Criou uma Task")
-                    
-						
-						
+
+						Task {
+							await controller.createTask(taskName: taskName,
+																 taskDescription: taskDescription,
+																 taskLink: taskLink.replacingOccurrences(of: " ", with: ""),
+																 taskPrototypeLink: prototypeLink.replacingOccurrences(of: " ", with: ""),
+																 taskDesigners: taskDesigners,
+																 taskDeadline: taskDeadline)
+						}
+						dismiss()
+						Aptabase.shared.trackEvent("Criou uma Task")
+
 					}, label: {
 						ZStack{
 							Text("Criar Task")
 						}
 					})
+                    #if os(macOS)
+                    .keyboardShortcut(.defaultAction)
+                    #endif
+					.disabled(taskName == "" || taskDescription == "" ? true : false)  // MARK: Os links ficam opcionais
 				}
 			}
 			.padding()
-		}.frame(minWidth: 511, minHeight: 500)
+		}.frame(minWidth: 511, minHeight: 670, maxHeight: .infinity)
 
 	}
 }

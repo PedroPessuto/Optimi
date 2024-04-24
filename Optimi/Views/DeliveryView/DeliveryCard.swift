@@ -82,18 +82,22 @@ struct DeliveryCard: View {
 #endif
                 }
                 
-                HStack{
-                    Image(systemName: "link")
-                    Link("Implementação", destination: URL(string: delivery.deliveryImplementationLink ?? "")!)
-                }
-                .foregroundStyle(Color.accentColor)
+					if let link = delivery.deliveryImplementationLink {
+						if link != ""{
+							HStack {
+								 Image(systemName: "link")
+								 Link("Implementação", destination: URL(string: link)!)
+							}
+							.foregroundStyle(Color.accentColor)
+							.padding(.bottom,5)
 #if os(macOS)
-                .font(.title)
+					 .font(.title2)
 #endif
-#if os(macOS)
-                .font(.title2)
-#endif
-                .padding(.bottom,5)
+						}
+						
+					}
+                
+
                 
                 HStack {
                     Image(systemName: "person.fill")
@@ -137,7 +141,11 @@ struct DeliveryCard: View {
             }
             else {
                 if feedbacks.isEmpty {
-                    addFeedbackButton
+                    if(controller.account?.accountRole == .Designer){
+                        addFeedbackButton
+                    }else{
+                        noFeedbackView
+                    }
                 } else {
                     feedbackCard
                 }
@@ -145,119 +153,121 @@ struct DeliveryCard: View {
             
         }
         .padding()
+		 #if os(macOS)
         .sheet(isPresented: $createFeedbackViewIsPresented) {
             FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
         }
-        //		  .popover(isPresented: $tagDescriptionPanelIsPresented) {
-        //
-        //				  .presentationBackground(.regularMaterial)
-        //		  }
+		 #endif
+		 #if os(iOS)
+		  .formSheet(isPresented: $createFeedbackViewIsPresented) {
+			  FeedbackGivingSheetView(task: task, feedbackList: $feedbacks, delivery: delivery)
+				  .environment(controller)
+		  }
+		 #endif
+
         
     }
 }
 
-//#Preview {
-//	DeliveryCard(delivery: DeliveryModel(deliveryName: "Eita preula"))
-//		.environment(GeneralController())
-//}
+
 
 extension DeliveryCard {
-    private var addFeedbackButton: some View {
-        Button {
-            createFeedbackViewIsPresented.toggle()
-        } label: {
-            HStack {
-                Text("Adicionar Feedback")
-                Image(systemName: "plus")
-            }
-            .foregroundStyle(.secondary)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
+	private var addFeedbackButton: some View {
+		Button {
+			createFeedbackViewIsPresented.toggle()
+		} label: {
+			HStack {
+				Text("Adicionar Feedback")
+				Image(systemName: "plus")
+			}
+			.foregroundStyle(.secondary)
+		}
+		.buttonStyle(PlainButtonStyle())
+	}
     
-    private var feedbackCard: some View {
-        VStack {
-            HStack {
-                feedbackTitle
-                Spacer()
-                feedbackButton
-            }
-            feedbackDesignersAndDate
-            
-            feedbackTags
+    private var noFeedbackView: some View{
+        VStack{
+            Spacer()
+
+            Text("Sem feedback ainda")
+                .font(.title3)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
             Spacer()
         }
-        .frame(minWidth: 250, maxWidth: 300, minHeight: 125, maxHeight: 150)
-        .padding(.trailing, 25)
     }
-    
-    private var feedbackTitle: some View {
-        Text("Feedbacks")
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-    }
-    
-    private var feedbackButton: some View {
-        Menu {
-            
-            Button {
-                createFeedbackViewIsPresented.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: "arrow.clockwise")
-                    Text("Atualizar feedback")
-                }
-            }
-            
-            Button {
-                Task {
-                    await controller.deleteFeedback(feedbacks.first!)
-                    feedbacks.removeFirst()
-                }
-            } label: {
-                HStack {
-                    Image(systemName: "trash.fill")
-                    Text("Deletar feedback")
-                }
-                .foregroundStyle(.red)
-            }
-           
-            
-        } label: {
-            Image(systemName: "ellipsis.circle")
-                .foregroundStyle(.secondary)
-        }
-        .buttonStyle(PlainButtonStyle())
-        
-        
-    }
-    
-    private var feedbackDesignersAndDate: some View {
-        HStack {
-            Image(systemName: "person.fill")
-            Text("\(feedbacks.first?.feedbackDesigner ?? "Designer")")
-            
-            Spacer()
-            
-            if let date = feedbacks.first?.feedbackCreatedAt {
-                Text("\(formatter.string(from: date))")
-                    .onAppear { self.dateString = formatter.string(from: date) }
-            }
-        }
-    }
-    
-    private var feedbackTags: some View {
-        LazyVGrid(columns: gridRows) {
-            
-            ForEach(0..<(feedbacks.first?.feedbackTags.count ?? 0), id:\.self) { index in
-                FeedbackTagCard(tag: feedbacks.first?.feedbackTags[index] ?? "",
-                                dateString: formatter.string(from: feedbacks.first?.feedbackCreatedAt ?? Date.now),
-                                description: feedbacks.first?.feedbackDescription[index] ?? "",
-                                designer: feedbacks.first?.feedbackDesigner ?? "")
-            }
-            
-        }
-        
-    }
-    
+	
+	private var feedbackCard: some View {
+		VStack {
+			HStack {
+				feedbackTitle
+				Spacer()
+				feedbackButton
+			}
+			feedbackDesignersAndDate
+			
+			feedbackTags
+			Spacer()
+		}
+		.frame(minWidth: 250, maxWidth: 300, minHeight: 125, maxHeight: 150)
+		.padding(.trailing, 25)
+	}
+	
+	private var feedbackTitle: some View {
+		Text("Feedbacks")
+			.font(.largeTitle)
+			.fontWeight(.semibold)
+	}
+	
+	private var feedbackButton: some View {
+		Menu {
+			Button {
+				Task {
+					await controller.deleteFeedback(feedbacks.first!)
+					feedbacks.removeFirst()
+				}
+			} label: {
+				HStack {
+					Image(systemName: "trash.fill")
+					Text("Deletar feedback")
+				}
+				.foregroundStyle(.red)
+			}
+			.buttonStyle(PlainButtonStyle())
+			
+		} label: {
+			Image(systemName: "ellipsis.circle")
+		}
+		.buttonStyle(PlainButtonStyle())
+        .foregroundStyle(.accent)
+        .menuStyle(.borderlessButton)
+	}
+	
+	private var feedbackDesignersAndDate: some View {
+		HStack {
+			Image(systemName: "person.fill")
+			Text("\(feedbacks.first?.feedbackDesigner ?? "Designer")")
+			
+			Spacer()
+			
+			if let date = feedbacks.first?.feedbackCreatedAt {
+				Text("\(formatter.string(from: date))")
+					.onAppear { self.dateString = formatter.string(from: date) }
+			}
+		}
+	}
+	
+	private var feedbackTags: some View {
+		LazyVGrid(columns: gridRows) {
+			
+			ForEach(0..<(feedbacks.first?.feedbackTags.count ?? 0), id:\.self) { index in
+				FeedbackTagCard(tag: feedbacks.first?.feedbackTags[index] ?? "",
+									 dateString: formatter.string(from: feedbacks.first?.feedbackCreatedAt ?? Date.now),
+									 description: feedbacks.first?.feedbackDescription[index] ?? "",
+									 designer: feedbacks.first?.feedbackDesigner ?? "")
+			}
+			
+		}
+		
+	}
 }

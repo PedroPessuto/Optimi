@@ -23,26 +23,46 @@ struct DeliveryView: View {
     var body: some View {
         NavigationStack{
             //Falta um if pra mostrar um empty state se tiver 0 Deliverys
-            List{
-                ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
-                    DeliveryCard(delivery: delivery, task: task, updateDeliverySheetIsPresented: $updateDeliverySheetIsPresented)
-                            .sheet(isPresented: $updateDeliverySheetIsPresented) {
-                                UpdateDeliveryView(delivery: delivery)
-                            }
-                }
-            }
+
+			  if !task.taskDeliveries.isEmpty {
+				  List{
+						ForEach(task.taskDeliveries, id:\.deliveryId) { delivery in
+							DeliveryCard(delivery: delivery, task: task)
+						}
+				  }
+			  } 
+			  else {
+				  Text("Nenhuma entrega feita...")
+					  .font(.largeTitle)
+					  .fontWeight(.semibold)
+			  }
+            
         }
         .onAppear {
+			  print("Apareci")
             Task {
                 
                 await controller.getDeliveriesFromTask(task)
                 
             }
         }
-        .sheet(isPresented: $createDeliverySheetIsPresented) {
-            CreateDeliveryView(task: task)
-        }
-       
+
+		  .onChange(of: task.taskId) { oldValue, newValue in
+			  Task {
+				  await controller.getDeliveriesFromTask(task)
+			  }
+		  }
+#if os(macOS)
+		  .sheet(isPresented: $createDeliverySheetIsPresented) {
+			  CreateDeliveryView(task: task)
+		  }
+#endif
+#if os(iOS)
+		  .formSheet(isPresented: $createDeliverySheetIsPresented) {
+			  CreateDeliveryView(task: task)
+				  .environment(controller)
+		  }
+#endif
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("CurrentScreen", selection: $currentScreen){
@@ -55,19 +75,23 @@ struct DeliveryView: View {
             }
             
             ToolbarItemGroup(placement: .automatic) {
+
                 HStack {
-                    Divider()
-                    
+#if os(macOS)
+						 Divider()
+#endif
+						 
                     Button {
                         createDeliverySheetIsPresented.toggle()
                     } label: {
                         HStack {
                             Text("Adicionar entrega")
                             Image(systemName: "plus")
+
                         }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }.foregroundColor(.secondary)
+                        .buttonStyle(PlainButtonStyle())
+                    }.foregroundColor(.secondary)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)

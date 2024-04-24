@@ -55,6 +55,7 @@ struct CreateDeliveryView: View {
 //						.scrollIndicators(.never)
 					TextField("", text: $deliveryDescription, prompt: Text("Descrição"), axis: .vertical)
 						.lineLimit(5...10)
+						.textFieldStyle(.roundedBorder)
 				}
 				.cornerRadius(5)
 				.padding(.bottom, 14)
@@ -79,6 +80,7 @@ struct CreateDeliveryView: View {
 				
 				TextField("Developers", text: $deliveryDevelopers)
 					.padding(.bottom, 26)
+					.textFieldStyle(.roundedBorder)
 				
 				HStack{
 					Spacer()
@@ -91,20 +93,30 @@ struct CreateDeliveryView: View {
 					})
 					Button(action: {
 						Task {
-							let delivery = DeliveryModel(deliveryName: deliveryName, deliveryDevelopers: deliveryDevelopers, deliveryDocumentation: deliveryDescription, deliveryImplementationLink: implementationLink)
+							let delivery = DeliveryModel(deliveryName: deliveryName, deliveryDevelopers: deliveryDevelopers, deliveryDocumentation: deliveryDescription, deliveryImplementationLink: implementationLink.replacingOccurrences(of: " ", with: ""))
 							await controller.createDelivery(delivery, task.taskId!)
-							dismiss()
 						}
+						dismiss()
 						Aptabase.shared.trackEvent("Criou uma delivery")
 					}, label: {
 						ZStack{
 							Text("Criar Entrega")
 						}
 					})
+                    #if os(macOS)
+                    .keyboardShortcut(.defaultAction)
+                    #endif
+					.disabled(deliveryName == "" || deliveryDescription == "")
 				}
 			}
 			.padding()
-		}.frame(minWidth: 511, minHeight: 450)
+		}
+#if os(macOS)
+		.frame(minWidth: 511, minHeight: 450)
+#endif
+#if os(iOS)
+		.frame(minWidth: 510, minHeight: 550)
+#endif
 		
 	}
 }

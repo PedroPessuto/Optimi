@@ -54,6 +54,7 @@
 		E9A40ECD2BD2E2A3007B71BA /* TagDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */; };
 		E9A40ECF2BD2EF2D007B71BA /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */; };
 		E9A40ED12BD2FE74007B71BA /* FeedbackTagCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */; };
+		E9AE9A192BD821CD00735C5B /* FormSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE9A182BD821CD00735C5B /* FormSheetView.swift */; };
 		E9F63D6A2BC872AB00E3EA21 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDescriptionView.swift; sourceTree = "<group>"; };
 		E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTagCard.swift; sourceTree = "<group>"; };
+		E9AE9A182BD821CD00735C5B /* FormSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetView.swift; sourceTree = "<group>"; };
 		E9F63D692BC872AB00E3EA21 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -330,6 +332,7 @@
 				E9A40ED02BD2FE74007B71BA /* FeedbackTagCard.swift */,
 				E9A40ECC2BD2E2A3007B71BA /* TagDescriptionView.swift */,
 				E9A40ECE2BD2EF2D007B71BA /* FloatingPanel.swift */,
+				E9AE9A182BD821CD00735C5B /* FormSheetView.swift */,
 			);
 			path = DeliveryView;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				E976218C2BC9CB56005FDAEC /* TaskView.swift in Sources */,
 				BF79CF512BD82CEC007ACA6F /* UpdateDeliveryView.swift in Sources */,
 				E97621922BC9CD17005FDAEC /* DeliveryCard.swift in Sources */,
+				E9AE9A192BD821CD00735C5B /* FormSheetView.swift in Sources */,
 				BFD96F7E2BC45913003163E5 /* OptimiApp.swift in Sources */,
 				BFEA29AA2BC6015100543D27 /* OnBoardingView.swift in Sources */,
 				BFEA299F2BC5EF7000543D27 /* PersonFields.swift in Sources */,
@@ -696,7 +700,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -738,7 +742,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

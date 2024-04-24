@@ -20,7 +20,7 @@ struct FeedbackGivingSheetView: View {
 	@State var feedbackTags: [String] = []
 	@State var feedbackDescription: [String] = []
 	
-	@State var tagSelections: [String] = [""]
+	@State var tagSelections: [String] = ["Cor"]
 	@State var pickerTagDescription: [String] = [""]
     var task: TaskModel
     @Binding var feedbackList: [FeedbackModel]
@@ -36,16 +36,6 @@ struct FeedbackGivingSheetView: View {
 				.font(.largeTitle)
 				.fontWeight(.bold)
 				.padding(.bottom, 14)
-			
-//			 HStack {
-//				 Text("\(delivery.deliveryName)")
-//
-//				 HStack {
-//					 Image(systemName: "link")
-//					 Link("Review", destination: delivery.deliveryURL)
-//				 }
-//				 .foregroundStyle(.blue)
-//			 }
 			
 			Text("Status da Entrega")
 				.fontWeight(.semibold)
@@ -91,10 +81,6 @@ struct FeedbackGivingSheetView: View {
                         .pickerStyle(.automatic)
                         .frame(width: 120)
 						
-//						TextEditor(text: $pickerTagDescription[index])
-//							.scrollIndicators(.never)
-//							.padding(4)
-//							.background(RoundedRectangle(cornerRadius: 4).stroke())
 						TextField("", text: $pickerTagDescription[index], prompt: Text("Descrição"), axis: .vertical)
 							.padding(4)
 							.background(RoundedRectangle(cornerRadius: 4).stroke(Color(red: 128/256, green: 128/256, blue: 128/256)))
@@ -102,7 +88,6 @@ struct FeedbackGivingSheetView: View {
 				}
 			}
 			.scrollContentBackground(.hidden)
-			.frame(height: rowHeight*CGFloat(tagSelections.count)+100)
 			
 			Spacer()
 			
@@ -113,6 +98,7 @@ struct FeedbackGivingSheetView: View {
 					dismiss()
 				}
 				
+
                 if feedbackList.count > 0 {
                     Button("Atualizar Feedback") {
                         dismiss()
@@ -144,11 +130,14 @@ struct FeedbackGivingSheetView: View {
                     }
                     .keyboardShortcut(.defaultAction)
                 }
+
 			}
 			
 		}
 		.padding()
+		#if os(macOS)
 		.frame(minWidth: 450, maxWidth: 500, minHeight: 380, maxHeight: 500)
+
         .onAppear {
             if self.feedbackList.count > 0 {
                 feedbackStatusSelection = feedbackList[0].feedbackStatus ?? ""
@@ -158,6 +147,12 @@ struct FeedbackGivingSheetView: View {
                 feedbackDescription = feedbackList[0].feedbackDescription
             }
         }
+
+		#endif
+		#if os(iOS)
+		.frame(minWidth: 450, minHeight: 450, maxHeight: .infinity)
+		#endif
+
 	}
 }
 
